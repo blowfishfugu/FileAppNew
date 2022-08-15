@@ -4,7 +4,7 @@
 void nk::TStatusBar::draw(nk_context * ctx)
 {
 	if (nk_begin(ctx, name.c_str(),
-		nk_rectf(0.0f, (float)(window_height - status_height),
+		nk_rect(0.0f, (float)(window_height - status_height),
 		(float)window_width, (float)status_height),
 		NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR
 	))

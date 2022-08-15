@@ -4,8 +4,6 @@
 #include <string>
 #include <functional>
 #include <MyStdTypes.h>
-#include "nk_text_alignment.h"
-#include "nk_rect.h"
 struct nk_context;
 
 namespace nk

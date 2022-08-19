@@ -432,36 +432,60 @@ void TProcess::CountAction() {
 
 #if defined _MSC_VER
 // to_time_t C++17
-auto put_filetime = [](const fs::path& p)
+// inspiration: https://developercommunity.visualstudio.com/t/stdfilesystemfile-time-type-does-not-allow-easy-co/251213
+// returns loctime ready for use in std::put_time
+auto filetime_to_localtime = [](fs::path const& p)
 {
+	//magic number in nanoseconds?: __std_fs_file_time_epoch_adjustment = 0x19DB1DED53E8000LL;
+	constexpr fs::file_time_type::duration adjustment(__std_fs_file_time_epoch_adjustment);
+	auto toSeconds = [](const auto duration) {
+		// divide by 1000000 in chrono-style
+		return std::chrono::duration_cast<std::chrono::seconds>(duration);
+	};
+
 	auto ftime = std::filesystem::last_write_time(p);
-	time_t tt{ ftime.time_since_epoch().count() }; //to_time_t
+	const auto epoch = ftime.time_since_epoch();
+	time_t tt{ toSeconds(epoch - adjustment).count() }; 
 	std::tm loctime;
-	localtime_s(&loctime, &tt); //cl /permissive- = gcc -pedantic
-	return std::put_time(&loctime, "%d.%m.%Y %T");
+	localtime_s(&loctime, &tt); 
+	return loctime;
 };
 #else
 // C++20 format for date time, C++Builder only C++17
-auto put_filetime = [](const fs::path& p)
+auto filetime_to_localtime = [](const fs::path& p)
 {
 	auto ftime = std::filesystem::last_write_time(p);
 	auto tt = decltype(ftime)::clock::to_time_t(ftime);
-	std::tm *loctime = std::localtime(&tt);
-	return std::put_time(loctime, "%d.%m.%Y %T");
+	std::tm loctime{ *std::localtime(&tt) };
+	return loctime;
 };
 #endif
 
 
 // C++20 format for date time, C++Builder only C++17
 void TProcess::ShowFiles(std::ostream& out, fs::path const& strBase, std::vector<fs::path> const& files) {
-   std::for_each(files.begin(), files.end(), [&out, strBase](auto p) {
+   std::for_each(files.cbegin(), files.cend(), 
+				[&out, strBase](fs::path const& p) {
               if(fs::is_directory(p)) {
                  std::cout << fs::relative(p, strBase) << std::endl;
                  }
               else {
-                 out << fs::relative(p, strBase) << '\t'
-                     << put_filetime(p) << '\t'
+				  std::tm loctime= filetime_to_localtime(p);
+				  
+				 out << fs::relative(p,strBase) << '\t'
+                     << std::put_time(&loctime, "%d.%m.%Y %T") << '\t'
                      << Convert_Size_KiloByte(fs::file_size(p)) << " KB" << std::endl;
                  }
               });
    }
+
+#ifdef DEBUG
+void testFileTime()
+{
+	fs::path temp("C:\\Users\\All Users\\Microsoft\\Windows\\Start Menu");
+	std::vector<fs::path> files{ temp / "desktop.ini" };
+	TProcess proc;
+	proc.ShowFiles(std::cout, temp, files);
+
+}
+#endif

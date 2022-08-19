@@ -119,10 +119,16 @@ WindowProc(HWND wnd, UINT msg, WPARAM wparam, LPARAM lparam)
 }
 #ifdef NDEBUG
 int WINAPI _tWinMain( _In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPTSTR, _In_ int)
-#else
-int main(int argc, char** argv)
-#endif
 {
+#else
+extern void testFileTime();
+
+int main(int argc, char** argv)
+{
+	FILETIME wFileTime;
+	testFileTime();
+#endif
+
 
 	struct nk_context *ctx;
 	struct nk_colorf bg;
@@ -256,6 +262,8 @@ int main(int argc, char** argv)
 			nk_label(ctx, "statustext", NK_TEXT_CENTERED);
 		}
 		nk_end(ctx);
+		
+		
 		/* Draw */
 		context->ClearRenderTargetView( rt_view, &bg.r);
 		context->OMSetRenderTargets( 1, &rt_view, NULL);

@@ -93,8 +93,6 @@
     <ClInclude Include="..\Independed\FileUtil.h" />
     <ClInclude Include="..\Independed\Process.h" />
     <ClInclude Include="NukForm.h" />
-    <ClInclude Include="nuk_header_only\nk_rect.h" />
-    <ClInclude Include="nuk_header_only\nk_text_alignment.h" />
     <ClInclude Include="nuk_header_only\nuklear.h" />
     <ClInclude Include="nuk_header_only\nuklear_d3d11.h" />
     <ClInclude Include="nuk_header_only\nuklear_d3d11_pixel_shader.h" />

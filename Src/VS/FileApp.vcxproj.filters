@@ -71,12 +71,6 @@
     <ClInclude Include="nuk_header_only\nuk_controls.h">
       <Filter>nuk_headers</Filter>
     </ClInclude>
-    <ClInclude Include="nuk_header_only\nk_text_alignment.h">
-      <Filter>nuk_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="nuk_header_only\nk_rect.h">
-      <Filter>nuk_headers</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Embarcadero\VCL\MainForm.dfm" />

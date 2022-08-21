@@ -86,6 +86,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NukForm.cpp" />
     <ClCompile Include="nuk_header_only\nuk_controls.cpp" />
+    <ClCompile Include="nuk_header_only\nuk_d3dapp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Embarcadero\VCL\AuswertungPCH1.h" />
@@ -98,6 +99,7 @@
     <ClInclude Include="nuk_header_only\nuklear_d3d11_pixel_shader.h" />
     <ClInclude Include="nuk_header_only\nuklear_d3d11_vertex_shader.h" />
     <ClInclude Include="nuk_header_only\nuk_controls.h" />
+    <ClInclude Include="nuk_header_only\nuk_d3dapp.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\Embarcadero\VCL\Auswertung.cbproj">

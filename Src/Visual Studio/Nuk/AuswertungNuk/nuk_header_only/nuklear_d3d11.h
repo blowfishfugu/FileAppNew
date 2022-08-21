@@ -37,6 +37,15 @@ NK_API void nk_d3d11_shutdown(void);
 
 #include <d3d11.h>
 
+extern "C" {
+	_declspec(dllexport) unsigned long NvOptimusEnablement = 0x00000001;
+	_declspec(dllexport) int AmdPowerXpressRequestHighPerformance = 1;
+}
+
+#pragma comment(lib,"DXGI.lib")
+#pragma comment(lib,"D3D11.lib")
+#pragma comment(lib,"dxguid.lib")
+
 #include <stddef.h>
 #include <string.h>
 #include <float.h>

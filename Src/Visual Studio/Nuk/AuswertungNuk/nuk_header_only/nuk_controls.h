@@ -1,5 +1,20 @@
 #ifndef NUK_CONTROLS_H
 #define NUK_CONTROLS_H
+
+#define NK_INCLUDE_FIXED_TYPES
+//#define NK_INCLUDE_STANDARD_IO
+#define NK_INCLUDE_STANDARD_VARARGS
+#define NK_INCLUDE_DEFAULT_ALLOCATOR
+#define NK_INCLUDE_VERTEX_BUFFER_OUTPUT
+#define NK_INCLUDE_FONT_BAKING
+#define NK_INCLUDE_DEFAULT_FONT
+
+#ifdef NK_IMPLEMENTATION
+#undef NK_IMPLEMENTATION
+#endif
+#include <nuklear.h>
+
+
 #include <vector>
 #include <string>
 #include <functional>

@@ -17,8 +17,7 @@
 //---------------------------------------------------------------------------
 #include "Process.h"
 
-//die zwei kennen TForm
-#if defined BUILD_WITH_VCL || defined BUILD_WITH_FMX
+#if defined BUILD_WITH_VCL
 
 class TfrmMain : public TForm
 {
@@ -36,8 +35,6 @@ __published:	// Von der IDE verwaltete Komponenten
     TSplitter *Splitter1;
     TButton *btnShow;
     TListBox *lbValues;
-    TEdit *edtTest;
-    TButton *Button1;
     void __fastcall FormCreate(TObject *Sender);
     void __fastcall btnCountClick(TObject *Sender);
     void __fastcall btnParseClick(TObject *Sender);

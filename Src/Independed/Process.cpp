@@ -17,8 +17,8 @@
 
 #include "MyForm.h"
 #include "MyFormList.h"
-
 #include "MyStream.h"
+#include "MyTools.h"
 #include "MyType_Traits.h"
 #include "MyTupleUtils.h"
 #include "MyLogger.h"
@@ -42,10 +42,7 @@
 #include <fstream>
 
 
-//---------------------------------------------------------------------------
-#ifndef _MSC_VER
-	#pragma package(smart_init)
-#endif
+
 // --------------------------------------------------------------------------
 // Prozesslogik
 
@@ -60,9 +57,9 @@ struct TMyNum : public std::numpunct<char> {
 TMyNum newNumPunct;
 std::locale TProcess::myLoc;
 
-TStreamWrapper<Narrow> old_cout(std::cout);
-TStreamWrapper<Narrow> old_cerr(std::cerr);
-TStreamWrapper<Narrow> old_clog(std::clog);
+TStreamWrapper<Latin> old_cout(std::cout);
+TStreamWrapper<Latin> old_cerr(std::cerr);
+TStreamWrapper<Latin> old_clog(std::clog);
 
 /// extensions for c++ builder project files
 std::set<std::string> TProcess::project_extensions = { ".cbproj" };
@@ -72,33 +69,33 @@ std::set<std::string> TProcess::form_files = { ".dfm", ".fmx" };
 
 
 /// vector with captions and params for the project list
-std::vector<tplList<Narrow>> TProcess::Project_Columns {
-    		  tplList<Narrow> { "project",      360, EMyAlignmentType::left },
-              tplList<Narrow> { "path",         650, EMyAlignmentType::left },
-              tplList<Narrow> { "type",         150, EMyAlignmentType::left },
-			  tplList<Narrow> { "order",        110, EMyAlignmentType::right },
-    		  tplList<Narrow> { "cpp- file",    350, EMyAlignmentType::left },
-    		  tplList<Narrow> { "rows",         110, EMyAlignmentType::right },
-			  tplList<Narrow> { "h- file",      280, EMyAlignmentType::left },
-			  tplList<Narrow> { "rows",         110, EMyAlignmentType::right },
-			  tplList<Narrow> { "form file",   350, EMyAlignmentType::left },
-			  tplList<Narrow> { "form name",    340, EMyAlignmentType::left },
-			  tplList<Narrow> { "rows",         110, EMyAlignmentType::right },
-			  tplList<Narrow> { "formType",     150, EMyAlignmentType::left },
-			  tplList<Narrow> { "designclass",  250, EMyAlignmentType::left } };
+std::vector<tplList<Latin>> TProcess::Project_Columns {
+    		  tplList<Latin> { "project",      360, EMyAlignmentType::left },
+              tplList<Latin> { "path",         650, EMyAlignmentType::left },
+              tplList<Latin> { "type",         150, EMyAlignmentType::left },
+			  tplList<Latin> { "order",        110, EMyAlignmentType::right },
+    		  tplList<Latin> { "cpp- file",    350, EMyAlignmentType::left },
+    		  tplList<Latin> { "rows",         110, EMyAlignmentType::right },
+			  tplList<Latin> { "h- file",      280, EMyAlignmentType::left },
+			  tplList<Latin> { "rows",         110, EMyAlignmentType::right },
+			  tplList<Latin> { "form file",   350, EMyAlignmentType::left },
+			  tplList<Latin> { "form name",    340, EMyAlignmentType::left },
+			  tplList<Latin> { "rows",         110, EMyAlignmentType::right },
+			  tplList<Latin> { "formType",     150, EMyAlignmentType::left },
+			  tplList<Latin> { "designclass",  250, EMyAlignmentType::left } };
 
 /// vector with captions and params for counting files
-std::vector<tplList<Narrow>> TProcess::Count_Columns {
-    		  tplList<Narrow> { "files",        450, EMyAlignmentType::right },
-              tplList<Narrow> { "directories",  450, EMyAlignmentType::right },
-              tplList<Narrow> { "size",         600, EMyAlignmentType::right }
+std::vector<tplList<Latin>> TProcess::Count_Columns {
+    		  tplList<Latin> { "files",        450, EMyAlignmentType::right },
+              tplList<Latin> { "directories",  450, EMyAlignmentType::right },
+              tplList<Latin> { "size",         600, EMyAlignmentType::right }
               };
 
 /// vector with captions and params for the file list
-std::vector<tplList<Narrow>> TProcess::File_Columns {
-    		  tplList<Narrow> { "file",       1310, EMyAlignmentType::left },
-              tplList<Narrow> { "time",        265, EMyAlignmentType::left },
-              tplList<Narrow> { "size",        150, EMyAlignmentType::right } };
+std::vector<tplList<Latin>> TProcess::File_Columns {
+    		  tplList<Latin> { "file",       1310, EMyAlignmentType::left },
+              tplList<Latin> { "time",        265, EMyAlignmentType::left },
+              tplList<Latin> { "size",        150, EMyAlignmentType::right } };
 
 
 constexpr int iMyData_Project  =  0; ///< constant for position of name of project in tplData
@@ -169,9 +166,9 @@ size_t parse(string_type const& source, std::string const& del, container& list)
    std::ios_base::sync_with_stdio(false);
    myLoc = std::locale(std::locale("de_DE"), &newNumPunct);
 
-   frm.GetAsStream<Narrow, EMyFrameworkType::listview>(old_cout, "lvOutput", Project_Columns);
-   frm.GetAsStream<Narrow, EMyFrameworkType::memo>(old_cerr, "memError");
-   frm.GetAsStream<Narrow, EMyFrameworkType::statusbar>(old_clog, "sbMain");
+   frm.GetAsStream<Latin, EMyFrameworkType::listview>(old_cout, "lvOutput", Project_Columns);
+   frm.GetAsStream<Latin, EMyFrameworkType::memo>(old_cerr, "memError");
+   frm.GetAsStream<Latin, EMyFrameworkType::statusbar>(old_clog, "sbMain");
 
    for(auto stream : { &std::cout, &std::cerr, &std::clog } ) {
       stream->imbue(myLoc);
@@ -187,7 +184,7 @@ size_t parse(string_type const& source, std::string const& del, container& list)
    frm.Set<EMyFrameworkType::button>("btnShow",  "show");     // !!!
    frm.Set<EMyFrameworkType::button>("btnParse", "parse");
 
-   std::ostream mys(frm.GetAsStreamBuff<Narrow, EMyFrameworkType::listbox>("lbValues"));
+   std::ostream mys(frm.GetAsStreamBuff<Latin, EMyFrameworkType::listbox>("lbValues"));
    std::vector<std::string> test = { ".cpp", ".h", ".dfm", ".fmx", ".cbproj", ".c", ".hpp" };
    std::copy(test.begin(), test.end(), std::ostream_iterator<std::string>(mys, "\n"));
 
@@ -198,6 +195,7 @@ size_t parse(string_type const& source, std::string const& del, container& list)
 
 void TProcess::ShowAction() {
    try {
+      TMyToggle toggle("Guard for boActive", boActive);
       std::vector<fs::path> files;
       std::set<std::string> extensions;
       my_formlist<EMyFrameworkType::listbox, std::string> mylist(&frm, "lbValues");
@@ -206,10 +204,12 @@ void TProcess::ShowAction() {
 
       auto strPath = frm.Get<EMyFrameworkType::edit, std::string>("edtDirectory");
       if(!strPath) {
-         throw std::runtime_error("directory to show is empty, set a directory before call this function");
+         TMyLogger log(__func__, __FILE__, __LINE__);
+         log.stream() << "directory to show is empty, set a directory before call this function";
+         log.except();
          }
       else {
-         frm.GetAsStream<Narrow, EMyFrameworkType::listview>(old_cout, "lvOutput", File_Columns);
+         frm.GetAsStream<Latin, EMyFrameworkType::listview>(old_cout, "lvOutput", File_Columns);
          std::chrono::milliseconds time;
          fs::path fsPath = *strPath;
          auto ret = Call(time, Find, std::ref(files), std::cref(fsPath), std::cref(extensions), true);
@@ -366,8 +366,8 @@ void TProcess::Parse(fs::path const& fsPath, std::vector<fs::path>& project_file
    log.Write(std::clog);
 
    std:: cerr << "count of rows in files (cpp, h, form): ";
-   TMyDelimiter<Narrow> delimiter = { "(", ", ", ")\n" };
-   myTupleHlp<Narrow>::Output(std::cerr, delimiter, rows);
+   TMyDelimiter<Latin> delimiter = { "(", ", ", ")\n" };
+   myTupleHlp<Latin>::Output(std::cerr, delimiter, rows);
 
    std::sort(projects.begin(), projects.end(), [](auto lhs, auto rhs) {
                       if(auto ret = std::get<iMyData_Project>(lhs).compare(std::get<iMyData_Project>(rhs)); ret == 0) {
@@ -381,7 +381,7 @@ void TProcess::Parse(fs::path const& fsPath, std::vector<fs::path>& project_file
 
    delimiter = { "", "\t", "\n" };
    std::for_each(projects.begin(), projects.end(), [&delimiter](auto val) {
-          myTupleHlp<Narrow>::Output(std::cout, delimiter, val);
+          myTupleHlp<Latin>::Output(std::cout, delimiter, val);
           });
    }
 
@@ -397,7 +397,7 @@ void TProcess::ParseAction() {
          log.except();
          }
 
-      frm.GetAsStream<Narrow, EMyFrameworkType::listview>(old_cout, "lvOutput", Project_Columns);
+      frm.GetAsStream<Latin, EMyFrameworkType::listview>(old_cout, "lvOutput", Project_Columns);
       Parse(*strPath, project_files, projects);
       }
    catch(std::exception &ex) {
@@ -410,16 +410,18 @@ void TProcess::CountAction() {
    try {
       auto strPath = frm.Get<EMyFrameworkType::edit, std::string>("edtDirectory");
       if(!strPath) {
-         throw std::runtime_error("directory to count is empty, set a directory before call this function");
+         TMyLogger log(__func__, __FILE__, __LINE__);
+         log.stream() << "directory to parse is empty, set a directory before call this function";
+         log.except();
          }
       else {
-         frm.GetAsStream<Narrow, EMyFrameworkType::listview>(old_cout, "lvOutput", Count_Columns);
+         frm.GetAsStream<Latin, EMyFrameworkType::listview>(old_cout, "lvOutput", Count_Columns);
          std::chrono::milliseconds time;
          fs::path fsPath = *strPath;
          auto ret = Call(time, Count, std::cref(fsPath), true);
          std::get<2>(ret) = Convert_Size_KiloByte(std::get<2>(ret));
-         TMyDelimiter<Narrow> delimiter = { "", "\t", "\n" };
-         myTupleHlp<Narrow>::Output(std::cout, delimiter, ret);
+         TMyDelimiter<Latin> delimiter = { "", "\t", "\n" };
+         myTupleHlp<Latin>::Output(std::cout, delimiter, ret);
          std::clog << "function \"Count\" procecced in "
                    << std::setprecision(3) << time.count()/1000. << " sec" << std::endl;
          }
@@ -430,49 +432,46 @@ void TProcess::CountAction() {
       }
    }
 
-#if defined _MSC_VER
-// to_time_t C++17
-// inspiration: https://developercommunity.visualstudio.com/t/stdfilesystemfile-time-type-does-not-allow-easy-co/251213
-// returns loctime ready for use in std::put_time
-auto filetime_to_localtime = [](fs::path const& p)
-{
-	//magic number in nanoseconds?: __std_fs_file_time_epoch_adjustment = 0x19DB1DED53E8000LL;
-	constexpr fs::file_time_type::duration adjustment(__std_fs_file_time_epoch_adjustment);
-	auto toSeconds = [](const auto duration) {
-		// divide by 1000000 in chrono-style
-		return std::chrono::duration_cast<std::chrono::seconds>(duration);
-	};
-
-	auto ftime = std::filesystem::last_write_time(p);
-	const auto epoch = ftime.time_since_epoch();
-	time_t tt{ toSeconds(epoch - adjustment).count() }; 
-	std::tm loctime;
-	localtime_s(&loctime, &tt); 
-	return loctime;
-};
-#else
-// C++20 format for date time, C++Builder only C++17
-auto filetime_to_localtime = [](const fs::path& p)
-{
-	auto ftime = std::filesystem::last_write_time(p);
-	auto tt = decltype(ftime)::clock::to_time_t(ftime);
-	std::tm loctime{ *std::localtime(&tt) };
-	return loctime;
-};
-#endif
-
-
 // C++20 format for date time, C++Builder only C++17
 void TProcess::ShowFiles(std::ostream& out, fs::path const& strBase, std::vector<fs::path> const& files) {
-   std::for_each(files.cbegin(), files.cend(), 
-				[&out, strBase](fs::path const& p) {
+#if (defined(_MSVC_LANG) && _MSVC_LANG < 202002L)
+   // to_time_t C++17
+   // inspiration: https://developercommunity.visualstudio.com/t/stdfilesystemfile-time-type-does-not-allow-easy-co/251213
+   // returns loctime ready for use in std::put_time
+   auto filetime_to_localtime = [](fs::path const& p)
+   {
+      //magic number in nanoseconds?: 
+      auto constexpr __std_fs_file_time_epoch_adjustment = 0x19DB1DED53E8000LL;
+      constexpr fs::file_time_type::duration adjustment(__std_fs_file_time_epoch_adjustment);
+      auto toSeconds = [](const auto duration) {
+         // divide by 1000000 in chrono-style
+         return std::chrono::duration_cast<std::chrono::seconds>(duration);
+      };
+
+      auto ftime = std::filesystem::last_write_time(p);
+      const auto epoch = ftime.time_since_epoch();
+      time_t tt{ toSeconds(epoch - adjustment).count() };
+      std::tm loctime;
+      localtime_s(&loctime, &tt);
+      return loctime;
+   };
+#else 
+   auto filetime_to_localtime = [](fs::path const& p) {
+      auto ftime = fs::last_write_time(p);
+      auto tt = decltype(ftime)::clock::to_time_t(ftime);
+      std::tm loctime;
+      std::localtime_s(&tt, &loctime);
+      return loctime;
+   };
+#endif
+
+   std::for_each(files.begin(), files.end(), [&out, strBase, &filetime_to_localtime](auto p) {
               if(fs::is_directory(p)) {
                  std::cout << fs::relative(p, strBase) << std::endl;
                  }
               else {
-				  std::tm loctime= filetime_to_localtime(p);
-				  
-				 out << fs::relative(p,strBase) << '\t'
+                 auto loctime = filetime_to_localtime(p);
+                 out << fs::relative(p, strBase) << '\t'
                      << std::put_time(&loctime, "%d.%m.%Y %T") << '\t'
                      << Convert_Size_KiloByte(fs::file_size(p)) << " KB" << std::endl;
                  }

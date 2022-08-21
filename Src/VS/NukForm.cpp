@@ -1,10 +1,9 @@
 #include "NukForm.h"
-
-
+#include "../Independed/Process.h" //<-achtung, windowsheader haben eigene process.h kein <> verwenden
 // Purpose: Connect Form-Events to Process.h::TProcess
 //---------------------------------------------------------------------------
 //here the MainForm.cpp-Variant from the VCL-Branch
-#if defined BUILD_WITH_VCL || defined BUILD_WITH_FMX
+#if defined BUILD_WITH_VCL_SAMPLE
 // TObject/TComponent in System.Classes.hpp
 #include <vcl.h>
 #pragma hdrstop

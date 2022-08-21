@@ -54,7 +54,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\Src\Independed\;$(ProjectDir)nuk_header_only\;$(ProjectDir)..\..\adecc_Scholar\adecc_Scholar\;$(ProjectDir)..\..\\pugiXML\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\Src\Independed\;$(ProjectDir)nuk_header_only\;$(ProjectDir)..\..\..\..\adecc_Scholar\adecc_Scholar\;$(ProjectDir)..\..\..\..\pugiXML\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>BUILD_WITH_NUKLEAR;_WIN64;_MBCS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -69,7 +69,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\Src\Independed\;$(ProjectDir)nuk_header_only\;$(ProjectDir)..\..\adecc_Scholar\adecc_Scholar\;$(ProjectDir)..\..\\pugiXML\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\Src\Independed\;$(ProjectDir)nuk_header_only\;$(ProjectDir)..\..\..\..\adecc_Scholar\adecc_Scholar\;$(ProjectDir)..\..\..\..\pugiXML\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>BUILD_WITH_NUKLEAR;_WIN64;_MBCS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -79,19 +79,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Embarcadero\VCL\Auswertung.cpp" />
-    <ClCompile Include="..\Embarcadero\VCL\MainForm.cpp" />
-    <ClCompile Include="..\Independed\FileUtil.cpp" />
-    <ClCompile Include="..\Independed\Process.cpp" />
+    <ClCompile Include="..\..\..\Embarcadero\VCL\Auswertung.cpp" />
+    <ClCompile Include="..\..\..\Embarcadero\VCL\MainForm.cpp" />
+    <ClCompile Include="..\..\..\Independed\FileUtil.cpp" />
+    <ClCompile Include="..\..\..\Independed\Process.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NukForm.cpp" />
     <ClCompile Include="nuk_header_only\nuk_controls.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Embarcadero\VCL\AuswertungPCH1.h" />
-    <ClInclude Include="..\Embarcadero\VCL\MainForm.h" />
-    <ClInclude Include="..\Independed\FileUtil.h" />
-    <ClInclude Include="..\Independed\Process.h" />
+    <ClInclude Include="..\..\..\Embarcadero\VCL\AuswertungPCH1.h" />
+    <ClInclude Include="..\..\..\Embarcadero\VCL\MainForm.h" />
+    <ClInclude Include="..\..\..\Independed\FileUtil.h" />
+    <ClInclude Include="..\..\..\Independed\Process.h" />
     <ClInclude Include="NukForm.h" />
     <ClInclude Include="nuk_header_only\nuklear.h" />
     <ClInclude Include="nuk_header_only\nuklear_d3d11.h" />
@@ -100,11 +100,11 @@
     <ClInclude Include="nuk_header_only\nuk_controls.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Embarcadero\VCL\Auswertung.cbproj">
+    <None Include="..\..\..\Embarcadero\VCL\Auswertung.cbproj">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </None>
-    <None Include="..\Embarcadero\VCL\MainForm.dfm">
+    <None Include="..\..\..\Embarcadero\VCL\MainForm.dfm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </None>

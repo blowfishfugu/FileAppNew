@@ -1,5 +1,5 @@
 #include "NukForm.h"
-#include "../Independed/Process.h" //<-achtung, windowsheader haben eigene process.h kein <> verwenden
+#include "../../Independed/Process.h" //<-achtung, windowsheader haben eigene process.h kein <> verwenden
 // Purpose: Connect Form-Events to Process.h::TProcess
 //---------------------------------------------------------------------------
 //here the MainForm.cpp-Variant from the VCL-Branch

@@ -121,6 +121,12 @@ void Application::Init(int width, int height)
 	this->running = true;
 }
 
+const D3D11_VIEWPORT& Application::GetViewport()
+{
+	return d3d11.viewport;
+}
+
+
 void Application::Run( nk::NKForm& mainForm )
 {
 	struct nk_colorf bg;

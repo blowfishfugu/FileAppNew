@@ -76,6 +76,12 @@ public:
 	~Application() { this->Release(); }
 	void Init(int width, int height);
 
+	const D3D11_VIEWPORT & GetViewport();
+
+	
+
+	
+
 	void Run(nk::NKForm& mainForm);
 
 	void Release();

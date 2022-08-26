@@ -37,17 +37,16 @@ constexpr int WINDOW_HEIGHT = 600;
 
 #ifdef NDEBUG
 int WINAPI _tWinMain( _In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPTSTR, _In_ int)
-{
 #else
 int main(int argc, char** argv)
-{
-	extern void testFileTime();
-	testFileTime();
 #endif
+{
 	Application app;
 	app.Init(WINDOW_WIDTH, WINDOW_HEIGHT);
 
-	nk::NKForm mainForm;
+	const D3D11_VIEWPORT& viewport= app.GetViewport();
+
+	nk::NKForm mainForm( viewport.Width, viewport.Height, "Demo", 1);
 
 	app.Run(mainForm);
 	app.Release();

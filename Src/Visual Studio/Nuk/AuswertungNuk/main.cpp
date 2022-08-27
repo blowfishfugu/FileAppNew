@@ -52,7 +52,7 @@ int main(int argc, char** argv)
 
 	auto dualRow = [](struct nk_context* ctx)
 	{
-		nk_layout_row_dynamic(ctx, 25, 10);
+		nk_layout_row_dynamic(ctx, 25, 20);
 	};
 
 	nk::TEdit* edit = mainForm.Create<nk::TEdit>("path");
@@ -64,10 +64,13 @@ int main(int argc, char** argv)
 	edit2->text = "hello2";
 	//edit2->applyLayout = singleRow;
 	edit2->cursorpos = edit2->text.length();
-	
-	for (int tst = 0; tst < 10000; ++tst)
+#ifndef NDEBUG
+	for (int tst = 0; tst < 1000; ++tst)
+#else
+	for (int tst = 0; tst < 200000; ++tst)
+#endif
 	{
-		nk::TLabel* lbl=mainForm.Create<nk::TLabel>("","--");
+		nk::TLabel* lbl=mainForm.Create<nk::TLabel>("",std::to_string(tst) );
 		mainForm.Create<nk::TEdit>("");
 	}
 

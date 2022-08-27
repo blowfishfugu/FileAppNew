@@ -44,9 +44,26 @@ int main(int argc, char** argv)
 	Application app;
 	app.Init(WINDOW_WIDTH, WINDOW_HEIGHT);
 
-	const D3D11_VIEWPORT& viewport= app.GetViewport();
+	const D3D11_VIEWPORT& viewport = app.GetViewport();
+	__int64 id = 0;
+	nk::NKForm mainForm(viewport.Width, viewport.Height, "Demo", id);
 
-	nk::NKForm mainForm( viewport.Width, viewport.Height, "Demo", 1);
+	auto dualRow = [](nk_context* ctx)
+	{
+		nk_layout_row_dynamic(ctx, 30, 2);
+	};
+
+	std::unique_ptr<nk::TEdit> edit = std::make_unique<nk::TEdit>( "path", ++id );
+	edit->applyLayout = dualRow;
+	edit->text = "hello"; 
+	edit->cursorpos = edit->text.length();
+	mainForm.fields.push_back(edit.get());
+
+	std::unique_ptr<nk::TEdit> edit2 = std::make_unique<nk::TEdit>("second", ++id);
+	edit2->text = "hello2";
+	//edit2->applyLayout = singleRow;
+	edit2->cursorpos = edit2->text.length();
+	mainForm.fields.push_back(edit2.get());
 
 	app.Run(mainForm);
 	app.Release();

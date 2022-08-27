@@ -44,7 +44,7 @@ namespace nk
 		//should redirect "events" -- in case of nuklear onClick is just a bool, discovered while painting
 		//should walk subcomponents, and draw them in specific order
 		virtual void draw(nk_context* ctx) = 0;
-
+		std::function<void(nk_context*)> applyLayout;
 		std::vector<IComponent*> fields;
 		IComponent* FindComponent(std::string const& strField);
 	};
@@ -53,6 +53,7 @@ namespace nk
 	{
 		TEdit(std::string Name, __int64 _id);
 		std::string text;
+		int cursorpos = 0;
 		virtual EMyFrameworkType ComponentType() const override{
 			return EMyFrameworkType::edit;
 		}

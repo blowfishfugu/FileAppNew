@@ -80,15 +80,29 @@ EMyFrameworkType nk::NKForm::ComponentType() const
 
 void nk::NKForm::draw(nk_context * ctx)
 {
-	if (nk_begin(ctx, name.c_str(), nk_rect(0, 0, Width, Height),
+	float width = Width * 0.8f;
+	if (nk_begin(ctx, name.c_str(), nk_rect(0, 0, width, Height*0.8f),
 		NK_WINDOW_BORDER | NK_WINDOW_TITLE
 		//| NK_WINDOW_SCALABLE | NK_WINDOW_MOVABLE //<- updates bounds.. fullscreenwindow
 		| NK_WINDOW_MINIMIZABLE
 	))
 	{
+		
 		for (nk::IComponent* comp : fields)
 		{
-			comp->draw(ctx);
+			if (comp->ComponentType() != EMyFrameworkType::statusbar)
+			{
+				if (comp->applyLayout)
+				{
+					comp->applyLayout(ctx);
+				}
+				comp->draw(ctx);
+			}
+		}
+		for (nk::IComponent* comp : fields)
+		{
+			if (comp->ComponentType() == EMyFrameworkType::statusbar)
+				comp->draw(ctx);
 		}
 	}
 	nk_end(ctx);
@@ -96,10 +110,17 @@ void nk::NKForm::draw(nk_context * ctx)
 
 nk::TEdit::TEdit(std::string Name, __int64 _id) :
 	IComponent(Name, _id)
-{}
+{
+	
+}
 
 void nk::TEdit::draw(nk_context * ctx)
 {
+	if (text.capacity() < (text.size() + 10) )
+	{
+		text.resize(text.capacity() + 64);
+	}
+	nk_edit_string(ctx, NK_EDIT_SIMPLE, text.data(), &cursorpos, text.capacity(), nk_filter_default);
 }
 
 nk::TLabel::TLabel(std::string Name, __int64 _id) :

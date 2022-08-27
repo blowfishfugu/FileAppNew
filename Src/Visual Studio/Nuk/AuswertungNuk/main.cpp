@@ -42,13 +42,14 @@ int main(int argc, char** argv)
 #endif
 {
 	Application app;
+	TProcess proc;
 	app.Init(WINDOW_WIDTH, WINDOW_HEIGHT);
 
 	const D3D11_VIEWPORT& viewport = app.GetViewport();
 	__int64 id = 0;
 	nk::NKForm mainForm(viewport.Width, viewport.Height, "Demo", id);
 
-	auto dualRow = [](nk_context* ctx)
+	auto dualRow = [](struct nk_context* ctx)
 	{
 		nk_layout_row_dynamic(ctx, 30, 2);
 	};
@@ -69,7 +70,17 @@ int main(int argc, char** argv)
 	statusBar->text = "statustext";
 	mainForm.fields.push_back(statusBar.get());
 
-	app.Run(mainForm);
+	//Form-Created
+	try
+	{
+		proc.Init({ &mainForm,false });
+
+		app.Run(mainForm);
+	}
+	catch (std::runtime_error re)
+	{
+		std::cerr << re.what() << "\n";
+	}
 	app.Release();
 	return 0;
 }

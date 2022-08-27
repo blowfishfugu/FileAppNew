@@ -54,9 +54,10 @@ nk::IComponent * nk::IComponent::FindComponent(std::string const & strField)
 	for (nk::IComponent* c : fields)
 	{
 		if (!c) { continue; }
-		if (c->name != strField) { continue; }
 		nk::IComponent* subChild = c->FindComponent(strField);
 		if (subChild) { return subChild; }
+		
+		if (c->name != strField) { continue; }
 		return c;
 	}
 	return nullptr;
@@ -89,7 +90,6 @@ void nk::NKForm::draw(struct nk_context* ctx)
 		| NK_WINDOW_MINIMIZABLE
 	))
 	{
-		
 		for (nk::IComponent* comp : fields)
 		{
 			if (comp->ComponentType() != EMyFrameworkType::statusbar

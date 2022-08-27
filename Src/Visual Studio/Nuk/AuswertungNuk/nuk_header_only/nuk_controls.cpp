@@ -131,12 +131,15 @@ void nk::TEdit::draw(struct nk_context* ctx)
 	nk_edit_string(ctx, NK_EDIT_SIMPLE, text.data(), &cursorpos, text.capacity(), nk_filter_default);
 }
 
-nk::TLabel::TLabel(std::string Name, __int64 _id) :
-	IComponent(Name, _id)
-{}
+nk::TLabel::TLabel(std::string Name, std::string Text, __int64 _id) :
+	IComponent(Name, _id),
+	text(Text)
+{
+}
 
 void nk::TLabel::draw(struct nk_context* ctx)
 {
+	nk_label(ctx, text.c_str(), NK_TEXT_ALIGN_LEFT);
 }
 
 nk::TButton::TButton(std::string Name, __int64 _id) :

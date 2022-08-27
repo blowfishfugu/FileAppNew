@@ -52,7 +52,7 @@ int main(int argc, char** argv)
 
 	auto dualRow = [](struct nk_context* ctx)
 	{
-		nk_layout_row_dynamic(ctx, 30, 2);
+		nk_layout_row_dynamic(ctx, 25, 10);
 	};
 
 	nk::TEdit* edit = mainForm.Create<nk::TEdit>("path");
@@ -65,6 +65,12 @@ int main(int argc, char** argv)
 	//edit2->applyLayout = singleRow;
 	edit2->cursorpos = edit2->text.length();
 	
+	for (int tst = 0; tst < 10000; ++tst)
+	{
+		nk::TLabel* lbl=mainForm.Create<nk::TLabel>("","--");
+		mainForm.Create<nk::TEdit>("");
+	}
+
 	nk::TStatusBar* statusBar = mainForm.Create<nk::TStatusBar>(viewport.Width, viewport.Height, "testStatus");
 	statusBar->text = "statustext";
 	

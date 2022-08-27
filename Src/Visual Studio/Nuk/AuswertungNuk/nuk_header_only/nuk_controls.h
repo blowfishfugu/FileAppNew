@@ -32,7 +32,7 @@ namespace nk
 	{
 	public:
 		std::string name;
-		__int64 id=0; //<- while name is empty we need a unique id
+		__int64 id=0; //<- if name is empty we need a unique id
 		IComponent() = delete;
 		IComponent(const IComponent&) = delete;
 		
@@ -63,7 +63,7 @@ namespace nk
 	
 	struct TLabel : public IComponent
 	{
-		TLabel(std::string Name, __int64 _id);
+		TLabel(std::string Name, std::string Text, __int64 _id);
 		std::string text;
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::label;
@@ -195,7 +195,13 @@ namespace nk
 		template<typename outtype, class... Args>
 		outtype* Add(Args&&... ctor_args)
 		{
-			std::unique_ptr<outtype> comp = std::make_unique<outtype>(std::forward<Args>(ctor_args)..., ++id);
+			std::unique_ptr<outtype> comp 
+				= std::make_unique<outtype>
+				(
+					std::forward<Args>(ctor_args)...,
+					++id
+				);
+
 			outtype* result = comp.get();
 			_owned.emplace_back(std::move(comp));
 			return result;

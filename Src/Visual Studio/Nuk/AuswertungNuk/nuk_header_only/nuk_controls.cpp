@@ -18,7 +18,7 @@ void nk::TStatusBar::draw(struct nk_context* ctx)
 		NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))
 	{
 			nk_layout_row_dynamic(ctx, status_height, 1);
-			nk_label(ctx, "statustext", NK_TEXT_LEFT);
+			nk_label(ctx, "statustext", NK_TEXT_CENTERED);
 	}
 	nk_end(ctx);
 	
@@ -63,7 +63,7 @@ nk::IComponent * nk::IComponent::FindComponent(std::string const & strField)
 	return nullptr;
 }
 
-
+nk::Pool nk::NKForm::componentPool; //static
 
 nk::NKForm::NKForm(
 	const float & width,
@@ -83,10 +83,9 @@ EMyFrameworkType nk::NKForm::ComponentType() const
 
 void nk::NKForm::draw(struct nk_context* ctx)
 {
-	float width = Width * 0.8f;
-	if (nk_begin(ctx, name.c_str(), nk_rect(0, 0, width, Height*0.8f),
+	if (nk_begin(ctx, name.c_str(), nk_rect(0.0f, 0.0f, Width*0.8f, Height*0.8f),
 		NK_WINDOW_BORDER | NK_WINDOW_TITLE
-		//| NK_WINDOW_SCALABLE | NK_WINDOW_MOVABLE //<- updates bounds.. fullscreenwindow
+		| NK_WINDOW_SCALABLE | NK_WINDOW_MOVABLE //<- updates bounds.. fullscreenwindow
 		| NK_WINDOW_MINIMIZABLE
 	))
 	{
@@ -186,3 +185,5 @@ nk::TGrid::TGrid(std::string Name, __int64 _id) :
 void nk::TGrid::draw(struct nk_context* ctx)
 {
 }
+
+

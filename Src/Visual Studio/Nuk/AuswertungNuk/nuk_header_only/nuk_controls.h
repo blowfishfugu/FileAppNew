@@ -52,6 +52,7 @@ namespace nk
 	struct TEdit : public IComponent
 	{
 		TEdit(std::string Name, __int64 _id);
+		
 		std::string text;
 		int cursorpos = 0;
 		virtual EMyFrameworkType ComponentType() const override{
@@ -186,6 +187,20 @@ namespace nk
 		virtual void draw(struct nk_context* ctx) override;
 	};
 
+	struct Pool
+	{
+		std::vector< std::unique_ptr<IComponent> > _owned;
+		template<typename outtype, class... Args>
+		outtype* Add(Args&&... ctor_args)
+		{
+			std::unique_ptr<outtype> comp = std::make_unique<outtype>(std::forward<Args>(ctor_args)...);
+			outtype* result = comp.get();
+			_owned.emplace_back(std::move(comp));
+			return result;
+		}
+	};
+
+	
 	struct NKForm : public IComponent
 	{
 		const float& Width;
@@ -197,6 +212,17 @@ namespace nk
 		std::string title;
 		virtual EMyFrameworkType ComponentType() const override;
 		virtual void draw(struct nk_context * ctx) override;
+		
+		static Pool componentPool;
+		template<typename outtype, class... vaList_t>
+		outtype* Create(vaList_t&&... i_values)
+		{
+			outtype* comp= componentPool.Add<outtype>(std::forward<vaList_t>(i_values)...);
+			this->fields.push_back(comp);
+			return comp;
+		}
 	};
+
+	
 }
 #endif

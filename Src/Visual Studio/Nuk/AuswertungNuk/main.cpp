@@ -65,6 +65,10 @@ int main(int argc, char** argv)
 	edit2->cursorpos = edit2->text.length();
 	mainForm.fields.push_back(edit2.get());
 
+	std::unique_ptr<nk::TStatusBar> statusBar = std::make_unique<nk::TStatusBar>(viewport.Width, viewport.Height, "testStatus", ++id);
+	statusBar->text = "statustext";
+	mainForm.fields.push_back(statusBar.get());
+
 	app.Run(mainForm);
 	app.Release();
 	return 0;

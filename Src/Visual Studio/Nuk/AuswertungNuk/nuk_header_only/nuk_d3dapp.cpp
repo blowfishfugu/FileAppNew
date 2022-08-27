@@ -185,14 +185,18 @@ void Application::Run( nk::NKForm& mainForm )
 		//nk_end(ctx);
 
 		//TStatusBar
-		if (nk_begin(ctx, "StatusBar", nk_rect(0, d3d11.viewport.Height - 30, d3d11.viewport.Width, 30),
+		/*if (nk_begin(ctx, "StatusBar", nk_rect(0, d3d11.viewport.Height - 30, d3d11.viewport.Width, 30),
 			NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR
 		))
 		{
 			nk_layout_row_dynamic(ctx, ctx->current->bounds.h, 1);
 			nk_label(ctx, "statustext", NK_TEXT_CENTERED);
 		}
-		nk_end(ctx);
+		nk_end(ctx);*/
+
+		
+
+
 
 
 		/* Draw */

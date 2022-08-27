@@ -43,8 +43,8 @@ namespace nk
 		//should draw the component
 		//should redirect "events" -- in case of nuklear onClick is just a bool, discovered while painting
 		//should walk subcomponents, and draw them in specific order
-		virtual void draw(nk_context* ctx) = 0;
-		std::function<void(nk_context*)> applyLayout;
+		virtual void draw(struct nk_context* ctx) = 0;
+		std::function<void(struct nk_context*)> applyLayout;
 		std::vector<IComponent*> fields;
 		IComponent* FindComponent(std::string const& strField);
 	};
@@ -57,7 +57,7 @@ namespace nk
 		virtual EMyFrameworkType ComponentType() const override{
 			return EMyFrameworkType::edit;
 		}
-		virtual void draw(nk_context* ctx) override;
+		virtual void draw(struct nk_context* ctx) override;
 	};
 	
 	struct TLabel : public IComponent
@@ -67,7 +67,7 @@ namespace nk
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::label;
 		}
-		virtual void draw(nk_context* ctx) override;
+		virtual void draw(struct nk_context* ctx) override;
 	};
 	
 	struct TGroupBox : public IComponent
@@ -77,7 +77,7 @@ namespace nk
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::groupbox;
 		}
-		virtual void draw(nk_context* ctx) override;
+		virtual void draw(struct nk_context* ctx) override;
 	};
 
 	struct TButton : public IComponent
@@ -88,7 +88,7 @@ namespace nk
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::button;
 		}
-		virtual void draw(nk_context* ctx) override;
+		virtual void draw(struct nk_context* ctx) override;
 	};
 
 	struct TListbox : public IComponent
@@ -100,7 +100,7 @@ namespace nk
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::listbox;
 		}
-		virtual void draw(nk_context* ctx) override;
+		virtual void draw(struct nk_context* ctx) override;
 	};
 
 	struct TCheckbox : public IComponent
@@ -111,7 +111,7 @@ namespace nk
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::checkbox;
 		}
-		virtual void draw(nk_context* ctx) override;
+		virtual void draw(struct nk_context* ctx) override;
 	};
 	
 	struct TCombobox : public IComponent
@@ -124,7 +124,7 @@ namespace nk
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::combobox;
 		}
-		virtual void draw(nk_context* ctx) override;
+		virtual void draw(struct nk_context* ctx) override;
 	};
 
 	struct TMemo : public IComponent
@@ -136,22 +136,23 @@ namespace nk
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::memo;
 		}
-		virtual void draw(nk_context* ctx) override;
+		virtual void draw(struct nk_context* ctx) override;
 	};
 	
 	struct TStatusBar : public IComponent
 	{
-		TStatusBar(int& h, int& w, std::string Name, __int64 _id);
+		const float& window_height;
+		const float& window_width;
+
+		TStatusBar(const float& w, const float& h, std::string Name, __int64 _id);
 
 		std::string text;
-		int& window_height;
-		int& window_width;
-		int status_height;
+		float status_height;
 
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::statusbar;
 		}
-		virtual void draw(nk_context* ctx) override;
+		virtual void draw(struct nk_context* ctx) override;
 	};
 
 	struct TGrid : public IComponent
@@ -182,19 +183,20 @@ namespace nk
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::listview;
 		}
-		virtual void draw(nk_context* ctx) override;
+		virtual void draw(struct nk_context* ctx) override;
 	};
 
 	struct NKForm : public IComponent
 	{
+		const float& Width;
+		const float& Height;
+
 		NKForm( const float& width, const float& height, //width=d3d11.ViewPort.Width ->kind of global, should adapt on Resize!
 			std::string Name, __int64 _id);
 
 		std::string title;
-		const float& Width;
-		const float& Height;
 		virtual EMyFrameworkType ComponentType() const override;
-		virtual void draw(nk_context * ctx) override;
+		virtual void draw(struct nk_context * ctx) override;
 	};
 }
 #endif

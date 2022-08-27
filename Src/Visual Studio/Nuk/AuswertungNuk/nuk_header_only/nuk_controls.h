@@ -187,13 +187,15 @@ namespace nk
 		virtual void draw(struct nk_context* ctx) override;
 	};
 
+
 	struct Pool
 	{
+		__int64 id = 100;
 		std::vector< std::unique_ptr<IComponent> > _owned;
 		template<typename outtype, class... Args>
 		outtype* Add(Args&&... ctor_args)
 		{
-			std::unique_ptr<outtype> comp = std::make_unique<outtype>(std::forward<Args>(ctor_args)...);
+			std::unique_ptr<outtype> comp = std::make_unique<outtype>(std::forward<Args>(ctor_args)..., ++id);
 			outtype* result = comp.get();
 			_owned.emplace_back(std::move(comp));
 			return result;

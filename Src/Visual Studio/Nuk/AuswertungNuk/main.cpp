@@ -47,26 +47,25 @@ int main(int argc, char** argv)
 	app.Init(WINDOW_WIDTH, WINDOW_HEIGHT);
 
 	const D3D11_VIEWPORT& viewport = app.GetViewport();
-	__int64 id = 0;
 	
-	nk::NKForm mainForm(viewport.Width, viewport.Height, "Demo", id);
+	nk::NKForm mainForm(viewport.Width, viewport.Height, "Demo", 0);
 
 	auto dualRow = [](struct nk_context* ctx)
 	{
 		nk_layout_row_dynamic(ctx, 30, 2);
 	};
 
-	nk::TEdit* edit = mainForm.Create<nk::TEdit>("path", ++id);
+	nk::TEdit* edit = mainForm.Create<nk::TEdit>("path");
 	edit->applyLayout = dualRow;
 	edit->text = "hello"; 
 	edit->cursorpos = edit->text.length();
 	
-	nk::TEdit* edit2 = mainForm.Create<nk::TEdit>("second", ++id);
+	nk::TEdit* edit2 = mainForm.Create<nk::TEdit>("second");
 	edit2->text = "hello2";
 	//edit2->applyLayout = singleRow;
 	edit2->cursorpos = edit2->text.length();
 	
-	nk::TStatusBar* statusBar = mainForm.Create<nk::TStatusBar>(viewport.Width, viewport.Height, "testStatus", ++id);
+	nk::TStatusBar* statusBar = mainForm.Create<nk::TStatusBar>(viewport.Width, viewport.Height, "testStatus");
 	statusBar->text = "statustext";
 	
 	//Form-Created

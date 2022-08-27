@@ -3,7 +3,8 @@
 
 nk::TStatusBar::TStatusBar(
 	const float& w, const float& h, 
-	std::string Name, __int64 _id
+	std::string Name,
+	__int64 _id
 	) :
 	IComponent(Name, _id),
 	window_height(h),

@@ -27,8 +27,8 @@ nk::IComponent* nk::IComponent::FindComponent(std::string const & strField)
 }
 
 
-nk::TStatusBar::TStatusBar(	const float& w, const float& h,
-	std::string Name, __int64 _id ) noexcept
+nk::TStatusBar::TStatusBar(const float& w, const float& h,
+	std::string Name, __int64 _id) noexcept
 	:
 	IComponent(Name, _id),
 	window_height(h),
@@ -39,14 +39,14 @@ nk::TStatusBar::TStatusBar(	const float& w, const float& h,
 void nk::TStatusBar::draw(struct nk_context* ctx)
 {
 	if (nk_begin(ctx, name.c_str(),
-		nk_rect(2.0f, window_height-status_height, window_width-2.0f, status_height),
+		nk_rect(2.0f, window_height - status_height, window_width - 2.0f, status_height),
 		NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))
 	{
-			nk_layout_row_dynamic(ctx, status_height, 1);
-			nk_label(ctx, "statustext", NK_TEXT_CENTERED);
+		nk_layout_row_dynamic(ctx, status_height, 1);
+		nk_label(ctx, "statustext", NK_TEXT_CENTERED);
 	}
 	nk_end(ctx);
-	
+
 }
 
 nk::TGroupBox::TGroupBox(std::string Name, __int64 _id) noexcept
@@ -69,7 +69,7 @@ void nk::TGroupBox::draw(struct nk_context* ctx)
 
 
 
-nk::NKForm::NKForm(	const float & width, const float & height,
+nk::NKForm::NKForm(const float & width, const float & height,
 	std::string Name, __int64 _id) noexcept
 	:
 	IComponent(Name, _id),
@@ -93,7 +93,7 @@ void nk::NKForm::draw(struct nk_context* ctx)
 		for (nk::IComponent* comp : fields)
 		{
 			if (comp->ComponentType() != EMyFrameworkType::statusbar
-				&& comp->ComponentType()!=EMyFrameworkType::form
+				&& comp->ComponentType() != EMyFrameworkType::form
 				)
 			{
 				if (comp->applyLayout)
@@ -120,12 +120,12 @@ nk::TEdit::TEdit(std::string Name, __int64 _id) noexcept
 	:
 	IComponent(Name, _id)
 {
-	
+
 }
 
 void nk::TEdit::draw(struct nk_context* ctx)
 {
-	if (text.capacity() < (text.size() + 10) )
+	if (text.capacity() < (text.size() + 10))
 	{
 		text.resize(text.capacity() + 64);
 	}

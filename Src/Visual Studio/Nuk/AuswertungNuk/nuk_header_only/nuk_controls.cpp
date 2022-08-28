@@ -3,7 +3,7 @@
 
 nk::Pool nk::IComponent::componentPool; //static
 
-nk::IComponent::IComponent(std::string Name, __int64 _id)
+nk::IComponent::IComponent(std::string Name, __int64 _id) noexcept
 	: name(Name), id(_id)
 {
 	if (!name.length())
@@ -27,11 +27,9 @@ nk::IComponent* nk::IComponent::FindComponent(std::string const & strField)
 }
 
 
-nk::TStatusBar::TStatusBar(
-	const float& w, const float& h, 
-	std::string Name,
-	__int64 _id
-	) :
+nk::TStatusBar::TStatusBar(	const float& w, const float& h,
+	std::string Name, __int64 _id ) noexcept
+	:
 	IComponent(Name, _id),
 	window_height(h),
 	window_width(w),
@@ -51,7 +49,8 @@ void nk::TStatusBar::draw(struct nk_context* ctx)
 	
 }
 
-nk::TGroupBox::TGroupBox(std::string Name, __int64 _id) :
+nk::TGroupBox::TGroupBox(std::string Name, __int64 _id) noexcept
+	:
 	IComponent(Name, _id)
 {}
 
@@ -70,11 +69,8 @@ void nk::TGroupBox::draw(struct nk_context* ctx)
 
 
 
-nk::NKForm::NKForm(
-	const float & width,
-	const float & height, 
-	std::string Name, 
-	__int64 _id)
+nk::NKForm::NKForm(	const float & width, const float & height,
+	std::string Name, __int64 _id) noexcept
 	:
 	IComponent(Name, _id),
 	Width(width),
@@ -120,7 +116,8 @@ void nk::NKForm::draw(struct nk_context* ctx)
 	}
 }
 
-nk::TEdit::TEdit(std::string Name, __int64 _id) :
+nk::TEdit::TEdit(std::string Name, __int64 _id) noexcept
+	:
 	IComponent(Name, _id)
 {
 	
@@ -135,7 +132,8 @@ void nk::TEdit::draw(struct nk_context* ctx)
 	nk_edit_string(ctx, NK_EDIT_SIMPLE, text.data(), &cursorpos, text.capacity(), nk_filter_default);
 }
 
-nk::TLabel::TLabel(std::string Name, std::string Text, __int64 _id) :
+nk::TLabel::TLabel(std::string Name, std::string Text, __int64 _id) noexcept
+	:
 	IComponent(Name, _id),
 	text(Text)
 {
@@ -146,7 +144,8 @@ void nk::TLabel::draw(struct nk_context* ctx)
 	nk_label(ctx, text.c_str(), NK_TEXT_ALIGN_LEFT);
 }
 
-nk::TButton::TButton(std::string Name, __int64 _id) :
+nk::TButton::TButton(std::string Name, __int64 _id) noexcept
+	:
 	IComponent(Name, _id)
 {}
 
@@ -154,7 +153,8 @@ void nk::TButton::draw(struct nk_context* ctx)
 {
 }
 
-nk::TListbox::TListbox(std::string Name, __int64 _id) :
+nk::TListbox::TListbox(std::string Name, __int64 _id) noexcept
+	:
 	IComponent(Name, _id)
 {}
 
@@ -162,7 +162,8 @@ void nk::TListbox::draw(struct nk_context* ctx)
 {
 }
 
-nk::TCheckbox::TCheckbox(std::string Name, __int64 _id) :
+nk::TCheckbox::TCheckbox(std::string Name, __int64 _id) noexcept
+	:
 	IComponent(Name, _id)
 {}
 
@@ -170,7 +171,8 @@ void nk::TCheckbox::draw(struct nk_context* ctx)
 {
 }
 
-nk::TCombobox::TCombobox(std::string Name, __int64 _id) :
+nk::TCombobox::TCombobox(std::string Name, __int64 _id) noexcept
+	:
 	IComponent(Name, _id)
 {}
 
@@ -178,7 +180,8 @@ void nk::TCombobox::draw(struct nk_context* ctx)
 {
 }
 
-nk::TMemo::TMemo(std::string Name, __int64 _id) :
+nk::TMemo::TMemo(std::string Name, __int64 _id) noexcept
+	:
 	IComponent(Name, _id)
 {}
 
@@ -186,7 +189,8 @@ void nk::TMemo::draw(struct nk_context* ctx)
 {
 }
 
-nk::TGrid::TGrid(std::string Name, __int64 _id) :
+nk::TGrid::TGrid(std::string Name, __int64 _id) noexcept
+	:
 	IComponent(Name, _id)
 {}
 

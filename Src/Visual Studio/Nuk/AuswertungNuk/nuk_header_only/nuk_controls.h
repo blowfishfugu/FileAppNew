@@ -57,7 +57,7 @@ namespace nk
 		IComponent() = delete;
 		IComponent(const IComponent&) = delete;
 		
-		IComponent(std::string Name, __int64 _id);
+		IComponent(std::string Name, __int64 _id) noexcept;
 		virtual ~IComponent() = default;
 		virtual EMyFrameworkType ComponentType() const = 0;
 		
@@ -81,7 +81,7 @@ namespace nk
 
 	struct TEdit : public IComponent
 	{
-		TEdit(std::string Name, __int64 _id);
+		TEdit(std::string Name, __int64 _id) noexcept;
 		
 		std::string text;
 		int cursorpos = 0;
@@ -93,7 +93,7 @@ namespace nk
 	
 	struct TLabel : public IComponent
 	{
-		TLabel(std::string Name, std::string Text, __int64 _id);
+		TLabel(std::string Name, std::string Text, __int64 _id) noexcept;
 		std::string text;
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::label;
@@ -103,7 +103,7 @@ namespace nk
 	
 	struct TGroupBox : public IComponent
 	{
-		TGroupBox(std::string Name, __int64 _id);
+		TGroupBox(std::string Name, __int64 _id) noexcept;
 		std::string title;
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::groupbox;
@@ -113,7 +113,7 @@ namespace nk
 
 	struct TButton : public IComponent
 	{
-		TButton(std::string Name, __int64 _id);
+		TButton(std::string Name, __int64 _id) noexcept;
 		std::string text;
 		std::function<void()> onClick = nullptr;
 		virtual EMyFrameworkType ComponentType() const override {
@@ -124,7 +124,7 @@ namespace nk
 
 	struct TListbox : public IComponent
 	{
-		TListbox(std::string Name, __int64 _id);
+		TListbox(std::string Name, __int64 _id) noexcept;
 		std::vector<std::string> items;
 		int itemindex = -1;
 		size_t count() const { return items.size(); }
@@ -136,7 +136,7 @@ namespace nk
 
 	struct TCheckbox : public IComponent
 	{
-		TCheckbox(std::string Name, __int64 _id);
+		TCheckbox(std::string Name, __int64 _id) noexcept;
 		std::string text;
 		int checkstate = 0; //tristate?
 		virtual EMyFrameworkType ComponentType() const override {
@@ -147,7 +147,7 @@ namespace nk
 	
 	struct TCombobox : public IComponent
 	{
-		TCombobox(std::string Name, __int64 _id);
+		TCombobox(std::string Name, __int64 _id) noexcept;
 		std::string text;
 		std::vector<std::string> items;
 		int itemindex = -1;
@@ -160,7 +160,7 @@ namespace nk
 
 	struct TMemo : public IComponent
 	{
-		TMemo(std::string Name, __int64 _id);
+		TMemo(std::string Name, __int64 _id) noexcept;
 		std::vector<std::string> data;
 		//setText?
 
@@ -175,7 +175,7 @@ namespace nk
 		const float& window_height;
 		const float& window_width;
 
-		TStatusBar(const float& w, const float& h, std::string Name, __int64 _id);
+		TStatusBar(const float& w, const float& h, std::string Name, __int64 _id) noexcept;
 
 		std::string text;
 		float status_height;
@@ -188,7 +188,7 @@ namespace nk
 
 	struct TGrid : public IComponent
 	{
-		TGrid(std::string Name, __int64 _id);
+		TGrid(std::string Name, __int64 _id) noexcept;
 		struct THeadItem {
 			std::string caption;
 			int width = 10;
@@ -227,7 +227,7 @@ namespace nk
 		const float& Height;
 
 		NKForm( const float& width, const float& height, //width=d3d11.ViewPort.Width ->kind of global, should adapt on Resize!
-			std::string Name, __int64 _id);
+			std::string Name, __int64 _id) noexcept;
 
 		std::string title;
 		virtual EMyFrameworkType ComponentType() const override;

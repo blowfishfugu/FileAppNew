@@ -55,12 +55,12 @@ int main(int argc, char** argv)
 		nk_layout_row_dynamic(ctx, 25, 20);
 	};
 
-	nk::TEdit* edit = mainForm.Create<nk::TEdit>("path");
+	nk::TEdit* edit = mainForm.AddField<nk::TEdit>("path");
 	edit->applyLayout = dualRow;
 	edit->text = "hello"; 
 	edit->cursorpos = edit->text.length();
 	
-	nk::TEdit* edit2 = mainForm.Create<nk::TEdit>("second");
+	nk::TEdit* edit2 = mainForm.AddField<nk::TEdit>("second");
 	edit2->text = "hello2";
 	//edit2->applyLayout = singleRow;
 	edit2->cursorpos = edit2->text.length();
@@ -70,11 +70,11 @@ int main(int argc, char** argv)
 	for (int tst = 0; tst < 200000; ++tst)
 #endif
 	{
-		nk::TLabel* lbl=mainForm.Create<nk::TLabel>("",std::to_string(tst) );
-		mainForm.Create<nk::TEdit>("");
+		nk::TLabel* lbl=mainForm.AddField<nk::TLabel>("",std::to_string(tst) );
+		mainForm.AddField<nk::TEdit>("");
 	}
 
-	nk::TStatusBar* statusBar = mainForm.Create<nk::TStatusBar>(viewport.Width, viewport.Height, "testStatus");
+	nk::TStatusBar* statusBar = mainForm.AddField<nk::TStatusBar>(viewport.Width, viewport.Height, "testStatus");
 	statusBar->text = "statustext";
 	
 	//Form-Created

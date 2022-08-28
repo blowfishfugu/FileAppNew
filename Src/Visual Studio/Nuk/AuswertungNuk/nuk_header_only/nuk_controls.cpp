@@ -1,6 +1,32 @@
 #include <nuklear.h>
 #include "nuk_controls.h"
 
+nk::Pool nk::IComponent::componentPool; //static
+
+nk::IComponent::IComponent(std::string Name, __int64 _id)
+	: name(Name), id(_id)
+{
+	if (!name.length())
+	{
+		name = std::to_string(id);
+	}
+}
+
+nk::IComponent* nk::IComponent::FindComponent(std::string const & strField)
+{
+	for (nk::IComponent* c : fields)
+	{
+		if (!c) { continue; }
+		nk::IComponent* subChild = c->FindComponent(strField);
+		if (subChild) { return subChild; }
+
+		if (c->name != strField) { continue; }
+		return c;
+	}
+	return nullptr;
+}
+
+
 nk::TStatusBar::TStatusBar(
 	const float& w, const float& h, 
 	std::string Name,
@@ -41,30 +67,8 @@ void nk::TGroupBox::draw(struct nk_context* ctx)
 	nk_group_end(ctx);
 }
 
-nk::IComponent::IComponent(std::string Name, __int64 _id)
-	: name(Name), id(_id)
-{
-	if (!name.length())
-	{
-		name = std::to_string(id);
-	}
-}
 
-nk::IComponent * nk::IComponent::FindComponent(std::string const & strField)
-{
-	for (nk::IComponent* c : fields)
-	{
-		if (!c) { continue; }
-		nk::IComponent* subChild = c->FindComponent(strField);
-		if (subChild) { return subChild; }
-		
-		if (c->name != strField) { continue; }
-		return c;
-	}
-	return nullptr;
-}
 
-nk::Pool nk::NKForm::componentPool; //static
 
 nk::NKForm::NKForm(
 	const float & width,

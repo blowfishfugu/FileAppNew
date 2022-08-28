@@ -28,94 +28,127 @@ struct nk_context;
 
 namespace nk
 {
+	class IComponent;
+	struct Pool
+	{
+		__int64 id = 100;
+		std::vector< std::unique_ptr<IComponent> > _owned;
+		template<typename fw_Type, class... Args>
+		fw_Type* Add(Args&&... ctor_args)
+		{
+			std::unique_ptr<fw_Type> comp
+				= std::make_unique<fw_Type>(
+					std::forward<Args>(ctor_args)...,
+					++id
+					);
+
+			fw_Type* result = comp.get();
+			_owned.emplace_back(std::move(comp));
+			return result;
+		}
+	};
+
 	class IComponent
 	{
 	public:
-		std::string name;
-		__int64 id=0; //<- while name is empty we need a unique id
-		IComponent() = delete;
+		IComponent(std::string Name, __int64 _id) noexcept;
 		IComponent(const IComponent&) = delete;
+		IComponent() = delete;
 		
-		IComponent(std::string Name, __int64 _id);
+		std::string name;
+		__int64 id = 0; //<- if name is empty we need a unique id
+
 		virtual ~IComponent() = default;
 		virtual EMyFrameworkType ComponentType() const = 0;
-		
+
 		//should draw the component
 		//should redirect "events" -- in case of nuklear onClick is just a bool, discovered while painting
 		//should walk subcomponents, and draw them in specific order
-		virtual void draw(nk_context* ctx) = 0;
-
+		virtual void draw(struct nk_context* ctx) = 0;
+		std::function<void(struct nk_context*)> applyLayout;
 		std::vector<IComponent*> fields;
 		IComponent* FindComponent(std::string const& strField);
+
+		static Pool componentPool;
+		template<typename fw_Type, class... Args>
+		fw_Type* AddField(Args&&... ctor_args)
+		{
+			fw_Type* comp = componentPool.Add<fw_Type>(
+				std::forward<Args>(ctor_args)...
+				);
+			this->fields.push_back(comp);
+			return comp;
+		}
 	};
 
 	struct TEdit : public IComponent
 	{
-		TEdit(std::string Name, __int64 _id);
+		TEdit(std::string Name, __int64 _id) noexcept;
 		std::string text;
-		virtual EMyFrameworkType ComponentType() const override{
+		int cursorpos = 0;
+		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::edit;
 		}
-		virtual void draw(nk_context* ctx) override;
+		virtual void draw(struct nk_context* ctx) override;
 	};
-	
+
 	struct TLabel : public IComponent
 	{
-		TLabel(std::string Name, __int64 _id);
+		TLabel(std::string Name, std::string Text, __int64 _id) noexcept;
 		std::string text;
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::label;
 		}
-		virtual void draw(nk_context* ctx) override;
+		virtual void draw(struct nk_context* ctx) override;
 	};
-	
+
 	struct TGroupBox : public IComponent
 	{
-		TGroupBox(std::string Name, __int64 _id);
+		TGroupBox(std::string Name, __int64 _id) noexcept;
 		std::string title;
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::groupbox;
 		}
-		virtual void draw(nk_context* ctx) override;
+		virtual void draw(struct nk_context* ctx) override;
 	};
 
 	struct TButton : public IComponent
 	{
-		TButton(std::string Name, __int64 _id);
+		TButton(std::string Name, __int64 _id) noexcept;
 		std::string text;
 		std::function<void()> onClick = nullptr;
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::button;
 		}
-		virtual void draw(nk_context* ctx) override;
+		virtual void draw(struct nk_context* ctx) override;
 	};
 
 	struct TListbox : public IComponent
 	{
-		TListbox(std::string Name, __int64 _id);
+		TListbox(std::string Name, __int64 _id) noexcept;
 		std::vector<std::string> items;
 		int itemindex = -1;
 		size_t count() const { return items.size(); }
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::listbox;
 		}
-		virtual void draw(nk_context* ctx) override;
+		virtual void draw(struct nk_context* ctx) override;
 	};
 
 	struct TCheckbox : public IComponent
 	{
-		TCheckbox(std::string Name, __int64 _id);
+		TCheckbox(std::string Name, __int64 _id) noexcept;
 		std::string text;
 		int checkstate = 0; //tristate?
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::checkbox;
 		}
-		virtual void draw(nk_context* ctx) override;
+		virtual void draw(struct nk_context* ctx) override;
 	};
-	
+
 	struct TCombobox : public IComponent
 	{
-		TCombobox(std::string Name, __int64 _id);
+		TCombobox(std::string Name, __int64 _id) noexcept;
 		std::string text;
 		std::vector<std::string> items;
 		int itemindex = -1;
@@ -123,39 +156,40 @@ namespace nk
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::combobox;
 		}
-		virtual void draw(nk_context* ctx) override;
+		virtual void draw(struct nk_context* ctx) override;
 	};
 
 	struct TMemo : public IComponent
 	{
-		TMemo(std::string Name, __int64 _id);
+		TMemo(std::string Name, __int64 _id) noexcept;
 		std::vector<std::string> data;
 		//setText?
 
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::memo;
 		}
-		virtual void draw(nk_context* ctx) override;
+		virtual void draw(struct nk_context* ctx) override;
 	};
-	
+
 	struct TStatusBar : public IComponent
 	{
-		TStatusBar(int& h, int& w, std::string Name, __int64 _id);
+		const float& window_height;
+		const float& window_width;
+
+		TStatusBar(const float& w, const float& h, std::string Name, __int64 _id) noexcept;
 
 		std::string text;
-		int& window_height;
-		int& window_width;
-		int status_height;
+		float status_height;
 
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::statusbar;
 		}
-		virtual void draw(nk_context* ctx) override;
+		virtual void draw(struct nk_context* ctx) override;
 	};
 
 	struct TGrid : public IComponent
 	{
-		TGrid(std::string Name, __int64 _id);
+		TGrid(std::string Name, __int64 _id) noexcept;
 		struct THeadItem {
 			std::string caption;
 			int width = 10;
@@ -171,29 +205,30 @@ namespace nk
 		}
 		int rowCount() const
 		{
-			return static_cast<int>( Rows.size() );
+			return static_cast<int>(Rows.size());
 		}
 		int colCount() const
 		{
-			return static_cast<int>( Columns.size() );
+			return static_cast<int>(Columns.size());
 		}
 
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::listview;
 		}
-		virtual void draw(nk_context* ctx) override;
+		virtual void draw(struct nk_context* ctx) override;
 	};
 
 	struct NKForm : public IComponent
 	{
-		NKForm( const float& width, const float& height, //width=d3d11.ViewPort.Width ->kind of global, should adapt on Resize!
-			std::string Name, __int64 _id);
-
-		std::string title;
 		const float& Width;
 		const float& Height;
+
+		NKForm(const float& width, const float& height, //width=d3d11.ViewPort.Width ->kind of global, should adapt on Resize!
+			std::string Name, __int64 _id) noexcept;
+
+		std::string title;
 		virtual EMyFrameworkType ComponentType() const override;
-		virtual void draw(nk_context * ctx) override;
+		virtual void draw(struct nk_context * ctx) override;
 	};
 }
 #endif

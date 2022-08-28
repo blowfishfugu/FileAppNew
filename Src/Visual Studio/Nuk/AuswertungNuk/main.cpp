@@ -42,13 +42,53 @@ int main(int argc, char** argv)
 #endif
 {
 	Application app;
+
+	TProcess proc;
 	app.Init(WINDOW_WIDTH, WINDOW_HEIGHT);
 
-	const D3D11_VIEWPORT& viewport= app.GetViewport();
+	const D3D11_VIEWPORT& viewport = app.GetViewport();
+	
+	nk::NKForm mainForm(viewport.Width, viewport.Height, "Demo", 0);
 
-	nk::NKForm mainForm( viewport.Width, viewport.Height, "Demo", 1);
+	auto dualRow = [](struct nk_context* ctx)
+	{
+		nk_layout_row_dynamic(ctx, 25, 20);
+	};
 
-	app.Run(mainForm);
+	nk::TEdit* edit = mainForm.AddField<nk::TEdit>("path");
+	edit->applyLayout = dualRow;
+	edit->text = "hello"; 
+	edit->cursorpos = edit->text.length();
+	
+	nk::TEdit* edit2 = mainForm.AddField<nk::TEdit>("second");
+	edit2->text = "hello2";
+	//edit2->applyLayout = singleRow;
+	edit2->cursorpos = edit2->text.length();
+#ifndef NDEBUG
+	for (int tst = 0; tst < 1000; ++tst)
+#else
+	for (int tst = 0; tst < 200000; ++tst)
+#endif
+	{
+		nk::TLabel* lbl=mainForm.AddField<nk::TLabel>("",std::to_string(tst) );
+		mainForm.AddField<nk::TEdit>("");
+	}
+
+	nk::TStatusBar* statusBar = mainForm.AddField<nk::TStatusBar>(viewport.Width, viewport.Height, "testStatus");
+	statusBar->text = "statustext";
+	
+	//Form-Created
+	try
+	{
+		//proc.Init({ &mainForm,false });
+
+		app.Run(mainForm);
+	}
+	catch (std::runtime_error re)
+	{
+		std::cerr << re.what() << "\n";
+	}
+	
 	app.Release();
 	return 0;
 }

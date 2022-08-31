@@ -65,9 +65,6 @@
     <ClInclude Include="..\..\..\Embarcadero\VCL\AuswertungPCH1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Embarcadero\VCL\MainForm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Independed\FileUtil.h">
       <Filter>Header Files</Filter>
     </ClInclude>

@@ -9,6 +9,9 @@
 #include <iomanip>
 #include <sstream>
 #include <functional>
+#include <cctype> //std::tolower ohne locale
+#include <locale>
+#include <chrono>
 //---------------------------------------------------------------------------
 
 

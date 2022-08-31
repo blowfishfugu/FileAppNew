@@ -79,8 +79,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Embarcadero\VCL\Auswertung.cpp" />
-    <ClCompile Include="..\..\..\Embarcadero\VCL\MainForm.cpp" />
+    <ClCompile Include="..\..\..\Embarcadero\VCL\Auswertung.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Embarcadero\VCL\MainForm.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\..\Independed\FileUtil.cpp" />
     <ClCompile Include="..\..\..\Independed\Process.cpp" />
     <ClCompile Include="main.cpp" />
@@ -90,7 +96,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Embarcadero\VCL\AuswertungPCH1.h" />
-    <ClInclude Include="..\..\..\Embarcadero\VCL\MainForm.h" />
     <ClInclude Include="..\..\..\Independed\FileUtil.h" />
     <ClInclude Include="..\..\..\Independed\Process.h" />
     <ClInclude Include="NukForm.h" />

@@ -22,7 +22,11 @@
 #include <FileAppProcess.h>
 =======
 #include <Process.h>
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
 #include <FMX.Edit.hpp>
 
 class TfrmMainFMX : public TForm

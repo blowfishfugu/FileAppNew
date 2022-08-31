@@ -10,11 +10,18 @@
 #include <sstream>
 #include <functional>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 #include <cctype> //std::tolower ohne locale
 #include <locale>
 #include <chrono>
 >>>>>>> old-project/main
+=======
+#include <cctype> //std::tolower ohne locale
+#include <locale>
+#include <chrono>
+
+>>>>>>> fish
 //---------------------------------------------------------------------------
 
 
@@ -140,6 +147,7 @@ size_t CheckFileSize(fs::path const& strFile) {
       }
    return ret;
    }
+<<<<<<< HEAD
 
 
 
@@ -149,3 +157,5 @@ size_t CheckFileSize(fs::path const& strFile) {
 
 =======
 >>>>>>> old-project/main
+=======
+>>>>>>> fish

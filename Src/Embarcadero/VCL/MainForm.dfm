@@ -76,7 +76,11 @@ object frmMain: TfrmMain
 <<<<<<< HEAD
       MultiSelect = True
 =======
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
       TabOrder = 3
     end
   end
@@ -196,5 +200,9 @@ object frmMain: TfrmMain
     end
   end
 =======
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
 end

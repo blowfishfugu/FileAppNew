@@ -84,7 +84,8 @@ EMyFrameworkType nk::NKForm::ComponentType() const
 
 void nk::NKForm::draw(struct nk_context* ctx)
 {
-	if (nk_begin(ctx, name.c_str(), nk_rect(0.0f, 0.0f, Width*0.8f, Height*0.8f),
+	if (nk_begin_titled(ctx, name.c_str(), title.c_str(),
+		nk_rect(0.0f, 0.0f, Width*0.8f, Height*0.8f),
 		NK_WINDOW_BORDER | NK_WINDOW_TITLE
 		| NK_WINDOW_SCALABLE | NK_WINDOW_MOVABLE //<- updates bounds.. fullscreenwindow
 		| NK_WINDOW_MINIMIZABLE

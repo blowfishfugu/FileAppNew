@@ -49,6 +49,7 @@ int main(int argc, char** argv)
 	const D3D11_VIEWPORT& viewport = app.GetViewport();
 	
 	nk::NKForm mainForm(viewport.Width, viewport.Height, "Demo", 0);
+	mainForm.title = "Auswertung";
 
 	auto dualRow = [](struct nk_context* ctx)
 	{

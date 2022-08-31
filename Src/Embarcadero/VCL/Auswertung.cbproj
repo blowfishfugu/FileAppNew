@@ -14,7 +14,11 @@
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <CC_Suffix Condition="'$(CC_Suffix)'==''">c</CC_Suffix>
         <TargetedPlatforms>1</TargetedPlatforms>
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -48,7 +52,11 @@
         <Base>true</Base>
     </PropertyGroup>
 =======
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
     <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
         <Cfg_2>true</Cfg_2>
         <CfgParent>Base</CfgParent>
@@ -68,7 +76,11 @@
         <Base>true</Base>
     </PropertyGroup>
 =======
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
     <PropertyGroup Condition="'$(Base)'!=''">
         <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
         <DynamicRTL>true</DynamicRTL>
@@ -99,7 +111,11 @@
         <RunBCCOutOfProcess>true</RunBCCOutOfProcess>
         <SubProcessesNumber>8</SubProcessesNumber>
 =======
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <PackageImports>adortl;appanalytics;bcbie;bcbsmp;bindcomp;bindcompdbx;bindcompfmx;bindcompvcl;bindcompvclsmp;bindcompvclwinx;bindengine;CloudService;CustomIPTransport;cxExportRS28;cxGridEMFRS28;cxGridRS28;cxLibraryRS28;cxPivotGridChartRS28;cxPivotGridOLAPRS28;cxPivotGridRS28;cxSchedulerGridRS28;cxSchedulerRibbonStyleEventEditorRS28;cxSchedulerRS28;cxSchedulerTreeBrowserRS28;cxSchedulerWebServiceStorageRS28;cxTreeListdxBarPopupMenuRS28;cxTreeListRS28;cxVerticalGridRS28;DataSnapClient;DataSnapCommon;DataSnapConnectors;DatasnapConnectorsFreePascal;DataSnapFireDAC;DataSnapIndy10ServerTransport;DataSnapNativeClient;DataSnapProviderClient;DataSnapServer;DataSnapServerMidas;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DBXDb2Driver;DBXFirebirdDriver;DBXInformixDriver;DBXInterBaseDriver;DBXMSSQLDriver;DBXMySQLDriver;DBXOdbcDriver;DBXOracleDriver;DBXSqliteDriver;DBXSybaseASADriver;DBXSybaseASEDriver;dsnap;dsnapcon;dsnapxml;dxADOEMFRS28;dxADOServerModeRS28;dxBarDBNavRS28;dxBarExtDBItemsRS28;dxBarExtItemsRS28;dxBarRS28;dxChartControlRS28;dxCloudServiceLibraryRS28;dxComnRS28;dxCoreRS28;dxdborRS28;dxdbtrRS28;dxDBXServerModeRS28;dxDockingRS28;dxEMFRS28;dxFireDACEMFRS28;dxFireDACServerModeRS28;dxFlowChartAdvancedCustomizeFormRS28;dxFlowChartDesignerRS28;dxFlowChartLayoutsRS28;dxFlowChartRS28;dxGanttControlRS28;dxGaugeControlRS28;dxGDIPlusRS28;dxHttpIndyRequestRS28;dxMapControlRS28;dxmdsRS28;dxNavBarRS28;dxOrgChartAdvancedCustomizeFormRS28;dxorgcRS28;dxPDFViewerRS28;dxPSCoreRS28;dxPScxCommonRS28;dxPScxExtCommonRS28;dxPScxGridLnkRS28;dxPScxPCProdRS28;dxPScxPivotGridLnkRS28;dxPScxSchedulerLnkRS28;dxPScxTLLnkRS28;dxPScxVGridLnkRS28;dxPSdxDBOCLnkRS28;dxPSdxDBTVLnkRS28;dxPSdxFCLnkRS28;dxPSdxGaugeControlLnkRS28;dxPSdxLCLnkRS28;dxPSdxMapControlLnkRS28;dxPSdxOCLnkRS28;dxPSdxPDFViewerLnkRS28;dxPSdxSpreadSheetLnkRS28;dxPSLnksRS28;dxPsPrVwAdvRS28;dxPSPrVwRibbonRS28;dxPSRichEditControlLnkRS28;dxRibbonCustomizationFormRS28;dxRibbonRS28;dxRichEditControlCoreRS28;dxRichEditControlRS28;dxRichEditCoreRS28;dxRichEditDocumentModelRS28;dxServerModeRS28;dxSkinsCoreRS28;dxSpellCheckerRS28;dxSpreadSheetConditionalFormattingDialogsRS28;dxSpreadSheetCoreConditionalFormattingDialogsRS28;dxSpreadSheetCoreRS28;dxSpreadSheetReportDesignerRS28;dxSpreadSheetRS28;dxTabbedMDIRS28;dxTileControlRS28;dxtrmdRS28;dxWizardControlRS28;emsclient;emsclientfiredac;emsedge;emshosting;emsserverresource;FireDAC;FireDACADSDriver;FireDACASADriver;FireDACCommon;FireDACCommonDriver;FireDACCommonODBC;FireDACDb2Driver;FireDACDBXDriver;FireDACDSDriver;FireDACIBDriver;FireDACInfxDriver;FireDACMongoDBDriver;FireDACMSAccDriver;FireDACMSSQLDriver;FireDACMySQLDriver;FireDACODBCDriver;FireDACOracleDriver;FireDACPgDriver;FireDACSqliteDriver;FireDACTDataDriver;fmx;fmxase;fmxdae;fmxFireDAC;fmxobj;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inet;inetdb;inetdbxpress;RESTBackendComponents;RESTComponents;rtl;soapmidas;soaprtl;soapserver;tethering;vcl;vclactnband;vcldb;vcldsnap;vcledge;vclFireDAC;vclie;vclimg;VCLRESTComponents;VclSmp;vcltouch;vclwinx;vclx;xmlrtl;$(PackageImports)</PackageImports>
@@ -125,7 +141,11 @@
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
 =======
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
@@ -168,7 +188,11 @@
         <Icon_MainIcon>adecc_Scholar.ico</Icon_MainIcon>
     </PropertyGroup>
 =======
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>
         <TASM_Debugging>None</TASM_Debugging>
@@ -184,7 +208,11 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
     </PropertyGroup>
 =======
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
     <ItemGroup>
         <None Include="..\..\..\..\adecc_Scholar\adecc_Scholar\MyLogger.h">
             <VirtualFolder>{1678E52C-10A8-44B6-A08D-F311B162962A}</VirtualFolder>
@@ -253,7 +281,11 @@
             <BuildOrder>16</BuildOrder>
         </CppCompile>
 =======
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
         <CppCompile Include="..\..\Independed\FileUtil.cpp">
             <VirtualFolder>{54562F27-E644-4C64-BA87-BE68DF7553E6}</VirtualFolder>
             <DependentOn>..\..\Independed\FileUtil.h</DependentOn>
@@ -266,7 +298,11 @@
             <DependentOn>..\..\Independed\Process.h</DependentOn>
             <BuildOrder>14</BuildOrder>
         </CppCompile>
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
         <FormResources Include="MainForm.dfm"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
@@ -369,7 +405,11 @@
                 <DeployFile LocalName=".\Win32\Debug\Auswertung.tds" Configuration="Debug" Class="DebugSymbols">
                     <Platform Name="Win32">
                         <RemoteName>Auswertung.tds</RemoteName>
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -1190,7 +1230,11 @@
                 <Platform value="Win64">True</Platform>
 =======
                 <Platform value="Win64">False</Platform>
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
             </Platforms>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>

@@ -11,7 +11,11 @@
 =======
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <CC_Suffix Condition="'$(CC_Suffix)'==''">c</CC_Suffix>
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
         <TargetedPlatforms>19</TargetedPlatforms>
         <AppType>Application</AppType>
     </PropertyGroup>
@@ -105,7 +109,11 @@
         <ILINK_LibraryPath>..\..\..\pugiXML\src\;..\..\Independed\;..\..\..\..\adecc_Scholar\adecc_Scholar\;D:\Projekte\GitHub\FileApp\Src\Embarcadero\FMX\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <SanitizedProjectName>AuswertungFMX</SanitizedProjectName>
         <Defines>BUILD_WITH_FMX;$(Defines)</Defines>
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Android)'!=''">
         <PackageImports>bindcomp;bindcompdbx;bindcompfmx;bindengine;CloudService;CustomIPTransport;DataSnapClient;DataSnapCommon;DataSnapFireDAC;DataSnapNativeClient;DataSnapProviderClient;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DBXInterBaseDriver;DBXSqliteDriver;dsnap;dsnapxml;emsclient;emsclientfiredac;FireDAC;FireDACCommon;FireDACCommonDriver;FireDACDBXDriver;FireDACDSDriver;FireDACIBDriver;FireDACSqliteDriver;fmx;fmxFireDAC;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inet;RESTBackendComponents;RESTComponents;rtl;soapmidas;soaprtl;soapserver;tethering;xmlrtl;$(PackageImports)</PackageImports>
@@ -200,7 +208,11 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Icon_MainIcon>adecc_Scholar.ico</Icon_MainIcon>
 =======
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>
@@ -275,7 +287,11 @@
             <BuildOrder>14</BuildOrder>
         </CppCompile>
 =======
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
         <CppCompile Include="..\..\Independed\FileUtil.cpp">
             <VirtualFolder>{74F28E3F-903F-4718-BE6C-E39C4B36F1CB}</VirtualFolder>
             <DependentOn>..\..\Independed\FileUtil.h</DependentOn>
@@ -288,7 +304,11 @@
             <DependentOn>..\..\Independed\Process.h</DependentOn>
             <BuildOrder>13</BuildOrder>
         </CppCompile>
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
         <FormResources Include="MainFormFMX.fmx"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
@@ -406,7 +426,11 @@
                 <DeployFile LocalName=".\Win32\Debug\AuswertungFMX.tds" Configuration="Debug" Class="DebugSymbols">
                     <Platform Name="Win32">
                         <RemoteName>AuswertungFMX.tds</RemoteName>
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

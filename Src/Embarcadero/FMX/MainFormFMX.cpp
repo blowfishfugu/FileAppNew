@@ -29,7 +29,11 @@ void __fastcall TfrmMainFMX::btnCountClick(TObject *Sender) {
 =======
 void __fastcall TfrmMainFMX::btnCountClick(TObject *Sender)
 {
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
    try {
       proc.CountAction();   
       }

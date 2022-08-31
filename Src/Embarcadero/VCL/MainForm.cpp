@@ -1,13 +1,21 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 //---------------------------------------------------------------------------
 
 =======
+=======
+//---------------------------------------------------------------------------
+>>>>>>> fish
 // Purpose: Connect Form-Events to Process.h::TProcess
 //---------------------------------------------------------------------------
 
 #if defined BUILD_WITH_VCL || defined BUILD_WITH_FMX
 // TObject/TComponent in System.Classes.hpp
+<<<<<<< HEAD
 >>>>>>> old-project/main
+=======
+>>>>>>> old-project/fish
+>>>>>>> fish
 #include <vcl.h>
 #pragma hdrstop
 
@@ -39,6 +47,7 @@ void __fastcall TfrmMain::btnShowClick(TObject *Sender) {
 //---------------------------------------------------------------------------
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
@@ -48,3 +57,7 @@ void __fastcall TfrmMain::btnShowClick(TObject *Sender) {
 =======
 #endif
 >>>>>>> old-project/main
+=======
+#endif
+
+>>>>>>> fish

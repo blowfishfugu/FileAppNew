@@ -87,8 +87,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\..\Independed\FileAppProcess.cpp" />
     <ClCompile Include="..\..\..\Independed\FileUtil.cpp" />
-    <ClCompile Include="..\..\..\Independed\Process.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NukForm.cpp" />
     <ClCompile Include="nuk_header_only\nuk_controls.cpp" />
@@ -96,8 +96,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Embarcadero\VCL\AuswertungPCH1.h" />
+    <ClInclude Include="..\..\..\Independed\FileAppProcess.h" />
     <ClInclude Include="..\..\..\Independed\FileUtil.h" />
-    <ClInclude Include="..\..\..\Independed\Process.h" />
     <ClInclude Include="NukForm.h" />
     <ClInclude Include="nuk_header_only\nuklear.h" />
     <ClInclude Include="nuk_header_only\nuklear_d3d11.h" />

@@ -21,7 +21,7 @@
 #include "MyType_Traits.h"
 #include "MyTupleUtils.h"
 #include "MyLogger.h"
-
+#include "MyFormList.h"
 #include "FileUtil.h"
 
 #include "pugixml.hpp"

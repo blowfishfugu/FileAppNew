@@ -36,11 +36,11 @@
     <ClCompile Include="..\..\..\Independed\FileUtil.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Independed\Process.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="nuk_header_only\nuk_d3dapp.cpp">
       <Filter>nuk_headers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Independed\FileAppProcess.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -68,11 +68,11 @@
     <ClInclude Include="..\..\..\Independed\FileUtil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Independed\Process.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="nuk_header_only\nuk_d3dapp.h">
       <Filter>nuk_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Independed\FileAppProcess.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

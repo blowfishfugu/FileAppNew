@@ -24,7 +24,12 @@ void __fastcall TfrmMainFMX::FormCreate(TObject *Sender)
    }
 }
 //---------------------------------------------------------------------------
+<<<<<<< HEAD
 void __fastcall TfrmMainFMX::btnCountClick(TObject *Sender) {
+=======
+void __fastcall TfrmMainFMX::btnCountClick(TObject *Sender)
+{
+>>>>>>> old-project/main
    try {
       proc.CountAction();   
       }

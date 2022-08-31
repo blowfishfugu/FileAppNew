@@ -44,3 +44,8 @@ Win64
 Release
 Debug
 .vs
+<<<<<<< HEAD
+=======
+**/tmp/*
+**/bin/*
+>>>>>>> old-project/main

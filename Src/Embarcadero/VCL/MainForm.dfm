@@ -73,14 +73,7 @@ object frmMain: TfrmMain
       Margins.Right = 6
       Margins.Bottom = 6
       ItemHeight = 35
-<<<<<<< HEAD
       MultiSelect = True
-=======
-<<<<<<< HEAD
->>>>>>> old-project/main
-=======
->>>>>>> old-project/fish
->>>>>>> fish
       TabOrder = 3
     end
   end
@@ -191,7 +184,6 @@ object frmMain: TfrmMain
     Margins.Bottom = 6
     Panels = <>
   end
-<<<<<<< HEAD
   object ProjectMenu: TPopupMenu
     Left = 971
     Top = 490
@@ -199,10 +191,4 @@ object frmMain: TfrmMain
       Caption = #214'ffnen'
     end
   end
-=======
-<<<<<<< HEAD
->>>>>>> old-project/main
-=======
->>>>>>> old-project/fish
->>>>>>> fish
 end

@@ -1,22 +1,11 @@
 //---------------------------------------------------------------------------
-#if defined BUILD_WITH_VCL || BUILD_WITH_FMX
-#include <windows.h>
-#include <tchar.h>
 
-
-#if defined BUILD_WITH_VCL
-	#include <vcl.h>
-#elif defined BUILD_WITH_FMX
-	#include <fmx.h>
-#endif
-
+#include <vcl.h>
 #pragma hdrstop
+#include <tchar.h>
 //---------------------------------------------------------------------------
 USEFORM("MainForm.cpp", frmMain);
 //---------------------------------------------------------------------------
-
-
->>>>>>> old-project/fish
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
     try
@@ -24,7 +13,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
          Application->Initialize();
          Application->MainFormOnTaskBar = true;
          Application->CreateForm(__classid(TfrmMain), &frmMain);
-         Application->Run();
+       Application->Run();
     }
     catch (Exception &exception)
     {
@@ -44,7 +33,3 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
     return 0;
 }
 //---------------------------------------------------------------------------
-#else
-
-#endif
-

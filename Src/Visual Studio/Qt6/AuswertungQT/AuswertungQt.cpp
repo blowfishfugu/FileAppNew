@@ -64,3 +64,4 @@ void AuswertungQt::Count() {
       msg.exec();
    }
 }
+

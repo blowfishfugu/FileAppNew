@@ -9,10 +9,6 @@
 #include <iomanip>
 #include <sstream>
 #include <functional>
-#include <cctype> //std::tolower ohne locale
-#include <locale>
-#include <chrono>
-
 //---------------------------------------------------------------------------
 
 
@@ -138,3 +134,9 @@ size_t CheckFileSize(fs::path const& strFile) {
       }
    return ret;
    }
+
+
+
+
+
+

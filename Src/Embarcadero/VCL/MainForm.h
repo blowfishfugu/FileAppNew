@@ -2,12 +2,10 @@
 
 #ifndef MainFormH
 #define MainFormH
-<<<<<<< HEAD
-=======
+
 
 #if defined BUILD_WITH_VCL
 
->>>>>>> old-project/fish
 //---------------------------------------------------------------------------
 #include <System.Classes.hpp>
 #include <Vcl.Controls.hpp>
@@ -66,7 +64,5 @@ public:		// Benutzer-Deklarationen
 extern PACKAGE TfrmMain *frmMain;
 //---------------------------------------------------------------------------
 #endif
-<<<<<<< HEAD
-=======
+
 #endif
->>>>>>> old-project/fish

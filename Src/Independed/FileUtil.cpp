@@ -9,12 +9,10 @@
 #include <iomanip>
 #include <sstream>
 #include <functional>
-<<<<<<< HEAD
-=======
 #include <cctype> //std::tolower ohne locale
 #include <locale>
 #include <chrono>
->>>>>>> old-project/fish
+
 //---------------------------------------------------------------------------
 
 
@@ -140,12 +138,3 @@ size_t CheckFileSize(fs::path const& strFile) {
       }
    return ret;
    }
-
-
-
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> old-project/fish

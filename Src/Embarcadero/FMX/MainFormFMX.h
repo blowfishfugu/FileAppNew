@@ -18,7 +18,11 @@
 #include <FMX.Types.hpp>
 #include <System.Rtti.hpp>
 //---------------------------------------------------------------------------
+<<<<<<< HEAD
 #include <FileAppProcess.h>
+=======
+#include <Process.h>
+>>>>>>> old-project/fish
 #include <FMX.Edit.hpp>
 
 class TfrmMainFMX : public TForm

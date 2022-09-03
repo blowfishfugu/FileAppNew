@@ -308,7 +308,7 @@ void TProcess::ParseProject(fs::path const& base, fs::path const& strFile, std::
          }
 
       pugi::xml_node root = doc.document_element();
-      pugi::xpath_node xpathNode = root.select_single_node("ItemGroup");
+      pugi::xpath_node xpathNode = root.select_node("ItemGroup");
       if(!xpathNode) {
          TMyLogger log(__func__, __FILE__, __LINE__);
          log.stream() << "ItemGroup not found in file " << strFile.string();

@@ -153,6 +153,7 @@ namespace nk
 		std::vector<std::string> items;
 		int itemindex = -1;
 		size_t count() const { return items.size(); }
+		std::string setText(std::string text);
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::combobox;
 		}
@@ -198,6 +199,7 @@ namespace nk
 		};
 		std::vector<THeadItem> Columns;
 		std::vector<std::vector<std::string>> Rows;
+		std::vector<int> selected; // 0,1
 		void clear()
 		{
 			Columns.clear();

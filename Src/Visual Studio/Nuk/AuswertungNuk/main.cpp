@@ -54,7 +54,7 @@ int main(int argc, char** argv)
 	//TODO: layout ist eigene Component, wo man dann controls als Kinder reinhängt
 	auto dualRow = [](struct nk_context* ctx)
 	{
-		nk_layout_row_dynamic(ctx, 25, 20);
+		nk_layout_row_dynamic(ctx, 25, 4);
 	};
 
 	nk::TEdit* edit = mainForm.AddField<nk::TEdit>("path");

@@ -70,36 +70,7 @@ namespace nk
 		//should walk subcomponents, and draw them in specific order
 		virtual void draw(struct nk_context* ctx) = 0;
 
-		void reflect(struct nk_context* ctx)
-		{
-			for (auto& pp : NamedProperties)
-			{
-				auto& prop = pp.second;
-				if( std::holds_alternative<std::string*>(prop))
-				{ 
-					std::string* pStr = std::get<std::string*>(prop);
-					if (pStr->capacity() < pStr->length() + 10)
-					{
-						pStr->resize(pStr->capacity() + 64);
-					}
-					int pos = pStr->length();
-					nk_edit_string_zero_terminated(ctx, NK_EDIT_SIMPLE, pStr->data(), pStr->capacity(), nk_filter_default);
-				}
-				if (std::holds_alternative<__int64*>(prop))
-				{
-					__int64* pInt64 = std::get<__int64*>(prop);
-				}
-				if (std::holds_alternative<int*>(prop))
-				{
-					int* pInt = std::get<int*>(prop);
-				}
-				if (std::holds_alternative<float*>(prop))
-				{
-					float* pFloat = std::get<float*>(prop);
-				}
-			}
-			
-		}
+		void reflect(struct nk_context* ctx);
 
 		std::function<void(struct nk_context*)> applyLayout;
 		std::vector<IComponent*> fields;
@@ -120,8 +91,11 @@ namespace nk
 	struct TEdit : public IComponent
 	{
 		TEdit(std::string Name, __int64 _id) noexcept;
+		
+		//TODO: text+cursorpos in "spanning-struct" packen, für reflect werden beide werte gebraucht
 		std::string text;
 		int cursorpos = 0;
+		
 		nk_text_alignment nk_alignment = NK_TEXT_LEFT;
 		void setText(std::string const& txt)
 		{

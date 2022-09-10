@@ -15,6 +15,43 @@ nk::IComponent::IComponent(std::string Name, __int64 _id) noexcept
 	NamedProperties["Id"] = &id;
 }
 
+void nk::IComponent::reflect(nk_context * ctx)
+{
+	for (auto& pp : NamedProperties)
+	{
+		auto& prop = pp.second;
+		nk_layout_row_begin(ctx, NK_DYNAMIC, 0, 2);
+		
+		nk_layout_row_push(ctx, 0.25f);
+		nk_label(ctx, pp.first.c_str(), NK_TEXT_LEFT);
+		nk_layout_row_push(ctx, 0.75f);
+		if (std::holds_alternative<std::string*>(prop))
+		{
+			std::string* pStr = std::get<std::string*>(prop);
+			if (pStr->capacity() < pStr->length() + 10)
+			{
+				pStr->resize(pStr->capacity() + 64);
+			}
+			int pos = pStr->length();
+			nk_edit_string_zero_terminated(ctx, NK_EDIT_SIMPLE, pStr->data(), pStr->capacity(), nk_filter_default);
+		}
+		if (std::holds_alternative<__int64*>(prop))
+		{
+			__int64* pInt64 = std::get<__int64*>(prop);
+		}
+		if (std::holds_alternative<int*>(prop))
+		{
+			int* pInt = std::get<int*>(prop);
+		}
+		if (std::holds_alternative<float*>(prop))
+		{
+			float* pFloat = std::get<float*>(prop);
+		}
+		nk_layout_row_end(ctx);
+	}
+
+}
+
 nk::IComponent* nk::IComponent::FindComponent(std::string const & strField)
 {
 	for (nk::IComponent* c : fields)
@@ -36,8 +73,11 @@ nk::TStatusBar::TStatusBar(const float& w, const float& h,
 	IComponent(Name, _id),
 	window_height(h),
 	window_width(w),
-	status_height(30)
-{}
+	status_height(30),
+	text("statustext")
+{
+	NamedProperties["Text"] = &text;
+}
 
 void nk::TStatusBar::draw(struct nk_context* ctx)
 {
@@ -46,7 +86,7 @@ void nk::TStatusBar::draw(struct nk_context* ctx)
 		NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))
 	{
 		nk_layout_row_dynamic(ctx, status_height, 1);
-		nk_label(ctx, "statustext", NK_TEXT_CENTERED);
+		nk_label(ctx, text.c_str(), NK_TEXT_CENTERED);
 	}
 	nk_end(ctx);
 
@@ -127,7 +167,7 @@ nk::TEdit::TEdit(std::string Name, __int64 _id) noexcept
 	:
 	IComponent(Name, _id)
 {
-
+	NamedProperties["Text"] = &text;
 }
 
 void nk::TEdit::draw(struct nk_context* ctx)
@@ -144,6 +184,7 @@ nk::TLabel::TLabel(std::string Name, std::string Text, __int64 _id) noexcept
 	IComponent(Name, _id),
 	text(Text)
 {
+	NamedProperties["Text"] = &text;
 }
 
 void nk::TLabel::draw(struct nk_context* ctx)
@@ -154,11 +195,12 @@ void nk::TLabel::draw(struct nk_context* ctx)
 nk::TButton::TButton(std::string Name, __int64 _id) noexcept
 	:
 	IComponent(Name, _id)
-{}
+{
+	NamedProperties["Text"] = &text;
+}
 
 void nk::TButton::draw(struct nk_context* ctx)
 {
-
 }
 
 nk::TListbox::TListbox(std::string Name, __int64 _id) noexcept
@@ -209,7 +251,9 @@ nk::TMemo::TMemo(std::string Name, __int64 _id) noexcept
 	:
 	IComponent(Name, _id),
 	box_len(data.size())
-{}
+{
+	NamedProperties["Text"] = &data;
+}
 
 void nk::TMemo::setText(const std::string& txt)
 {

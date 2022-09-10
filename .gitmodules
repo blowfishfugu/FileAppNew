@@ -7,3 +7,6 @@
 [submodule "Nuklear"]
 	path = Nuklear
 	url = https://github.com/Immediate-Mode-UI/Nuklear.git
+[submodule "adecc_FileDlg"]
+	path = adecc_FileDlg
+	url = https://github.com/adeccscholar/adecc_FileDlg.git

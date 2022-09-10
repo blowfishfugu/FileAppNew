@@ -86,6 +86,17 @@ namespace nk
 		TEdit(std::string Name, __int64 _id) noexcept;
 		std::string text;
 		int cursorpos = 0;
+		nk_text_alignment nk_alignment = NK_TEXT_LEFT;
+		void setText(std::string const& txt)
+		{
+			text = txt;
+			cursorpos = text.length();
+		}
+		void setText(const char* txt)
+		{
+			text = txt;
+			cursorpos = text.length();
+		}
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::edit;
 		}
@@ -96,6 +107,7 @@ namespace nk
 	{
 		TLabel(std::string Name, std::string Text, __int64 _id) noexcept;
 		std::string text;
+		nk_text_alignment nk_alignment = NK_TEXT_LEFT;
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::label;
 		}
@@ -106,6 +118,9 @@ namespace nk
 	{
 		TGroupBox(std::string Name, __int64 _id) noexcept;
 		std::string title;
+		float height = 200.0f;
+		float width = 200.0f;
+		int cols = 1;
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::groupbox;
 		}
@@ -164,7 +179,7 @@ namespace nk
 	{
 		TMemo(std::string Name, __int64 _id) noexcept;
 		std::vector<std::string> data;
-		//setText?
+		void setText(const std::string& txt);
 
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::memo;

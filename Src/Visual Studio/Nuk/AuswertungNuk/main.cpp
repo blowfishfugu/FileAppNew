@@ -58,13 +58,11 @@ int main(int argc, char** argv)
 
 	nk::TEdit* edit = mainForm.AddField<nk::TEdit>("path");
 	edit->applyLayout = dualRow;
-	edit->text = "hello"; 
-	edit->cursorpos = edit->text.length();
+	edit->setText("hello"); 
 	
 	nk::TEdit* edit2 = mainForm.AddField<nk::TEdit>("second");
-	edit2->text = "hello2";
-	//edit2->applyLayout = singleRow;
-	edit2->cursorpos = edit2->text.length();
+	edit2->setText("hello2");
+	
 #ifndef NDEBUG
 	for (int tst = 0; tst < 1000; ++tst)
 #else

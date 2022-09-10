@@ -56,8 +56,9 @@ nk::TGroupBox::TGroupBox(std::string Name, __int64 _id) noexcept
 
 void nk::TGroupBox::draw(struct nk_context* ctx)
 {
+	nk_layout_row_static(ctx, height, width, cols);
 	nk_group_begin_titled(ctx, name.c_str(), title.c_str(), nk_panel_flags::NK_WINDOW_BORDER);
-	nk_layout_row_begin(ctx, nk_layout_format::NK_STATIC, 20, 1);
+	nk_layout_row_begin(ctx, nk_layout_format::NK_DYNAMIC, 20, 1);
 	for (nk::IComponent* comp : fields)
 	{
 		comp->draw(ctx);
@@ -142,7 +143,7 @@ nk::TLabel::TLabel(std::string Name, std::string Text, __int64 _id) noexcept
 
 void nk::TLabel::draw(struct nk_context* ctx)
 {
-	nk_label(ctx, text.c_str(), NK_TEXT_ALIGN_LEFT);
+	nk_label(ctx, text.c_str(), nk_alignment);
 }
 
 nk::TButton::TButton(std::string Name, __int64 _id) noexcept
@@ -152,6 +153,7 @@ nk::TButton::TButton(std::string Name, __int64 _id) noexcept
 
 void nk::TButton::draw(struct nk_context* ctx)
 {
+
 }
 
 nk::TListbox::TListbox(std::string Name, __int64 _id) noexcept
@@ -202,6 +204,17 @@ nk::TMemo::TMemo(std::string Name, __int64 _id) noexcept
 	:
 	IComponent(Name, _id)
 {}
+
+void nk::TMemo::setText(const std::string& txt)
+{
+	data.clear();
+	data.push_back("");
+	for (const char c : txt)
+	{
+		if (c == '\n') { data.push_back(""); }
+		data[data.size() - 1].push_back(c);
+	}
+}
 
 void nk::TMemo::draw(struct nk_context* ctx)
 {

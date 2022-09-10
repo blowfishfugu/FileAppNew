@@ -10,6 +10,9 @@ nk::IComponent::IComponent(std::string Name, __int64 _id) noexcept
 	{
 		name = std::to_string(id);
 	}
+	name.reserve(64);
+	NamedProperties["Name"] = &name;
+	NamedProperties["Id"] = &id;
 }
 
 nk::IComponent* nk::IComponent::FindComponent(std::string const & strField)
@@ -76,7 +79,9 @@ nk::NKForm::NKForm(const float & width, const float & height,
 	IComponent(Name, _id),
 	Width(width),
 	Height(height)
-{}
+{
+	NamedProperties["Title"] = &title;
+}
 
 EMyFrameworkType nk::NKForm::ComponentType() const
 {
@@ -131,7 +136,7 @@ void nk::TEdit::draw(struct nk_context* ctx)
 	{
 		text.resize(text.capacity() + 64);
 	}
-	nk_edit_string(ctx, NK_EDIT_SIMPLE, text.data(), &cursorpos, text.capacity(), nk_filter_default);
+	nk_edit_string(ctx, NK_EDIT_SIMPLE, text.data(), &cursorpos, static_cast<int>(text.capacity()), nk_filter_default);
 }
 
 nk::TLabel::TLabel(std::string Name, std::string Text, __int64 _id) noexcept
@@ -192,7 +197,7 @@ std::string nk::TCombobox::setText(std::string text)
 	}
 	items.push_back(text);
 	this->text = text;
-	itemindex = (this->items.size() - 1);
+	itemindex = (static_cast<int>(items.size()) - 1);
 	return this->text;
 }
 
@@ -202,22 +207,26 @@ void nk::TCombobox::draw(struct nk_context* ctx)
 
 nk::TMemo::TMemo(std::string Name, __int64 _id) noexcept
 	:
-	IComponent(Name, _id)
+	IComponent(Name, _id),
+	box_len(data.size())
 {}
 
 void nk::TMemo::setText(const std::string& txt)
 {
 	data.clear();
-	data.push_back("");
-	for (const char c : txt)
-	{
-		if (c == '\n') { data.push_back(""); }
-		data[data.size() - 1].push_back(c);
-	}
+	data = txt;
+	box_len = data.size();
+	height = 200;
 }
 
 void nk::TMemo::draw(struct nk_context* ctx)
 {
+	if (data.capacity() < (data.size() + 10))
+	{
+		data.resize(data.capacity() + 64);
+	}
+	//nk_layout_row_static(ctx, this->height, ctx->current->bounds.w, 1); //height?
+	nk_edit_string(ctx, NK_EDIT_BOX, data.data(), &box_len, data.capacity(), nk_filter_default);
 }
 
 nk::TGrid::TGrid(std::string Name, __int64 _id) noexcept

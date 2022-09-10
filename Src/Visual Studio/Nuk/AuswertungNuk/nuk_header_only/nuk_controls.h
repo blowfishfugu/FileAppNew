@@ -17,6 +17,7 @@
 
 #include <vector>
 #include <string>
+#include <variant>
 #include <functional>
 #include <MyStdTypes.h>
 struct nk_context;
@@ -57,6 +58,9 @@ namespace nk
 		
 		std::string name;
 		__int64 id = 0; //<- if name is empty we need a unique id
+		
+		using BoundProp = std::variant<std::string*,__int64*,int*,float*>;
+		std::map<std::string, BoundProp> NamedProperties;
 
 		virtual ~IComponent() = default;
 		virtual EMyFrameworkType ComponentType() const = 0;
@@ -65,6 +69,38 @@ namespace nk
 		//should redirect "events" -- in case of nuklear onClick is just a bool, discovered while painting
 		//should walk subcomponents, and draw them in specific order
 		virtual void draw(struct nk_context* ctx) = 0;
+
+		void reflect(struct nk_context* ctx)
+		{
+			for (auto& pp : NamedProperties)
+			{
+				auto& prop = pp.second;
+				if( std::holds_alternative<std::string*>(prop))
+				{ 
+					std::string* pStr = std::get<std::string*>(prop);
+					if (pStr->capacity() < pStr->length() + 10)
+					{
+						pStr->resize(pStr->capacity() + 64);
+					}
+					int pos = pStr->length();
+					nk_edit_string_zero_terminated(ctx, NK_EDIT_SIMPLE, pStr->data(), pStr->capacity(), nk_filter_default);
+				}
+				if (std::holds_alternative<__int64*>(prop))
+				{
+					__int64* pInt64 = std::get<__int64*>(prop);
+				}
+				if (std::holds_alternative<int*>(prop))
+				{
+					int* pInt = std::get<int*>(prop);
+				}
+				if (std::holds_alternative<float*>(prop))
+				{
+					float* pFloat = std::get<float*>(prop);
+				}
+			}
+			
+		}
+
 		std::function<void(struct nk_context*)> applyLayout;
 		std::vector<IComponent*> fields;
 		IComponent* FindComponent(std::string const& strField);
@@ -90,12 +126,12 @@ namespace nk
 		void setText(std::string const& txt)
 		{
 			text = txt;
-			cursorpos = text.length();
+			cursorpos = static_cast<int>(text.length());
 		}
 		void setText(const char* txt)
 		{
 			text = txt;
-			cursorpos = text.length();
+			cursorpos = static_cast<int>(text.length());
 		}
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::edit;
@@ -119,7 +155,7 @@ namespace nk
 		TGroupBox(std::string Name, __int64 _id) noexcept;
 		std::string title;
 		float height = 200.0f;
-		float width = 200.0f;
+		int width = 200;
 		int cols = 1;
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::groupbox;
@@ -178,7 +214,9 @@ namespace nk
 	struct TMemo : public IComponent
 	{
 		TMemo(std::string Name, __int64 _id) noexcept;
-		std::vector<std::string> data;
+		std::string data;
+		float height = 200.0f;
+		int box_len;
 		void setText(const std::string& txt);
 
 		virtual EMyFrameworkType ComponentType() const override {

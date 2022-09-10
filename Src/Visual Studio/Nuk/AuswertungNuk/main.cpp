@@ -51,6 +51,7 @@ int main(int argc, char** argv)
 	nk::NKForm mainForm(viewport.Width, viewport.Height, "Demo", 0);
 	mainForm.title = "Auswertung";
 
+	//TODO: layout ist eigene Component, wo man dann controls als Kinder reinhängt
 	auto dualRow = [](struct nk_context* ctx)
 	{
 		nk_layout_row_dynamic(ctx, 25, 20);
@@ -64,7 +65,7 @@ int main(int argc, char** argv)
 	edit2->setText("hello2");
 	
 #ifndef NDEBUG
-	for (int tst = 0; tst < 1000; ++tst)
+	for (int tst = 0; tst < 10; ++tst)
 #else
 	for (int tst = 0; tst < 200000; ++tst)
 #endif

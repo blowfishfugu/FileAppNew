@@ -538,7 +538,7 @@ drawOverview(struct nk_context *ctx)
 				}
 				/* progressbar combobox */
 				sum = prog_a + prog_b + prog_c + prog_d;
-				sprintf_s(buffer, "%lu", sum);
+				sprintf_s(buffer, "%zu", sum);
 				if (nk_combo_begin_label(ctx, buffer, nk_vec2(200, 200))) {
 					nk_layout_row_dynamic(ctx, 30, 1);
 					nk_progress(ctx, &prog_a, 100, NK_MODIFIABLE);
@@ -550,7 +550,7 @@ drawOverview(struct nk_context *ctx)
 
 				/* checkbox combobox */
 				sum = (size_t)(check_values[0] + check_values[1] + check_values[2] + check_values[3] + check_values[4]);
-				sprintf_s(buffer, "%lu", sum);
+				sprintf_s(buffer, "%zu", sum);
 				if (nk_combo_begin_label(ctx, buffer, nk_vec2(200, 200))) {
 					nk_layout_row_dynamic(ctx, 30, 1);
 					nk_checkbox_label(ctx, weapons[0], &check_values[0]);
@@ -1438,6 +1438,35 @@ drawOverview(struct nk_context *ctx)
 	return !nk_window_is_closed(ctx, "Overview");
 }
 
+void reflect(struct nk_context* ctx, nk::IComponent* comp)
+{
+	comp->reflect(ctx); //properties
+	
+	//props of children
+	int treeid = 10;
+	for (nk::IComponent* child : comp->fields)
+	{
+		if (nk_tree_push_id(ctx, NK_TREE_NODE, child->name.c_str(), NK_MINIMIZED, ++treeid))
+		{
+			reflect(ctx,child);
+			nk_tree_pop(ctx);
+		}
+	}
+}
+
+void drawReflector(struct nk_context* ctx, nk::NKForm& form)
+{
+	
+	if (nk_begin(ctx, "Reflector", nk_rect(400, 20, 500, 500), NK_WINDOW_BORDER | NK_WINDOW_SCALABLE | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE))
+	{
+		if (nk_tree_push(ctx, NK_TREE_TAB, form.name.c_str(), NK_MINIMIZED))
+		{
+			reflect(ctx, &form);
+			nk_tree_pop(ctx);
+		}
+	}
+	nk_end(ctx);
+}
 #endif
 
 
@@ -1460,6 +1489,7 @@ void Application::Run( nk::NKForm& mainForm )
 		}
 		nk_input_end(ctx);
 
+		drawReflector(ctx, mainForm);
 		mainForm.draw(ctx);
 #ifndef NDEBUG
 		drawOverview(ctx);

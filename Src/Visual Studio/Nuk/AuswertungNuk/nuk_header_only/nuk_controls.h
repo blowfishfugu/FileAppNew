@@ -49,6 +49,8 @@ namespace nk
 		}
 	};
 
+	//TODO: PropDescriptor{min,max,current,step,stepPerPixel)
+
 	class IComponent
 	{
 	public:
@@ -59,8 +61,9 @@ namespace nk
 		std::string name;
 		__int64 id = 0; //<- if name is empty we need a unique id
 		
-		using BoundProp = std::variant<std::string*,__int64*,int*,float*>;
+		using BoundProp = std::variant<std::string*,int*,float*,double*>;
 		std::map<std::string, BoundProp> NamedProperties;
+		void reflect(struct nk_context* ctx);
 
 		virtual ~IComponent() = default;
 		virtual EMyFrameworkType ComponentType() const = 0;
@@ -70,7 +73,6 @@ namespace nk
 		//should walk subcomponents, and draw them in specific order
 		virtual void draw(struct nk_context* ctx) = 0;
 
-		void reflect(struct nk_context* ctx);
 
 		std::function<void(struct nk_context*)> applyLayout;
 		std::vector<IComponent*> fields;

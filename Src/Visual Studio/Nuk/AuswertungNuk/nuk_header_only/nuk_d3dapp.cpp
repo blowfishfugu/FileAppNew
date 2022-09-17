@@ -1438,6 +1438,9 @@ drawOverview(struct nk_context *ctx)
 	return !nk_window_is_closed(ctx, "Overview");
 }
 
+#endif
+
+bool showReflector = false;
 void reflect(struct nk_context* ctx, nk::IComponent* comp)
 {
 	comp->reflect(ctx); //properties
@@ -1454,9 +1457,10 @@ void reflect(struct nk_context* ctx, nk::IComponent* comp)
 	}
 }
 
+
 void drawReflector(struct nk_context* ctx, nk::NKForm& form)
 {
-	
+	if (!showReflector) { return; }
 	if (nk_begin(ctx, "Reflector", nk_rect(400, 20, 500, 500), NK_WINDOW_BORDER | NK_WINDOW_SCALABLE | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE))
 	{
 		if (nk_tree_push(ctx, NK_TREE_TAB, form.name.c_str(), NK_MINIMIZED))
@@ -1467,7 +1471,6 @@ void drawReflector(struct nk_context* ctx, nk::NKForm& form)
 	}
 	nk_end(ctx);
 }
-#endif
 
 
 
@@ -1483,15 +1486,29 @@ void Application::Run( nk::NKForm& mainForm )
 		while (PeekMessageW(&msg, NULL, 0, 0, PM_REMOVE))
 		{
 			if (msg.message == WM_QUIT)
-				running = 0;
+				running = false;
+
+			switch (msg.message)
+			{
+			case WM_KEYDOWN:
+			{
+				if (msg.wParam == VK_F9) //hardwired
+				{
+					showReflector = !showReflector;
+				}
+			}
+			break;
+			default:
+				break;
+			}
 			TranslateMessage(&msg);
 			DispatchMessageW(&msg);
 		}
 		nk_input_end(ctx);
 
-		drawReflector(ctx, mainForm);
 		mainForm.draw(ctx);
 #ifndef NDEBUG
+		drawReflector(ctx, mainForm);
 		drawOverview(ctx);
 #endif
 

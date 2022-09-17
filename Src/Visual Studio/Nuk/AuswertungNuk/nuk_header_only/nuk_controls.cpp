@@ -36,7 +36,7 @@ void nk::IComponent::reflect(nk_context * ctx)
 			std::string* pStr = std::get<std::string*>(prop);
 			if (pStr->capacity() < pStr->length() + 10)
 			{
-				pStr->resize(pStr->capacity() + 64);
+				pStr->resize(pStr->capacity() + _MAX_PATH);
 			}
 			int pos = pStr->length(); //TODO: cursorpos pStr sollte struct (oder span) sein!
 			nk_edit_string_zero_terminated(ctx, NK_EDIT_SIMPLE, pStr->data(), pStr->capacity(), nk_filter_default);
@@ -179,16 +179,13 @@ nk::TEdit::TEdit(std::string Name, __int64 _id) noexcept
 	:
 	IComponent(Name, _id)
 {
+	text.resize(_MAX_PATH);
 	NamedProperties["Text"] = &text;
 }
 
 void nk::TEdit::draw(struct nk_context* ctx)
 {
-	if (text.capacity() < (text.size() + 10))
-	{
-		text.resize(text.capacity() + 64);
-	}
-	nk_edit_string(ctx, NK_EDIT_SIMPLE, text.data(), &cursorpos, static_cast<int>(text.capacity()), nk_filter_default);
+	nk_edit_string_zero_terminated(ctx, NK_EDIT_SIMPLE, text.data(), static_cast<int>(text.capacity()), nk_filter_default);
 }
 
 nk::TLabel::TLabel(std::string Name, std::string Text, __int64 _id) noexcept

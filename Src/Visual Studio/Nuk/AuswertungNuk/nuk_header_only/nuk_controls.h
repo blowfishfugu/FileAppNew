@@ -49,7 +49,7 @@ namespace nk
 		}
 	};
 
-	//TODO: PropDescriptor{min,max,current,step,stepPerPixel)
+	//TODO: PropDescriptor{min,max,&current,step,stepPerPixel)
 
 	class IComponent
 	{
@@ -61,7 +61,7 @@ namespace nk
 		std::string name;
 		__int64 id = 0; //<- if name is empty we need a unique id
 		
-		using BoundProp = std::variant<std::string*,int*,float*,double*>;
+		using BoundProp = std::variant<std::string*,int*,float*,double*>; //<-- hier fehlt noch nk_layout_format für den Spacer
 		std::map<std::string, BoundProp> NamedProperties;
 		void reflect(struct nk_context* ctx);
 
@@ -72,9 +72,8 @@ namespace nk
 		//should redirect "events" -- in case of nuklear onClick is just a bool, discovered while painting
 		//should walk subcomponents, and draw them in specific order
 		virtual void draw(struct nk_context* ctx) = 0;
+		void drawChilds(struct nk_context* ctx);
 
-
-		std::function<void(struct nk_context*)> applyLayout;
 		std::vector<IComponent*> fields;
 		IComponent* FindComponent(std::string const& strField);
 
@@ -260,6 +259,80 @@ namespace nk
 		std::string title;
 		virtual EMyFrameworkType ComponentType() const override;
 		virtual void draw(struct nk_context * ctx) override;
+		
+	};
+
+	struct NKRowDynamic : public IComponent
+	{
+		float height;
+		int cols;
+		NKRowDynamic(float height, int cols,
+			std::string Name, __int64 _id) noexcept
+			: IComponent(Name,_id), height(height),cols(cols)
+		{
+			NamedProperties["height"] = &this->height;
+			NamedProperties["cols"] = &this->cols;
+		}
+		virtual EMyFrameworkType ComponentType() const override;
+		virtual void draw(struct nk_context * ctx) override;
+	};
+
+	struct NKRowStatic : public IComponent
+	{
+		float height;
+		int item_width;
+		int cols;
+		NKRowStatic(float height, int item_width, int cols,
+			std::string Name, __int64 _id) noexcept
+			: IComponent(Name,_id), height(height), item_width(item_width), cols(cols)
+		{
+			NamedProperties["height"] = &this->height;
+			NamedProperties["cols"] = &this->cols;
+			NamedProperties["item_width"] = &this->item_width;
+		}
+
+		// Inherited via IComponent
+		virtual EMyFrameworkType ComponentType() const override;
+		virtual void draw( struct nk_context * ctx) override;
+	};
+
+	struct NKSpaceChild : public IComponent
+	{
+		struct nk_rect bounds;
+		NKSpaceChild( struct nk_rect rect, std::string Name, __int64 _id)
+			: IComponent(Name,_id), bounds(rect)
+		{
+		
+			NamedProperties["x"] = &bounds.x;
+			NamedProperties["y"] = &bounds.y;
+			NamedProperties["w"] = &bounds.w;
+			NamedProperties["h"] = &bounds.h;
+			
+		}
+
+		// Inherited via IComponent
+		virtual EMyFrameworkType ComponentType() const override;
+		virtual void draw(struct nk_context * ctx) override;
+	};
+
+	struct NKSpace : public IComponent
+	{
+		nk_layout_format format;
+		float height;
+		int widget_count = INT_MAX;
+
+		NKSpace(nk_layout_format format, float height, std::string Name, __int64 _id):
+			IComponent(Name,_id),format(format),height(height)
+		{
+			NamedProperties["height"] = &this->height;
+		}
+
+
+		// Inherited via IComponent
+		virtual EMyFrameworkType ComponentType() const override;
+
+		virtual void draw( struct nk_context * ctx) override;
+
 	};
 }
 #endif

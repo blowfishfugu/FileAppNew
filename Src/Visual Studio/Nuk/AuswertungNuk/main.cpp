@@ -51,28 +51,14 @@ int main(int argc, char** argv)
 	nk::NKForm mainForm(viewport.Width, viewport.Height, "Demo", 0);
 	mainForm.title = "Auswertung";
 
-	//TODO: layout ist eigene Component, wo man dann controls als Kinder reinhängt
-	auto dualRow = [](struct nk_context* ctx)
-	{
-		nk_layout_row_dynamic(ctx, 25, 4);
-	};
-
-	nk::TEdit* edit = mainForm.AddField<nk::TEdit>("path");
-	edit->applyLayout = dualRow;
+	nk::NKRowDynamic* rowLayout = mainForm.AddField<nk::NKRowDynamic>(30.0f, 2, "");
+	
+	nk::TEdit* edit = rowLayout->AddField<nk::TEdit>("path");
 	edit->setText("hello"); 
 	
-	nk::TEdit* edit2 = mainForm.AddField<nk::TEdit>("second");
+	nk::TEdit* edit2 = rowLayout->AddField<nk::TEdit>("second");
 	edit2->setText("hello2");
 	
-#ifndef NDEBUG
-	for (int tst = 0; tst < 10; ++tst)
-#else
-	for (int tst = 0; tst < 200000; ++tst)
-#endif
-	{
-		nk::TLabel* lbl=mainForm.AddField<nk::TLabel>("",std::to_string(tst) );
-		mainForm.AddField<nk::TEdit>("");
-	}
 
 	nk::TStatusBar* statusBar = mainForm.AddField<nk::TStatusBar>(viewport.Width, viewport.Height, "testStatus");
 	statusBar->text = "statustext";

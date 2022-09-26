@@ -14,7 +14,15 @@ nk::IComponent::IComponent(std::string Name, __int64 _id) noexcept
 	NamedProperties["Name"] = &name;
 }
 
-void nk::IComponent::reflect(nk_context * ctx)
+void nk::IComponent::drawChilds(struct nk_context* ctx)
+{
+	for (nk::IComponent* comp : fields)
+	{
+		comp->draw(ctx);
+	}
+}
+
+void nk::IComponent::reflect(struct nk_context * ctx)
 {
 	auto buildPropName = [](const std::string& compName, const std::string& propName)
 	{
@@ -34,11 +42,6 @@ void nk::IComponent::reflect(nk_context * ctx)
 		if (std::holds_alternative<std::string*>(prop))
 		{
 			std::string* pStr = std::get<std::string*>(prop);
-			if (pStr->capacity() < pStr->length() + 10)
-			{
-				pStr->resize(pStr->capacity() + _MAX_PATH);
-			}
-			int pos = pStr->length(); //TODO: cursorpos pStr sollte struct (oder span) sein!
 			nk_edit_string_zero_terminated(ctx, NK_EDIT_SIMPLE, pStr->data(), pStr->capacity(), nk_filter_default);
 		}
 		else if (std::holds_alternative<int*>(prop))
@@ -114,10 +117,7 @@ void nk::TGroupBox::draw(struct nk_context* ctx)
 	nk_layout_row_static(ctx, height, width, cols);
 	nk_group_begin_titled(ctx, name.c_str(), title.c_str(), nk_panel_flags::NK_WINDOW_BORDER);
 	nk_layout_row_begin(ctx, nk_layout_format::NK_DYNAMIC, 20, 1);
-	for (nk::IComponent* comp : fields)
-	{
-		comp->draw(ctx);
-	}
+	this->drawChilds(ctx);
 	nk_layout_row_end(ctx);
 	nk_group_end(ctx);
 }
@@ -155,10 +155,6 @@ void nk::NKForm::draw(struct nk_context* ctx)
 				&& comp->ComponentType() != EMyFrameworkType::form
 				)
 			{
-				if (comp->applyLayout)
-				{
-					comp->applyLayout(ctx);
-				}
 				comp->draw(ctx);
 			}
 		}
@@ -291,4 +287,47 @@ void nk::TGrid::draw(struct nk_context* ctx)
 {
 }
 
+EMyFrameworkType nk::NKRowDynamic::ComponentType() const
+{
+	return EMyFrameworkType::dynamic_row;
+}
 
+void nk::NKRowDynamic::draw(struct nk_context * ctx)
+{
+	nk_layout_row_dynamic(ctx, height, cols);
+	this->drawChilds(ctx);
+}
+
+EMyFrameworkType nk::NKRowStatic::ComponentType() const
+{
+	return EMyFrameworkType::static_row;
+}
+
+void nk::NKRowStatic::draw(struct nk_context * ctx)
+{
+	nk_layout_row_static(ctx, height, item_width, cols);
+	this->drawChilds(ctx);
+}
+
+EMyFrameworkType nk::NKSpace::ComponentType() const
+{
+	return EMyFrameworkType::space_layout;
+}
+
+void nk::NKSpace::draw(struct nk_context * ctx)
+{
+	nk_layout_space_begin(ctx, format, height, widget_count);
+	this->drawChilds(ctx);
+	nk_layout_space_end(ctx);
+}
+
+EMyFrameworkType nk::NKSpaceChild::ComponentType() const
+{
+	return EMyFrameworkType::space_layout_child;
+}
+
+void nk::NKSpaceChild::draw(nk_context * ctx)
+{
+	nk_layout_space_push(ctx, bounds);
+	this->drawChilds(ctx);
+}

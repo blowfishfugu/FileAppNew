@@ -16,12 +16,15 @@
     <Filter Include="nuk_lib">
       <UniqueIdentifier>{6f47e565-35d0-4d10-b489-961dcecc9b3b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="nuk_lib\base">
+      <UniqueIdentifier>{90aa87b1-3267-4495-a3f3-bf41758bcbeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="nuk_lib\controls">
+      <UniqueIdentifier>{120490e6-8eec-4d39-89a1-68f1bca01d35}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NukForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Embarcadero\VCL\Auswertung.cpp">
@@ -37,10 +40,13 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="nuk_lib\nuk_controls.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>nuk_lib</Filter>
+    </ClCompile>
+    <ClCompile Include="NukForm.cpp">
+      <Filter>nuk_lib</Filter>
     </ClCompile>
     <ClCompile Include="nuk_lib\nuk_d3dapp.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>nuk_lib\base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -56,32 +62,74 @@
     <ClInclude Include="nuk_lib\nuk_controls.h">
       <Filter>nuk_lib</Filter>
     </ClInclude>
-    <ClInclude Include="nuk_lib\nuk_d3dapp.h">
-      <Filter>nuk_lib</Filter>
-    </ClInclude>
     <ClInclude Include="NukForm.h">
       <Filter>nuk_lib</Filter>
     </ClInclude>
-    <ClInclude Include="nuk_lib\nuklear.h">
-      <Filter>nuk_lib</Filter>
-    </ClInclude>
-    <ClInclude Include="nuk_lib\nuklear_d3d11.h">
-      <Filter>nuk_lib</Filter>
-    </ClInclude>
-    <ClInclude Include="nuk_lib\nuklear_d3d11_pixel_shader.h">
-      <Filter>nuk_lib</Filter>
-    </ClInclude>
-    <ClInclude Include="nuk_lib\nuklear_d3d11_vertex_shader.h">
-      <Filter>nuk_lib</Filter>
-    </ClInclude>
     <ClInclude Include="nuk_lib\nuk_config.h">
-      <Filter>nuk_lib</Filter>
+      <Filter>nuk_lib\base</Filter>
+    </ClInclude>
+    <ClInclude Include="nuk_lib\nuk_d3dapp.h">
+      <Filter>nuk_lib\base</Filter>
     </ClInclude>
     <ClInclude Include="nuk_lib\nuk_declare.h">
-      <Filter>nuk_lib</Filter>
+      <Filter>nuk_lib\base</Filter>
     </ClInclude>
     <ClInclude Include="nuk_lib\nuk_implement.h">
-      <Filter>nuk_lib</Filter>
+      <Filter>nuk_lib\base</Filter>
+    </ClInclude>
+    <ClInclude Include="nuk_lib\nuklear.h">
+      <Filter>nuk_lib\base</Filter>
+    </ClInclude>
+    <ClInclude Include="nuk_lib\nuklear_d3d11.h">
+      <Filter>nuk_lib\base</Filter>
+    </ClInclude>
+    <ClInclude Include="nuk_lib\nuklear_d3d11_pixel_shader.h">
+      <Filter>nuk_lib\base</Filter>
+    </ClInclude>
+    <ClInclude Include="nuk_lib\nuklear_d3d11_vertex_shader.h">
+      <Filter>nuk_lib\base</Filter>
+    </ClInclude>
+    <ClInclude Include="nuk_lib\IComponent.h">
+      <Filter>nuk_lib\controls</Filter>
+    </ClInclude>
+    <ClInclude Include="nuk_lib\NkButton.h">
+      <Filter>nuk_lib\controls</Filter>
+    </ClInclude>
+    <ClInclude Include="nuk_lib\NkCheckBox.h">
+      <Filter>nuk_lib\controls</Filter>
+    </ClInclude>
+    <ClInclude Include="nuk_lib\NkCombobox.h">
+      <Filter>nuk_lib\controls</Filter>
+    </ClInclude>
+    <ClInclude Include="nuk_lib\NkEdit.h">
+      <Filter>nuk_lib\controls</Filter>
+    </ClInclude>
+    <ClInclude Include="nuk_lib\NKForm.h">
+      <Filter>nuk_lib\controls</Filter>
+    </ClInclude>
+    <ClInclude Include="nuk_lib\NkGrid.h">
+      <Filter>nuk_lib\controls</Filter>
+    </ClInclude>
+    <ClInclude Include="nuk_lib\NkGroupBox.h">
+      <Filter>nuk_lib\controls</Filter>
+    </ClInclude>
+    <ClInclude Include="nuk_lib\NkLabel.h">
+      <Filter>nuk_lib\controls</Filter>
+    </ClInclude>
+    <ClInclude Include="nuk_lib\NkListBox.h">
+      <Filter>nuk_lib\controls</Filter>
+    </ClInclude>
+    <ClInclude Include="nuk_lib\NkMemo.h">
+      <Filter>nuk_lib\controls</Filter>
+    </ClInclude>
+    <ClInclude Include="nuk_lib\NkStatusBar.h">
+      <Filter>nuk_lib\controls</Filter>
+    </ClInclude>
+    <ClInclude Include="nuk_lib\NKSpaceLayout.h">
+      <Filter>nuk_lib\controls</Filter>
+    </ClInclude>
+    <ClInclude Include="nuk_lib\NKRowLayouts.h">
+      <Filter>nuk_lib\controls</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +137,8 @@
     <None Include="..\..\..\Embarcadero\VCL\MainForm.dfm" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="nuk_lib\nuklear_d3d11.hlsl" />
+    <FxCompile Include="nuk_lib\nuklear_d3d11.hlsl">
+      <Filter>nuk_lib\base</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

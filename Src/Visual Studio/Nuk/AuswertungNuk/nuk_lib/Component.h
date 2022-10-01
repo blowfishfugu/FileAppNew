@@ -14,12 +14,12 @@ namespace nk
 	extern Pool componentPool;
 	//TODO: PropDescriptor{min,max,&current,step,stepPerPixel)
 
-	class IComponent
+	class Component
 	{
 	public:
-		IComponent(std::string Name, __int64 _id) noexcept;
-		IComponent(const IComponent&) = delete;
-		IComponent() = delete;
+		Component(std::string Name, __int64 _id) noexcept;
+		Component(const Component&) = delete;
+		Component() = delete;
 
 		std::string name;
 		__int64 id = 0; //<- if name is empty we need a unique id
@@ -28,7 +28,7 @@ namespace nk
 		std::map<std::string, BoundProp> NamedProperties;
 		void reflect(struct nk_context* ctx);
 
-		virtual ~IComponent() = default;
+		virtual ~Component() = default;
 		virtual EMyFrameworkType ComponentType() const = 0;
 
 		//should draw the component
@@ -37,8 +37,8 @@ namespace nk
 		virtual void draw(struct nk_context* ctx) = 0;
 		void drawChilds(struct nk_context* ctx);
 
-		std::vector<IComponent*> fields;
-		IComponent* FindComponent(std::string const& strField);
+		std::vector<Component*> fields;
+		Component* FindComponent(std::string const& strField);
 
 		template<typename fw_Type, class... Args>
 		fw_Type* AddField(Args&&... ctor_args)

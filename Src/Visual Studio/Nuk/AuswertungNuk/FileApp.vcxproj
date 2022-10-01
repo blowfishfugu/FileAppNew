@@ -91,7 +91,7 @@
     <ClCompile Include="..\..\..\Independed\FileUtil.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NukForm.cpp" />
-    <ClCompile Include="nuk_lib\IComponent.cpp" />
+    <ClCompile Include="nuk_lib\Component.cpp" />
     <ClCompile Include="nuk_lib\NkButton.cpp" />
     <ClCompile Include="nuk_lib\NkCheckBox.cpp" />
     <ClCompile Include="nuk_lib\NkComboBox.cpp" />
@@ -113,7 +113,7 @@
     <ClInclude Include="..\..\..\Independed\FileUtil.h" />
     <ClInclude Include="NukForm.h" />
     <ClInclude Include="nuk_lib\ComponentPool.h" />
-    <ClInclude Include="nuk_lib\IComponent.h" />
+    <ClInclude Include="nuk_lib\Component.h" />
     <ClInclude Include="nuk_lib\NkButton.h" />
     <ClInclude Include="nuk_lib\NkCheckBox.h" />
     <ClInclude Include="nuk_lib\NkComboBox.h" />

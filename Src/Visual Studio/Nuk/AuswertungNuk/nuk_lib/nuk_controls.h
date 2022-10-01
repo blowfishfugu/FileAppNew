@@ -9,7 +9,7 @@
 //set of Components that contain Meta and Drawing-Data.
 //can't wrap my head around building a listview this way.. so oop for a start.
 
-#include <IComponent.h>
+#include <Component.h>
 #include <NkEdit.h>
 #include <NkLabel.h>
 #include <NkGroupBox.h>

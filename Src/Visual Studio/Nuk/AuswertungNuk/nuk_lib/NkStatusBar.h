@@ -1,8 +1,8 @@
 #pragma once
-#include "IComponent.h"
+#include "Component.h"
 namespace nk
 {
-	struct TStatusBar : public IComponent
+	struct TStatusBar : public Component
 	{
 		const float& window_height;
 		const float& window_width;

@@ -1,8 +1,8 @@
 #pragma once
-#include "IComponent.h"
+#include "Component.h"
 namespace nk
 {
-	struct TMemo : public IComponent
+	struct TMemo : public Component
 	{
 		TMemo(std::string Name, __int64 _id) noexcept;
 		std::string data;

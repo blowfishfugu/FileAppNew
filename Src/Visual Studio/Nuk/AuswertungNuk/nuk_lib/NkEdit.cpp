@@ -4,7 +4,7 @@ namespace nk
 
 	TEdit::TEdit(std::string Name, __int64 _id) noexcept
 		:
-		IComponent(Name, _id)
+		Component(Name, _id)
 	{
 		text.resize(_MAX_PATH);
 		NamedProperties["Text"] = &text;

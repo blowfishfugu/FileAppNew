@@ -4,7 +4,7 @@ namespace nk
 
 	TLabel::TLabel(std::string Name, std::string Text, __int64 _id) noexcept
 		:
-		IComponent(Name, _id),
+		Component(Name, _id),
 		text(Text)
 	{
 		NamedProperties["Text"] = &text;

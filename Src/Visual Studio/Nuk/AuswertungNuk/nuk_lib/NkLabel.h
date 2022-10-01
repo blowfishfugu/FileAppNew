@@ -1,8 +1,8 @@
 #pragma once
-#include "IComponent.h"
+#include "Component.h"
 namespace nk
 {
-	struct TLabel : public IComponent
+	struct TLabel : public Component
 	{
 		TLabel(std::string Name, std::string Text, __int64 _id) noexcept;
 		std::string text;

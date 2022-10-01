@@ -4,11 +4,11 @@
 
 namespace nk
 {
-	class IComponent;
+	class Component;
 	class Pool
 	{
 		__int64 id = 100;
-		std::vector< std::unique_ptr<IComponent> > _owned;
+		std::vector< std::unique_ptr<Component> > _owned;
 	public:
 		template<typename fw_Type, class... Args>
 		fw_Type* Add(Args&&... ctor_args)

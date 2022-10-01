@@ -1,8 +1,8 @@
 #pragma once
-#include "IComponent.h"
+#include "Component.h"
 namespace nk
 {
-	struct TGrid : public IComponent
+	struct TGrid : public Component
 	{
 		TGrid(std::string Name, __int64 _id) noexcept;
 		struct THeadItem {

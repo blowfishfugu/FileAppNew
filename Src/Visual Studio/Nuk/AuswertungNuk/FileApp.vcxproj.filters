@@ -84,7 +84,7 @@
     <ClCompile Include="nuk_lib\NkButton.cpp">
       <Filter>nuk_lib\controls</Filter>
     </ClCompile>
-    <ClCompile Include="nuk_lib\IComponent.cpp">
+    <ClCompile Include="nuk_lib\Component.cpp">
       <Filter>nuk_lib\controls</Filter>
     </ClCompile>
   </ItemGroup>
@@ -128,9 +128,6 @@
     <ClInclude Include="nuk_lib\nuklear_d3d11_vertex_shader.h">
       <Filter>nuk_lib\base</Filter>
     </ClInclude>
-    <ClInclude Include="nuk_lib\IComponent.h">
-      <Filter>nuk_lib\controls</Filter>
-    </ClInclude>
     <ClInclude Include="nuk_lib\NkButton.h">
       <Filter>nuk_lib\controls</Filter>
     </ClInclude>
@@ -171,6 +168,9 @@
       <Filter>nuk_lib\controls</Filter>
     </ClInclude>
     <ClInclude Include="nuk_lib\ComponentPool.h">
+      <Filter>nuk_lib\controls</Filter>
+    </ClInclude>
+    <ClInclude Include="nuk_lib\Component.h">
       <Filter>nuk_lib\controls</Filter>
     </ClInclude>
   </ItemGroup>

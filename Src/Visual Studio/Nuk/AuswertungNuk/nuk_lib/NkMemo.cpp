@@ -4,7 +4,7 @@ namespace nk
 
 	TMemo::TMemo(std::string Name, __int64 _id) noexcept
 		:
-		IComponent(Name, _id),
+		Component(Name, _id),
 		box_len(data.size())
 	{
 		NamedProperties["Text"] = &data;

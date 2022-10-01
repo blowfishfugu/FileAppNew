@@ -1,10 +1,10 @@
-#include "IComponent.h"
+#include "Component.h"
 #include "ComponentPool.h"
 namespace nk
 {
 	Pool componentPool; //static
 
-	IComponent::IComponent(std::string Name, __int64 _id) noexcept
+	Component::Component(std::string Name, __int64 _id) noexcept
 		: name(Name), id(_id)
 	{
 		name.reserve(64);
@@ -15,15 +15,15 @@ namespace nk
 		NamedProperties["Name"] = &name;
 	}
 
-	void IComponent::drawChilds(struct nk_context* ctx)
+	void Component::drawChilds(struct nk_context* ctx)
 	{
-		for (IComponent* comp : fields)
+		for (Component* comp : fields)
 		{
 			comp->draw(ctx);
 		}
 	}
 
-	void IComponent::reflect(struct nk_context * ctx)
+	void Component::reflect(struct nk_context * ctx)
 	{
 		auto buildPropName = [](const std::string& compName, const std::string& propName)
 		{
@@ -68,12 +68,12 @@ namespace nk
 
 	}
 
-	IComponent* IComponent::FindComponent(std::string const & strField)
+	Component* Component::FindComponent(std::string const & strField)
 	{
-		for (IComponent* c : fields)
+		for (Component* c : fields)
 		{
 			if (!c) { continue; }
-			IComponent* subChild = c->FindComponent(strField);
+			Component* subChild = c->FindComponent(strField);
 			if (subChild) { return subChild; }
 
 			if (c->name != strField) { continue; }

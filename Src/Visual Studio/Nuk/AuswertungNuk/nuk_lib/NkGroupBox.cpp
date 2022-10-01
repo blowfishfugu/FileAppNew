@@ -4,7 +4,7 @@ namespace nk
 
 	TGroupBox::TGroupBox(std::string Name, __int64 _id) noexcept
 		:
-		IComponent(Name, _id)
+		Component(Name, _id)
 	{}
 
 	void TGroupBox::draw(struct nk_context* ctx)

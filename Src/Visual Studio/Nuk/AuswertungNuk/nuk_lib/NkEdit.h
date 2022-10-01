@@ -1,8 +1,8 @@
 #pragma once
-#include "IComponent.h"
+#include "Component.h"
 namespace nk
 {
-	struct TEdit : public IComponent
+	struct TEdit : public Component
 	{
 		TEdit(std::string Name, __int64 _id) noexcept;
 

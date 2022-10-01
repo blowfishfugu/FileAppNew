@@ -1,8 +1,8 @@
 #pragma once
-#include "IComponent.h"
+#include "Component.h"
 namespace nk
 {
-	struct TListbox : public IComponent
+	struct TListbox : public Component
 	{
 		TListbox(std::string Name, __int64 _id) noexcept;
 		std::vector<std::string> items;

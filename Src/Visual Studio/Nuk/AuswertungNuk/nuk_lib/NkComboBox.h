@@ -1,8 +1,8 @@
 #pragma once
-#include "IComponent.h"
+#include "Component.h"
 namespace nk
 {
-	struct TCombobox : public IComponent
+	struct TCombobox : public Component
 	{
 		TCombobox(std::string Name, __int64 _id) noexcept;
 		std::string text;

@@ -5,7 +5,7 @@ namespace nk
 	NKForm::NKForm(const float & width, const float & height,
 		std::string Name, __int64 _id) noexcept
 		:
-		IComponent(Name, _id),
+		Component(Name, _id),
 		Width(width),
 		Height(height)
 	{
@@ -26,7 +26,7 @@ namespace nk
 			| NK_WINDOW_MINIMIZABLE
 		))
 		{
-			for (IComponent* comp : fields)
+			for (Component* comp : fields)
 			{
 				if (comp->ComponentType() != EMyFrameworkType::statusbar
 					&& comp->ComponentType() != EMyFrameworkType::form
@@ -39,7 +39,7 @@ namespace nk
 		nk_end(ctx);
 
 		//other forms, and the statusbar -> after nk_end
-		for (IComponent* comp : fields)
+		for (Component* comp : fields)
 		{
 			if (comp->ComponentType() == EMyFrameworkType::statusbar
 				|| comp->ComponentType() == EMyFrameworkType::form

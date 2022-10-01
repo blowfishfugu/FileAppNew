@@ -1429,13 +1429,13 @@ drawOverview(struct nk_context *ctx)
 #endif
 
 bool showReflector = false;
-void reflect(struct nk_context* ctx, nk::IComponent* comp)
+void reflect(struct nk_context* ctx, nk::Component* comp)
 {
 	comp->reflect(ctx); //properties
 	
 	//props of children
 	int treeid = 10;
-	for (nk::IComponent* child : comp->fields)
+	for (nk::Component* child : comp->fields)
 	{
 		if (nk_tree_push_id(ctx, NK_TREE_NODE, child->name.c_str(), NK_MINIMIZED, ++treeid))
 		{

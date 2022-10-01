@@ -1,8 +1,8 @@
 #pragma once
-#include "IComponent.h"
+#include "Component.h"
 namespace nk
 {
-	struct NKForm : public IComponent
+	struct NKForm : public Component
 	{
 		const float& Width;
 		const float& Height;

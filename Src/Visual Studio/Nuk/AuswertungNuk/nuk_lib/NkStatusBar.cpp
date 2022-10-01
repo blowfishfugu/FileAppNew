@@ -5,7 +5,7 @@ namespace nk
 	TStatusBar::TStatusBar(const float& w, const float& h,
 		std::string Name, __int64 _id) noexcept
 		:
-		IComponent(Name, _id),
+		Component(Name, _id),
 		window_height(h),
 		window_width(w),
 		status_height(30),

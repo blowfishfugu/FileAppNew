@@ -1,8 +1,8 @@
 #pragma once
-#include "IComponent.h"
+#include "Component.h"
 namespace nk
 {
-	struct TCheckbox : public IComponent
+	struct TCheckbox : public Component
 	{
 		TCheckbox(std::string Name, __int64 _id) noexcept;
 		std::string text;

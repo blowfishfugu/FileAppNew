@@ -3,7 +3,7 @@ namespace nk
 {
 	TButton::TButton(std::string Name, __int64 _id) noexcept
 		:
-		IComponent(Name, _id)
+		Component(Name, _id)
 	{
 		NamedProperties["Text"] = &text;
 	}

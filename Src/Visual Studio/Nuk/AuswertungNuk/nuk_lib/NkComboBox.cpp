@@ -4,7 +4,7 @@ namespace nk
 
 	TCombobox::TCombobox(std::string Name, __int64 _id) noexcept
 		:
-		IComponent(Name, _id)
+		Component(Name, _id)
 	{}
 
 	std::string TCombobox::setText(std::string text)

@@ -1,4 +1,3 @@
-#include <nuklear.h>
 #include "nuk_controls.h"
 
 nk::Pool nk::IComponent::componentPool; //static

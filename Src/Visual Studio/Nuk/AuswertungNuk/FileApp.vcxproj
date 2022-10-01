@@ -103,8 +103,11 @@
     <ClInclude Include="nuk_lib\nuklear_d3d11.h" />
     <ClInclude Include="nuk_lib\nuklear_d3d11_pixel_shader.h" />
     <ClInclude Include="nuk_lib\nuklear_d3d11_vertex_shader.h" />
+    <ClInclude Include="nuk_lib\nuk_config.h" />
     <ClInclude Include="nuk_lib\nuk_controls.h" />
     <ClInclude Include="nuk_lib\nuk_d3dapp.h" />
+    <ClInclude Include="nuk_lib\nuk_declare.h" />
+    <ClInclude Include="nuk_lib\nuk_implement.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\Embarcadero\VCL\Auswertung.cbproj">

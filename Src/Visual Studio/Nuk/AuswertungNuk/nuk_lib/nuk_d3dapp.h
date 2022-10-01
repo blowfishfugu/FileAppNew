@@ -3,16 +3,7 @@
 #define NUK_D3D_APP_H
 #include <d3d11.h>
 
-#define NK_INCLUDE_FIXED_TYPES
-//#define NK_INCLUDE_STANDARD_IO
-#define NK_INCLUDE_STANDARD_VARARGS
-#define NK_INCLUDE_DEFAULT_ALLOCATOR
-#define NK_INCLUDE_VERTEX_BUFFER_OUTPUT
-#define NK_INCLUDE_FONT_BAKING
-#ifdef NK_IMPLEMENTATION
-#undef NK_IMPLEMENTATION
-#endif
-#include <nuklear.h>
+#include <nuk_declare.h>
 
 #ifdef NK_D3D11_IMPLEMENTATION //d3d11-struct
 #undef NK_D3D11_IMPLEMENTATION

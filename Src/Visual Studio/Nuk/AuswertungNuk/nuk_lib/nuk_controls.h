@@ -1,14 +1,8 @@
+#pragma once
 #ifndef NUK_CONTROLS_H
 #define NUK_CONTROLS_H
 
-#include <nuk_declare.h>
 
-
-#include <vector>
-#include <string>
-#include <variant>
-#include <functional>
-#include <MyStdTypes.h>
 
 //OOP-Approach to wrap nk-calls into a classic Dialog-Framework-Hierarchy
 //alternatives might be ECS, where each drawable Item has some predefined

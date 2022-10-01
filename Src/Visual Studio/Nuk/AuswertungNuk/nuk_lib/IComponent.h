@@ -1,25 +1,17 @@
+#pragma once
+#include <nuk_declare.h>
+#include <MyStdTypes.h>
+
+#include <vector>
+#include <string>
+#include <variant>
+#include <functional>
+
+#include "ComponentPool.h"
+
 namespace nk
 {
-	class IComponent;
-	struct Pool
-	{
-		__int64 id = 100;
-		std::vector< std::unique_ptr<IComponent> > _owned;
-		template<typename fw_Type, class... Args>
-		fw_Type* Add(Args&&... ctor_args)
-		{
-			std::unique_ptr<fw_Type> comp
-				= std::make_unique<fw_Type>(
-					std::forward<Args>(ctor_args)...,
-					++id
-					);
-
-			fw_Type* result = comp.get();
-			_owned.emplace_back(std::move(comp));
-			return result;
-		}
-	};
-
+	extern Pool componentPool;
 	//TODO: PropDescriptor{min,max,&current,step,stepPerPixel)
 
 	class IComponent
@@ -48,7 +40,6 @@ namespace nk
 		std::vector<IComponent*> fields;
 		IComponent* FindComponent(std::string const& strField);
 
-		static Pool componentPool;
 		template<typename fw_Type, class... Args>
 		fw_Type* AddField(Args&&... ctor_args)
 		{

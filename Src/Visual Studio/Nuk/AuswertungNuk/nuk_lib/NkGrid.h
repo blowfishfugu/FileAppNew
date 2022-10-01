@@ -1,3 +1,5 @@
+#pragma once
+#include "IComponent.h"
 namespace nk
 {
 	struct TGrid : public IComponent

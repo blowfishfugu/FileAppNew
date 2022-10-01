@@ -91,7 +91,20 @@
     <ClCompile Include="..\..\..\Independed\FileUtil.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NukForm.cpp" />
-    <ClCompile Include="nuk_lib\nuk_controls.cpp" />
+    <ClCompile Include="nuk_lib\IComponent.cpp" />
+    <ClCompile Include="nuk_lib\NkButton.cpp" />
+    <ClCompile Include="nuk_lib\NkCheckBox.cpp" />
+    <ClCompile Include="nuk_lib\NkComboBox.cpp" />
+    <ClCompile Include="nuk_lib\NkEdit.cpp" />
+    <ClCompile Include="nuk_lib\NkForm.cpp" />
+    <ClCompile Include="nuk_lib\NkGrid.cpp" />
+    <ClCompile Include="nuk_lib\NkGroupBox.cpp" />
+    <ClCompile Include="nuk_lib\NkLabel.cpp" />
+    <ClCompile Include="nuk_lib\NkListBox.cpp" />
+    <ClCompile Include="nuk_lib\NkMemo.cpp" />
+    <ClCompile Include="nuk_lib\NkRowLayouts.cpp" />
+    <ClCompile Include="nuk_lib\NkSpaceLayout.cpp" />
+    <ClCompile Include="nuk_lib\NkStatusBar.cpp" />
     <ClCompile Include="nuk_lib\nuk_d3dapp.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -99,10 +112,11 @@
     <ClInclude Include="..\..\..\Independed\FileAppProcess.h" />
     <ClInclude Include="..\..\..\Independed\FileUtil.h" />
     <ClInclude Include="NukForm.h" />
+    <ClInclude Include="nuk_lib\ComponentPool.h" />
     <ClInclude Include="nuk_lib\IComponent.h" />
     <ClInclude Include="nuk_lib\NkButton.h" />
     <ClInclude Include="nuk_lib\NkCheckBox.h" />
-    <ClInclude Include="nuk_lib\NkCombobox.h" />
+    <ClInclude Include="nuk_lib\NkComboBox.h" />
     <ClInclude Include="nuk_lib\NkEdit.h" />
     <ClInclude Include="nuk_lib\NKForm.h" />
     <ClInclude Include="nuk_lib\NkGrid.h" />

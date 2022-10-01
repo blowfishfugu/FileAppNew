@@ -1,4 +1,6 @@
-namespace nk 
+#pragma once
+#include "IComponent.h"
+namespace nk
 {
 	struct TListbox : public IComponent
 	{

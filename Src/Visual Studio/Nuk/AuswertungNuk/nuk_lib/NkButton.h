@@ -1,3 +1,5 @@
+#pragma once
+#include "IComponent.h"
 namespace nk
 {
 	struct TButton : public IComponent

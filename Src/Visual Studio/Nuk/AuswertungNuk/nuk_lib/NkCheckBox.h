@@ -1,3 +1,5 @@
+#pragma once
+#include "IComponent.h"
 namespace nk
 {
 	struct TCheckbox : public IComponent

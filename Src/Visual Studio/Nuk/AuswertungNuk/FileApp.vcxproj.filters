@@ -39,14 +39,53 @@
     <ClCompile Include="..\..\..\Independed\FileAppProcess.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="nuk_lib\nuk_controls.cpp">
-      <Filter>nuk_lib</Filter>
-    </ClCompile>
     <ClCompile Include="NukForm.cpp">
       <Filter>nuk_lib</Filter>
     </ClCompile>
     <ClCompile Include="nuk_lib\nuk_d3dapp.cpp">
       <Filter>nuk_lib\base</Filter>
+    </ClCompile>
+    <ClCompile Include="nuk_lib\NkStatusBar.cpp">
+      <Filter>nuk_lib\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="nuk_lib\NkSpaceLayout.cpp">
+      <Filter>nuk_lib\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="nuk_lib\NkRowLayouts.cpp">
+      <Filter>nuk_lib\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="nuk_lib\NkMemo.cpp">
+      <Filter>nuk_lib\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="nuk_lib\NkListBox.cpp">
+      <Filter>nuk_lib\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="nuk_lib\NkLabel.cpp">
+      <Filter>nuk_lib\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="nuk_lib\NkGroupBox.cpp">
+      <Filter>nuk_lib\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="nuk_lib\NkGrid.cpp">
+      <Filter>nuk_lib\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="nuk_lib\NkForm.cpp">
+      <Filter>nuk_lib\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="nuk_lib\NkEdit.cpp">
+      <Filter>nuk_lib\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="nuk_lib\NkComboBox.cpp">
+      <Filter>nuk_lib\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="nuk_lib\NkCheckBox.cpp">
+      <Filter>nuk_lib\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="nuk_lib\NkButton.cpp">
+      <Filter>nuk_lib\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="nuk_lib\IComponent.cpp">
+      <Filter>nuk_lib\controls</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -98,7 +137,7 @@
     <ClInclude Include="nuk_lib\NkCheckBox.h">
       <Filter>nuk_lib\controls</Filter>
     </ClInclude>
-    <ClInclude Include="nuk_lib\NkCombobox.h">
+    <ClInclude Include="nuk_lib\NkComboBox.h">
       <Filter>nuk_lib\controls</Filter>
     </ClInclude>
     <ClInclude Include="nuk_lib\NkEdit.h">
@@ -129,6 +168,9 @@
       <Filter>nuk_lib\controls</Filter>
     </ClInclude>
     <ClInclude Include="nuk_lib\NKRowLayouts.h">
+      <Filter>nuk_lib\controls</Filter>
+    </ClInclude>
+    <ClInclude Include="nuk_lib\ComponentPool.h">
       <Filter>nuk_lib\controls</Filter>
     </ClInclude>
   </ItemGroup>

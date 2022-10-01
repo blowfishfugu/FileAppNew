@@ -54,7 +54,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\Src\Independed\;$(ProjectDir)nuk_header_only\;$(ProjectDir)..\..\..\..\adecc_Scholar\adecc_Scholar\;$(ProjectDir)..\..\..\..\pugiXML\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\Src\Independed\;$(ProjectDir)nuk_lib\;$(ProjectDir)..\..\..\..\adecc_Scholar\adecc_Scholar\;$(ProjectDir)..\..\..\..\pugiXML\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>BUILD_WITH_NUKLEAR;_WIN64;_MBCS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -69,7 +69,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\Src\Independed\;$(ProjectDir)nuk_header_only\;$(ProjectDir)..\..\..\..\adecc_Scholar\adecc_Scholar\;$(ProjectDir)..\..\..\..\pugiXML\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\Src\Independed\;$(ProjectDir)nuk_lib\;$(ProjectDir)..\..\..\..\adecc_Scholar\adecc_Scholar\;$(ProjectDir)..\..\..\..\pugiXML\src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>BUILD_WITH_NUKLEAR;_WIN64;_MBCS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -91,20 +91,20 @@
     <ClCompile Include="..\..\..\Independed\FileUtil.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NukForm.cpp" />
-    <ClCompile Include="nuk_header_only\nuk_controls.cpp" />
-    <ClCompile Include="nuk_header_only\nuk_d3dapp.cpp" />
+    <ClCompile Include="nuk_lib\nuk_controls.cpp" />
+    <ClCompile Include="nuk_lib\nuk_d3dapp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Embarcadero\VCL\AuswertungPCH1.h" />
     <ClInclude Include="..\..\..\Independed\FileAppProcess.h" />
     <ClInclude Include="..\..\..\Independed\FileUtil.h" />
     <ClInclude Include="NukForm.h" />
-    <ClInclude Include="nuk_header_only\nuklear.h" />
-    <ClInclude Include="nuk_header_only\nuklear_d3d11.h" />
-    <ClInclude Include="nuk_header_only\nuklear_d3d11_pixel_shader.h" />
-    <ClInclude Include="nuk_header_only\nuklear_d3d11_vertex_shader.h" />
-    <ClInclude Include="nuk_header_only\nuk_controls.h" />
-    <ClInclude Include="nuk_header_only\nuk_d3dapp.h" />
+    <ClInclude Include="nuk_lib\nuklear.h" />
+    <ClInclude Include="nuk_lib\nuklear_d3d11.h" />
+    <ClInclude Include="nuk_lib\nuklear_d3d11_pixel_shader.h" />
+    <ClInclude Include="nuk_lib\nuklear_d3d11_vertex_shader.h" />
+    <ClInclude Include="nuk_lib\nuk_controls.h" />
+    <ClInclude Include="nuk_lib\nuk_d3dapp.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\Embarcadero\VCL\Auswertung.cbproj">
@@ -117,7 +117,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="nuk_header_only\nuklear_d3d11.hlsl">
+    <FxCompile Include="nuk_lib\nuklear_d3d11.hlsl">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>

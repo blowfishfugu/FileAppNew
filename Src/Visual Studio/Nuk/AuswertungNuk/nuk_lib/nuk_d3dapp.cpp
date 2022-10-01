@@ -1490,6 +1490,8 @@ void Application::Run( nk::NKForm& mainForm )
 
 			switch (msg.message)
 			{
+#ifndef NDEBUG
+			//nur für reflector relevant
 			case WM_KEYDOWN:
 			{
 				if (msg.wParam == VK_F9) //hardwired
@@ -1501,6 +1503,7 @@ void Application::Run( nk::NKForm& mainForm )
 			default:
 				break;
 			}
+#endif
 			TranslateMessage(&msg);
 			DispatchMessageW(&msg);
 		}
@@ -1509,7 +1512,7 @@ void Application::Run( nk::NKForm& mainForm )
 		mainForm.draw(ctx);
 #ifndef NDEBUG
 		drawReflector(ctx, mainForm);
-		drawOverview(ctx);
+		//drawOverview(ctx);
 #endif
 
 		/* Draw */

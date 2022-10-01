@@ -5,16 +5,7 @@ namespace nk
 	struct NKSpaceChild : public Component
 	{
 		struct nk_rect bounds;
-		NKSpaceChild(struct nk_rect rect, std::string Name, __int64 _id)
-			: Component(Name, _id), bounds(rect)
-		{
-
-			NamedProperties["x"] = &bounds.x;
-			NamedProperties["y"] = &bounds.y;
-			NamedProperties["w"] = &bounds.w;
-			NamedProperties["h"] = &bounds.h;
-
-		}
+		NKSpaceChild(struct nk_rect rect, std::string Name, __int64 _id);
 
 		// Inherited via Component
 		virtual EMyFrameworkType ComponentType() const override;
@@ -27,11 +18,7 @@ namespace nk
 		float height;
 		int widget_count = INT_MAX;
 
-		NKSpace(nk_layout_format format, float height, std::string Name, __int64 _id) :
-			Component(Name, _id), format(format), height(height)
-		{
-			NamedProperties["height"] = &this->height;
-		}
+		NKSpace(nk_layout_format format, float height, std::string Name, __int64 _id);
 
 
 		// Inherited via Component

@@ -11,16 +11,8 @@ namespace nk
 		int cursorpos = 0;
 
 		nk_text_alignment nk_alignment = NK_TEXT_LEFT;
-		void setText(std::string const& txt)
-		{
-			text = txt;
-			cursorpos = static_cast<int>(text.length());
-		}
-		void setText(const char* txt)
-		{
-			text = txt;
-			cursorpos = static_cast<int>(text.length());
-		}
+		void setText(std::string const& txt);
+		void setText(const char* txt);
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::edit;
 		}

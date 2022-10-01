@@ -14,19 +14,9 @@ namespace nk
 		std::vector<THeadItem> Columns;
 		std::vector<std::vector<std::string>> Rows;
 		std::vector<int> selected; // 0,1
-		void clear()
-		{
-			Columns.clear();
-			Rows.clear();
-		}
-		int rowCount() const
-		{
-			return static_cast<int>(Rows.size());
-		}
-		int colCount() const
-		{
-			return static_cast<int>(Columns.size());
-		}
+		void clear();
+		int rowCount() const;
+		int colCount() const;
 
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::listview;

@@ -34,7 +34,7 @@ v	dynamic_row=-2, ///< layout in percentages, resizing
 v	form = -1,     ///< container of drawable components, usually a window
 v	edit = 0,      ///< single-line input field in the framework, value is 0
 v	label = 1,     ///< single-line labeling field in the framework, value is 1
-	button = 3,    ///< button to start an action, value is 3
+v	button = 3,    ///< button to start an action, value is 3
 	listbox = 4,   ///< input field with selectable items in list form, value is 4
 	checkbox = 5,  ///< input field for bool values, value is 5
 	combobox = 6,  ///< control that allows to make a selection from given options or alternatively make an input, value is 6
@@ -74,6 +74,9 @@ void createForm(nk::NKForm& mainForm, const D3D11_VIEWPORT& viewport)
 			label->text = std::string("clicked: ")+ std::to_string(clickCount);
 		}
 	};
+
+	nk::TListbox* lst=staticRow->AddField<nk::TListbox>("lstBox");
+	lst->items = { "item1","item2","item3" };
 
 	nk::TStatusBar* statusBar = mainForm.AddField<nk::TStatusBar>(viewport.Width, viewport.Height, "testStatus");
 	statusBar->text = "statustext";

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NK_LISTBOX_H
+#define NK_LISTBOX_H
 #include "Component.h"
 namespace nk
 {
@@ -14,3 +16,4 @@ namespace nk
 		virtual void draw(struct nk_context* ctx) override;
 	};
 }
+#endif

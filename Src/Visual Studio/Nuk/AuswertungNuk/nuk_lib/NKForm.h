@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NK_FORM_H
+#define NK_FORM_H
 #include "Component.h"
 namespace nk
 {
@@ -16,3 +18,4 @@ namespace nk
 
 	};
 }
+#endif

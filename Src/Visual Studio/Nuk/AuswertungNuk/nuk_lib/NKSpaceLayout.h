@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NK_SPACELAYOUT_H
+#define NK_SPACELAYOUT_H
 #include "Component.h"
 namespace nk
 {
@@ -28,3 +30,4 @@ namespace nk
 
 	};
 }
+#endif

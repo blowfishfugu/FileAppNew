@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NK_BUTTON_H
+#define NK_BUTTON_H
 #include "Component.h"
 namespace nk
 {
@@ -13,3 +15,4 @@ namespace nk
 		virtual void draw(struct nk_context* ctx) override;
 	};
 }
+#endif

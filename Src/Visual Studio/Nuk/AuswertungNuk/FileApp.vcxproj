@@ -111,6 +111,7 @@
     <ClInclude Include="..\..\..\Embarcadero\VCL\AuswertungPCH1.h" />
     <ClInclude Include="..\..\..\Independed\FileAppProcess.h" />
     <ClInclude Include="..\..\..\Independed\FileUtil.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="NukForm.h" />
     <ClInclude Include="nuk_lib\ComponentPool.h" />
     <ClInclude Include="nuk_lib\Component.h" />

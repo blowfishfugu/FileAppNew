@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NK_LISTVIEW_H
+#define NK_LISTVIEW_H
 #include "Component.h"
 namespace nk
 {
@@ -25,3 +27,4 @@ namespace nk
 	};
 
 }
+#endif

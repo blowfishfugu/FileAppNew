@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NK_COMPONENT_POOL_H
+#define NK_COMPONENT_POOL_H
 #include <vector>
 #include <memory>
 
@@ -25,3 +27,4 @@ namespace nk
 		}
 	};
 }
+#endif

@@ -7,6 +7,8 @@
 #include <variant>
 #include <functional>
 
+#ifndef NK_COMPONENT_H
+#define NK_COMPONENT_H
 #include "ComponentPool.h"
 
 namespace nk
@@ -51,3 +53,4 @@ namespace nk
 		}
 	};
 }
+#endif

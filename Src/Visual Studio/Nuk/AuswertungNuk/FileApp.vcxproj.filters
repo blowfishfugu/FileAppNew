@@ -173,6 +173,9 @@
     <ClInclude Include="nuk_lib\Component.h">
       <Filter>nuk_lib\controls</Filter>
     </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\Embarcadero\VCL\Auswertung.cbproj" />

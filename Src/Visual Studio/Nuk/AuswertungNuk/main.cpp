@@ -25,6 +25,26 @@
 constexpr int WINDOW_WIDTH = 800;
 constexpr int WINDOW_HEIGHT = 600;
 
+void createForm(nk::NKForm& mainForm, const D3D11_VIEWPORT& viewport)
+{
+	mainForm.title = "Auswertung";
+
+	nk::NKRowDynamic* rowLayout = mainForm.AddField<nk::NKRowDynamic>(30.0f, 2, "");
+	rowLayout->ratios = { 0.25f, 0.75f };
+
+	nk::TLabel* edit = rowLayout->AddField<nk::TLabel>("lblDirectory", "Path");
+	
+	nk::TEdit* edit2 = rowLayout->AddField<nk::TEdit>("edtDirectory");
+	edit2->setText("../../../../../Embarcadero/VCL/");
+
+	for (int some = 0; some < 13; ++some) {
+		rowLayout->AddField<nk::TLabel>("", std::to_string(some));
+	}
+
+	nk::TStatusBar* statusBar = mainForm.AddField<nk::TStatusBar>(viewport.Width, viewport.Height, "testStatus");
+	statusBar->text = "statustext";
+}
+
 #ifdef NDEBUG
 int WINAPI _tWinMain( _In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPTSTR, _In_ int)
 #else
@@ -39,19 +59,7 @@ int main(int argc, char** argv)
 	const D3D11_VIEWPORT& viewport = app.GetViewport();
 	
 	nk::NKForm mainForm(viewport.Width, viewport.Height, "Demo", 0);
-	mainForm.title = "Auswertung";
-
-	nk::NKRowDynamic* rowLayout = mainForm.AddField<nk::NKRowDynamic>(30.0f, 2, "");
-	
-	nk::TEdit* edit = rowLayout->AddField<nk::TEdit>("path");
-	edit->setText("hello"); 
-	
-	nk::TEdit* edit2 = rowLayout->AddField<nk::TEdit>("second");
-	edit2->setText("hello2");
-	
-
-	nk::TStatusBar* statusBar = mainForm.AddField<nk::TStatusBar>(viewport.Width, viewport.Height, "testStatus");
-	statusBar->text = "statustext";
+	createForm(mainForm, viewport);
 	
 	//Form-Created
 	try

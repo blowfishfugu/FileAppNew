@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NK_ROWLAYOUTS_H
+#define NK_ROWLAYOUTS_H
 #include "Component.h"
 namespace nk
 {
@@ -6,6 +8,7 @@ namespace nk
 	{
 		float height;
 		int cols;
+		std::vector<float> ratios; //should add up to 1.0f
 		NKRowDynamic(float height, int cols,
 			std::string Name, __int64 _id) noexcept;
 		virtual EMyFrameworkType ComponentType() const override;
@@ -25,3 +28,4 @@ namespace nk
 		virtual void draw(struct nk_context * ctx) override;
 	};
 }
+#endif

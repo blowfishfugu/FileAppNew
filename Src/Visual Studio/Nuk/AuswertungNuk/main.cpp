@@ -25,6 +25,24 @@
 constexpr int WINDOW_WIDTH = 800;
 constexpr int WINDOW_HEIGHT = 600;
 
+/* Covered Controls
+	space_layout_child=-5, ///< spacing in a space_layout
+	space_layout=-4, ///< layoutcontainer for spacer positioning
+	groupbox = 2,  ///< container for grouping other display and input fields, value is 2
+v	static_row=-3,  ///< layout in units, absolute, non-resizing
+v	dynamic_row=-2, ///< layout in percentages, resizing
+v	form = -1,     ///< container of drawable components, usually a window
+v	edit = 0,      ///< single-line input field in the framework, value is 0
+v	label = 1,     ///< single-line labeling field in the framework, value is 1
+	button = 3,    ///< button to start an action, value is 3
+	listbox = 4,   ///< input field with selectable items in list form, value is 4
+	checkbox = 5,  ///< input field for bool values, value is 5
+	combobox = 6,  ///< control that allows to make a selection from given options or alternatively make an input, value is 6
+	memo = 7,      ///< multiline input field, value is 7
+v	statusbar = 8, ///< display field at the bottom of the window, value is 8
+	listview = 9   ///< tableview / list as display field for values in table form, value is 9
+*/
+
 void createForm(nk::NKForm& mainForm, const D3D11_VIEWPORT& viewport)
 {
 	mainForm.title = "Auswertung";
@@ -40,6 +58,22 @@ void createForm(nk::NKForm& mainForm, const D3D11_VIEWPORT& viewport)
 	for (int some = 0; some < 3; ++some) {
 		rowLayout->AddField<nk::TLabel>("", std::to_string(some));
 	}
+
+	nk::NKRowStatic* staticRow = mainForm.AddField<nk::NKRowStatic>(30.0f,300,1,"");
+	staticRow->AddField<nk::TLabel>("lblStaticRows", "More Controls");
+
+	nk::TButton* button= staticRow->AddField<nk::TButton>("btnTest");
+	button->text = "Count";
+	static int clickCount = 0;
+	button->onClick = [&mainForm]() {
+		clickCount++;
+		nk::Component* comp= mainForm.FindComponent("lblStaticRows");
+		nk::TLabel* label = dynamic_cast<nk::TLabel*>(comp);
+		if (label)
+		{
+			label->text = std::string("clicked: ")+ std::to_string(clickCount);
+		}
+	};
 
 	nk::TStatusBar* statusBar = mainForm.AddField<nk::TStatusBar>(viewport.Width, viewport.Height, "testStatus");
 	statusBar->text = "statustext";

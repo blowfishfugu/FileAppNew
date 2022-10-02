@@ -10,6 +10,13 @@ namespace nk
 
 	void TButton::draw(struct nk_context* ctx)
 	{
+		if (nk_button_label(ctx, text.c_str()))
+		{
+			if (this->onClick)
+			{
+				onClick();
+			}
+		}
 	}
 
 }

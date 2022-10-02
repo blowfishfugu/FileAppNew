@@ -4,13 +4,16 @@ namespace nk
 
 	TListbox::TListbox(std::string Name, __int64 _id) noexcept
 		:
+		item_height(30.0f),
 		Component(Name, _id)
-	{}
+	{
+		NamedProperties["item_height"] = &item_height;
+	}
 
 	void TListbox::draw(struct nk_context* ctx)
 	{
 		syncSelectionSize();
-		nk_layout_row_dynamic(ctx, 30.0f, 1);
+		nk_layout_row_dynamic(ctx, item_height, 1);
 
 		for (int i = 0; i < items.size(); ++i)
 		{

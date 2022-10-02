@@ -9,7 +9,8 @@ namespace nk
 		TListbox(std::string Name, __int64 _id) noexcept;
 		std::vector<std::string> items;
 		std::vector<nk_bool> selected;
-		
+		float item_height;
+
 		size_t count() const { return items.size(); }
 		virtual EMyFrameworkType ComponentType() const override {
 			return EMyFrameworkType::listbox;

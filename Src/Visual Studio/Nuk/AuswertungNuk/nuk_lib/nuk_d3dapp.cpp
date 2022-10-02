@@ -1429,17 +1429,17 @@ drawOverview(struct nk_context *ctx)
 #endif
 
 bool showReflector = false;
-void reflect(struct nk_context* ctx, nk::Component* comp)
+void reflect(struct nk_context* ctx, nk::Component* comp, int& treeid)
 {
 	comp->reflect(ctx); //properties
 	
 	//props of children
-	int treeid = 10;
+	treeid++;
 	for (nk::Component* child : comp->fields)
 	{
 		if (nk_tree_push_id(ctx, NK_TREE_NODE, child->name.c_str(), NK_MINIMIZED, ++treeid))
 		{
-			reflect(ctx,child);
+			reflect(ctx,child,treeid);
 			nk_tree_pop(ctx);
 		}
 	}
@@ -1449,11 +1449,12 @@ void reflect(struct nk_context* ctx, nk::Component* comp)
 void drawReflector(struct nk_context* ctx, nk::NKForm& form)
 {
 	if (!showReflector) { return; }
+	int treeid = 10;
 	if (nk_begin(ctx, "Reflector", nk_rect(400, 20, 500, 500), NK_WINDOW_BORDER | NK_WINDOW_SCALABLE | NK_WINDOW_MOVABLE | NK_WINDOW_MINIMIZABLE))
 	{
 		if (nk_tree_push(ctx, NK_TREE_TAB, form.name.c_str(), NK_MINIMIZED))
 		{
-			reflect(ctx, &form);
+			reflect(ctx, &form,treeid);
 			nk_tree_pop(ctx);
 		}
 	}

@@ -8,7 +8,7 @@ namespace nk
 	{
 		float height;
 		int cols;
-		std::vector<float> ratios; //should add up to 1.0f
+		std::vector<float> ratios; //percentages relative to parent-width
 		NKRowDynamic(float height, int cols,
 			std::string Name, __int64 _id) noexcept;
 		virtual EMyFrameworkType ComponentType() const override;

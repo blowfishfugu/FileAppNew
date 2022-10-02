@@ -37,7 +37,7 @@ void createForm(nk::NKForm& mainForm, const D3D11_VIEWPORT& viewport)
 	nk::TEdit* edit2 = rowLayout->AddField<nk::TEdit>("edtDirectory");
 	edit2->setText("../../../../../Embarcadero/VCL/");
 
-	for (int some = 0; some < 13; ++some) {
+	for (int some = 0; some < 3; ++some) {
 		rowLayout->AddField<nk::TLabel>("", std::to_string(some));
 	}
 

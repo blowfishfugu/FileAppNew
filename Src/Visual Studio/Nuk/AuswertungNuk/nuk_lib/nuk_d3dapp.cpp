@@ -1476,9 +1476,9 @@ void Application::Run( nk::NKForm& mainForm )
 			if (msg.message == WM_QUIT)
 				running = false;
 
+#ifndef NDEBUG
 			switch (msg.message)
 			{
-#ifndef NDEBUG
 			//nur für reflector relevant
 			case WM_KEYDOWN:
 			{

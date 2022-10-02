@@ -7,6 +7,7 @@
 
 #include "nuk_d3dapp.h"
 #include <assert.h>
+#include <MyStdTypes.h>
 
 //TODO: Use ComPtr !!
 IDXGISwapChain *Application::swap_chain=nullptr;
@@ -1431,16 +1432,45 @@ drawOverview(struct nk_context *ctx)
 bool showReflector = false;
 void reflect(struct nk_context* ctx, nk::Component* comp, int& treeid)
 {
+	static std::map<EMyFrameworkType, std::string> TypeNames{
+		{ EMyFrameworkType::space_layout_child ," (layoutchild)"},
+		{ EMyFrameworkType::space_layout ,		" (spacelayout)"},
+		{ EMyFrameworkType::static_row ,		" (staticrow)"},
+		{ EMyFrameworkType::dynamic_row ,		" (dynamicrow)"},
+		{ EMyFrameworkType::form ,				" (form)"},
+		{ EMyFrameworkType::edit ,				" (edit)"},
+		{ EMyFrameworkType::label ,				" (label)"},
+		{ EMyFrameworkType::groupbox ,			" (groupbox)"},
+		{ EMyFrameworkType::button ,			" (button)"},
+		{ EMyFrameworkType::listbox ,			" (listbox)"},
+		{ EMyFrameworkType::checkbox ,			" (checkbox)"},
+		{ EMyFrameworkType::combobox ,			" (combobox)"},
+		{ EMyFrameworkType::memo ,				" (memo)"},
+		{ EMyFrameworkType::statusbar ,			" (statusbar)"},
+		{ EMyFrameworkType::listview ,			" (listview)"},
+	};
+
+	auto lookupTypeName = [](const nk::Component* comp) ->const std::string {
+		auto found = TypeNames.find(comp->ComponentType());
+		if (found == TypeNames.end()) { return "!(unknown)"; }
+		return found->second;
+	};
+
 	comp->reflect(ctx); //properties
+	treeid++;
 	
 	//props of children
-	treeid++;
 	for (nk::Component* child : comp->fields)
 	{
-		if (nk_tree_push_id(ctx, NK_TREE_NODE, child->name.c_str(), NK_MINIMIZED, ++treeid))
+		std::string name = child->name.c_str() + lookupTypeName(child);
+		if (nk_tree_push_id(ctx, NK_TREE_NODE, name.c_str(), NK_MINIMIZED, ++treeid))
 		{
 			reflect(ctx,child,treeid);
 			nk_tree_pop(ctx);
+		}
+		else
+		{
+			treeid++; //ids von zugeklappten mitzählen
 		}
 	}
 }

@@ -78,6 +78,13 @@ void createForm(nk::NKForm& mainForm, const D3D11_VIEWPORT& viewport)
 	nk::TListbox* lst=staticRow->AddField<nk::TListbox>("lstBox");
 	lst->items = { "item1","item2","item3" };
 
+	nk::TCheckbox* checkBox = staticRow->AddField<nk::TCheckbox>("chkOnOff");
+	checkBox->text = "yes/no";
+	checkBox->onCheckChanged = [](nk::TCheckbox* sender, int checkstate)
+	{
+		sender->text = checkstate == 1 ? "yes" : "no";
+	};
+
 	nk::TStatusBar* statusBar = mainForm.AddField<nk::TStatusBar>(viewport.Width, viewport.Height, "testStatus");
 	statusBar->text = "statustext";
 }

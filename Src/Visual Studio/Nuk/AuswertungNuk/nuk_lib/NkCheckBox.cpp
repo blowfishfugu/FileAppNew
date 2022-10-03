@@ -9,6 +9,15 @@ namespace nk
 
 	void TCheckbox::draw(struct nk_context* ctx)
 	{
+		int oldstate = checkstate;
+		nk_checkbox_label(ctx, text.c_str(), &this->checkstate);
+		if (checkstate != oldstate)
+		{
+			if (onCheckChanged)
+			{
+				onCheckChanged(this, checkstate);
+			}
+		}
 	}
 
 }

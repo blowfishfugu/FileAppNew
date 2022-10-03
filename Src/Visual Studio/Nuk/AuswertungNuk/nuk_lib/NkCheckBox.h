@@ -13,6 +13,9 @@ namespace nk
 			return EMyFrameworkType::checkbox;
 		}
 		virtual void draw(struct nk_context* ctx) override;
+
+		//function<- TCheckBox sender, int checkstate
+		std::function<void(TCheckbox*,int)> onCheckChanged = nullptr;
 	};
 }
 #endif

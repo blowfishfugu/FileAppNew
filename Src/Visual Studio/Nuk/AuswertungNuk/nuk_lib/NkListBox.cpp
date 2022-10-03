@@ -15,7 +15,7 @@ namespace nk
 		syncSelectionSize();
 		nk_layout_row_dynamic(ctx, item_height, 1);
 
-		for (int i = 0; i < items.size(); ++i)
+		for (size_t i = 0ull; i < items.size(); ++i)
 		{
 			std::string& txt = items[i];
 			nk_selectable_label(ctx, txt.c_str(), nk_text_alignment::NK_TEXT_LEFT, &selected[i]);
@@ -26,7 +26,7 @@ namespace nk
 	{
 		if (items.size() > selected.size())
 		{
-			for (int b = selected.size(); b < items.size(); ++b)
+			for (size_t b = selected.size(); b < items.size(); ++b)
 			{
 				selected.push_back(0);
 			}

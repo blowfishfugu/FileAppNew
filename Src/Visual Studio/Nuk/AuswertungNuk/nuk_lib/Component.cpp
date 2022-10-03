@@ -43,7 +43,7 @@ namespace nk
 			if (std::holds_alternative<std::string*>(prop))
 			{
 				std::string* pStr = std::get<std::string*>(prop);
-				nk_edit_string_zero_terminated(ctx, NK_EDIT_SIMPLE, pStr->data(), pStr->capacity(), nk_filter_default);
+				nk_edit_string_zero_terminated(ctx, NK_EDIT_SIMPLE, pStr->data(), static_cast<int>(pStr->capacity()), nk_filter_default);
 			}
 			else if (std::holds_alternative<int*>(prop))
 			{

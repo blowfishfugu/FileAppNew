@@ -36,7 +36,7 @@ v	edit = 0,      ///< single-line input field in the framework, value is 0
 v	label = 1,     ///< single-line labeling field in the framework, value is 1
 v	button = 3,    ///< button to start an action, value is 3
 v	listbox = 4,   ///< input field with selectable items in list form, value is 4
-	checkbox = 5,  ///< input field for bool values, value is 5
+v	checkbox = 5,  ///< input field for bool values, value is 5
 	combobox = 6,  ///< control that allows to make a selection from given options or alternatively make an input, value is 6
 	memo = 7,      ///< multiline input field, value is 7
 v	statusbar = 8, ///< display field at the bottom of the window, value is 8
@@ -84,6 +84,11 @@ void createForm(nk::NKForm& mainForm, const D3D11_VIEWPORT& viewport)
 	{
 		sender->text = checkstate == 1 ? "yes" : "no";
 	};
+
+	nk::TCombobox* comboBox = staticRow->AddField<nk::TCombobox>("cmbTypeList", 300.0f,400.0f );
+	comboBox->setText("combo1");
+	comboBox->setText("combo2");
+	comboBox->setText("lastText");
 
 	nk::TStatusBar* statusBar = mainForm.AddField<nk::TStatusBar>(viewport.Width, viewport.Height, "testStatus");
 	statusBar->text = "statustext";

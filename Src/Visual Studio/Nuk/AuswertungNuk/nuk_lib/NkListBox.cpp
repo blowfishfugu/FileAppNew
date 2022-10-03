@@ -7,7 +7,7 @@ namespace nk
 		item_height(30.0f),
 		Component(Name, _id)
 	{
-		NamedProperties["item_height"] = &item_height;
+		NamedProperties["item_height"] = &this->item_height;
 	}
 
 	void TListbox::draw(struct nk_context* ctx)

@@ -6,8 +6,8 @@ namespace nk
 		:
 		Component(Name, _id)
 	{
-		text.resize(_MAX_PATH);
-		NamedProperties["Text"] = &text;
+		text.reserve(128);
+		NamedProperties["Text"] = &this->text;
 	}
 
 	void TEdit::setText(std::string const & txt)
@@ -24,7 +24,7 @@ namespace nk
 
 	void TEdit::draw(struct nk_context* ctx)
 	{
-		nk_edit_string_zero_terminated(ctx, NK_EDIT_SIMPLE, text.data(), static_cast<int>(text.capacity()), nk_filter_default);
+		nk_edit_string(ctx, NK_EDIT_SIMPLE, text.data(), &cursorpos, static_cast<int>(text.capacity()), nk_filter_default);
 	}
 
 }

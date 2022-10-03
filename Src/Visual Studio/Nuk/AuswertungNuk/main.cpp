@@ -28,17 +28,17 @@ constexpr int WINDOW_HEIGHT = 600;
 /* Covered Controls
 	space_layout_child=-5, ///< spacing in a space_layout
 	space_layout=-4, ///< layoutcontainer for spacer positioning
-	groupbox = 2,  ///< container for grouping other display and input fields, value is 2
+x (childs invisible)	groupbox = 2,  ///< container for grouping other display and input fields, value is 2
 v	static_row=-3,  ///< layout in units, absolute, non-resizing
 v	dynamic_row=-2, ///< layout in percentages, resizing
 v	form = -1,     ///< container of drawable components, usually a window
-v	edit = 0,      ///< single-line input field in the framework, value is 0
+w (todo: nuklear caps length!)	edit = 0,      ///< single-line input field in the framework, value is 0
 v	label = 1,     ///< single-line labeling field in the framework, value is 1
 v	button = 3,    ///< button to start an action, value is 3
 v	listbox = 4,   ///< input field with selectable items in list form, value is 4
 v	checkbox = 5,  ///< input field for bool values, value is 5
-	combobox = 6,  ///< control that allows to make a selection from given options or alternatively make an input, value is 6
-	memo = 7,      ///< multiline input field, value is 7
+v	combobox = 6,  ///< control that allows to make a selection from given options or alternatively make an input, value is 6
+w (todo: nuklear caps length!)	memo = 7,      ///< multiline input field, value is 7
 v	statusbar = 8, ///< display field at the bottom of the window, value is 8
 	listview = 9   ///< tableview / list as display field for values in table form, value is 9
 */
@@ -89,6 +89,16 @@ void createForm(nk::NKForm& mainForm, const D3D11_VIEWPORT& viewport)
 	comboBox->setText("combo1");
 	comboBox->setText("combo2");
 	comboBox->setText("lastText");
+
+	nk::TMemo* memo=staticRow
+					->AddField<nk::NKRowStatic>(500.0f,400,1,"")
+					->AddField<nk::TMemo>("txtBox");
+	memo->setText("line1\nline2\nline3");
+
+	nk::TGroupBox* groupBox = staticRow->AddField<nk::TGroupBox>("grpForMemo", 100.0f, 400 );
+	groupBox->title = "MemoGroup";
+	groupBox->AddField<nk::TCheckbox>("btnTest1", "Action 1");
+	groupBox->AddField<nk::TCheckbox>("btnTest2", "Action 2");
 
 	nk::TStatusBar* statusBar = mainForm.AddField<nk::TStatusBar>(viewport.Width, viewport.Height, "testStatus");
 	statusBar->text = "statustext";

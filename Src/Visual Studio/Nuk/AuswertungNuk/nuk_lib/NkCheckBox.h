@@ -7,6 +7,7 @@ namespace nk
 	struct TCheckbox : public Component
 	{
 		TCheckbox(std::string Name, __int64 _id) noexcept;
+		TCheckbox(std::string Name, std::string text, __int64 _id) noexcept;
 		std::string text;
 		int checkstate = 0; //tristate?
 		virtual EMyFrameworkType ComponentType() const override {

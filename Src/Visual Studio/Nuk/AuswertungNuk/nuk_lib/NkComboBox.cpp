@@ -7,9 +7,9 @@ namespace nk
 		bounds{ w,h },
 		Component(Name, _id)
 	{
-		NamedProperties["width"] = &bounds.x;
-		NamedProperties["height"] = &bounds.y;
-		NamedProperties["itemindex"] = &itemindex;
+		NamedProperties["width"] = &this->bounds.x;
+		NamedProperties["height"] = &this->bounds.y;
+		NamedProperties["itemindex"] = &this->itemindex;
 	}
 
 	TCombobox::~TCombobox()

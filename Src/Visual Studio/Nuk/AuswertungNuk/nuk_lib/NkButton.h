@@ -7,6 +7,7 @@ namespace nk
 	struct TButton : public Component
 	{
 		TButton(std::string Name, __int64 _id) noexcept;
+		TButton(std::string Name, std::string text, __int64 _id) noexcept;
 		std::string text;
 		std::function<void()> onClick = nullptr;
 		virtual EMyFrameworkType ComponentType() const override {

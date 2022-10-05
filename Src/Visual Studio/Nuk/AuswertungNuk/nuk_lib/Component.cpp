@@ -13,6 +13,7 @@ namespace nk
 			name = std::to_string(id);
 		}
 		NamedProperties["Name"] = &name;
+		NamedProperties["Visible"] = &visible;
 	}
 
 	void Component::drawChilds(struct nk_context* ctx)

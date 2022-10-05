@@ -43,7 +43,7 @@ v	statusbar = 8, ///< display field at the bottom of the window, value is 8
 	listview = 9   ///< tableview / list as display field for values in table form, value is 9
 */
 
-void createForm(nk::NKForm& mainForm, const D3D11_VIEWPORT& viewport)
+void createForm(nk::NKForm& mainForm)
 {
 	mainForm.title = "Auswertung";
 
@@ -100,7 +100,7 @@ void createForm(nk::NKForm& mainForm, const D3D11_VIEWPORT& viewport)
 	groupBox->AddField<nk::TCheckbox>("btnTest1", "Action 1");
 	groupBox->AddField<nk::TCheckbox>("btnTest2", "Action 2");
 
-	nk::TStatusBar* statusBar = mainForm.AddField<nk::TStatusBar>(viewport.Width, viewport.Height, "testStatus");
+	nk::TStatusBar* statusBar = mainForm.AddField<nk::TStatusBar>(mainForm.Width, mainForm.Height, "testStatus");
 	statusBar->text = "statustext";
 }
 
@@ -118,7 +118,7 @@ int main(int argc, char** argv)
 	const D3D11_VIEWPORT& viewport = app.GetViewport();
 	
 	nk::NKForm mainForm(viewport.Width, viewport.Height, "Demo", 0);
-	createForm(mainForm, viewport);
+	createForm(mainForm);
 	
 	//Form-Created
 	try

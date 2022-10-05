@@ -17,8 +17,24 @@ namespace nk
 		return EMyFrameworkType::form;
 	}
 
+	void NKForm::doClose(NKForm::NKResult result)
+	{
+		this->visible = 0;
+		if (onClose)
+		{
+			onClose(*this, result);
+		}
+	}
+
 	void NKForm::draw(struct nk_context* ctx)
 	{
+		if (!visible) { return; }
+		if (onCreate != nullptr) 
+		{
+			onCreate(*this);
+			onCreate = nullptr; //<-singleshot
+		}
+
 		if (nk_begin_titled(ctx, name.c_str(), title.c_str(),
 			nk_rect(0.0f, 0.0f, Width*0.8f, Height*0.8f),
 			NK_WINDOW_BORDER | NK_WINDOW_TITLE

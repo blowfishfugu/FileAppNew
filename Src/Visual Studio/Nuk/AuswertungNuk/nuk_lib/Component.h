@@ -25,6 +25,7 @@ namespace nk
 
 		std::string name;
 		__int64 id = 0; //<- if name is empty we need a unique id
+		int visible = 1;
 
 		using BoundProp = std::variant<std::string*, int*, float*, double*>; //<-- hier fehlt noch nk_layout_format für den Spacer
 		std::map<std::string, BoundProp> NamedProperties;
@@ -51,6 +52,7 @@ namespace nk
 			this->fields.push_back(comp);
 			return comp;
 		}
+		
 	};
 }
 #endif

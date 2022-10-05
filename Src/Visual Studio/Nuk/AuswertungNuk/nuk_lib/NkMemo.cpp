@@ -8,7 +8,7 @@ namespace nk
 		box_len(static_cast<int>(data.size()))
 	{
 		data.reserve(64 * 1024); //64K.. genug?
-		box_len = data.size();
+		box_len = static_cast<int>(data.size());
 		NamedProperties["Text"] = &data;
 	}
 

@@ -27,6 +27,7 @@ namespace nk
 
 	void TGrid::draw(struct nk_context* ctx)
 	{
+		if (!visible) { return; }
 	}
 
 }

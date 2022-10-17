@@ -21,6 +21,7 @@ namespace nk
 
 	void TMemo::draw(struct nk_context* ctx)
 	{
+		if (!visible) { return; }
 		//nk_layout_row_static(ctx, this->height, ctx->current->bounds.w, 1); //height?
 		nk_edit_string(ctx, NK_EDIT_BOX, data.data(), &box_len, static_cast<int>(data.capacity()), nk_filter_default);
 	}

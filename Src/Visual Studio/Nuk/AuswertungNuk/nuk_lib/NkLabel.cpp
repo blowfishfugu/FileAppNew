@@ -7,11 +7,13 @@ namespace nk
 		Component(Name, _id),
 		text(Text)
 	{
+		text.reserve(_MAX_PATH);
 		NamedProperties["Text"] = &text;
 	}
 
 	void TLabel::draw(struct nk_context* ctx)
 	{
+		if (!visible) { return; }
 		nk_label(ctx, text.c_str(), nk_alignment);
 	}
 

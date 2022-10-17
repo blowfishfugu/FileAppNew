@@ -12,6 +12,7 @@ namespace nk
 
 	void TListbox::draw(struct nk_context* ctx)
 	{
+		if (!visible) { return; }
 		syncSelectionSize();
 		nk_layout_row_dynamic(ctx, item_height, 1);
 

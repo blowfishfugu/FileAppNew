@@ -13,6 +13,7 @@ namespace nk
 
 	void NKSpace::draw(struct nk_context * ctx)
 	{
+		if (!visible) { return; }
 		nk_layout_space_begin(ctx, format, height, widget_count);
 		this->drawChilds(ctx);
 		nk_layout_space_end(ctx);
@@ -36,6 +37,7 @@ namespace nk
 
 	void NKSpaceChild::draw(nk_context * ctx)
 	{
+		if (!visible) { return; }
 		nk_layout_space_push(ctx, bounds);
 		this->drawChilds(ctx);
 	}

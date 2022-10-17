@@ -15,6 +15,7 @@ namespace nk
 
 	void TGroupBox::draw(struct nk_context* ctx)
 	{
+		if (!visible) { return; }
 		nk_layout_row_static(ctx, height, width, cols);
 		if (nk_group_begin(ctx, name.c_str(), nk_panel_flags::NK_WINDOW_BORDER))
 		{

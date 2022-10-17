@@ -64,6 +64,7 @@ namespace nk
 
 	void TCombobox::draw(struct nk_context* ctx)
 	{
+		if (!visible) { return; }
 		//hmm. nk_combo_begin_label + nk_selectable_label, vermutlich sicherer als char**
 		if (items.size() == 0)
 		{

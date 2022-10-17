@@ -17,6 +17,7 @@ namespace nk
 
 	void TButton::draw(struct nk_context* ctx)
 	{
+		if (!visible) { return; }
 		if (nk_button_label(ctx, text.c_str()))
 		{
 			if (this->onClick)

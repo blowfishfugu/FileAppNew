@@ -18,6 +18,7 @@ namespace nk
 
 	void TCheckbox::draw(struct nk_context* ctx)
 	{
+		if (!visible) { return; }
 		int oldstate = checkstate;
 		nk_checkbox_label(ctx, text.c_str(), &this->checkstate);
 		if (checkstate != oldstate)

@@ -91,7 +91,7 @@ void createForm(nk::NKForm& mainForm)
 	comboBox->setText("lastText");
 
 	nk::TMemo* memo=staticRow
-					->AddField<nk::NKRowStatic>(500.0f,400,1,"")
+					->AddField<nk::NKRowStatic>(500.0f,200,1,"")
 					->AddField<nk::TMemo>("txtBox");
 	memo->setText("line1\nline2\nline3");
 
@@ -103,11 +103,11 @@ void createForm(nk::NKForm& mainForm)
 	nk::NKSpace* panel = mainForm.AddField<nk::NKSpace>(nk_layout_format::NK_STATIC, 400.0f, "pnlGroup");
 	for (int i = 0; i < 4; ++i)
 	{
-		nk::NKSpaceChild* subArea1 = panel->AddField<nk::NKSpaceChild>(nk_rect(10, 10*i, 100, 30), "spcSub1");
+		nk::NKSpaceChild* subArea1 = panel->AddField<nk::NKSpaceChild>(nk_rect(10.0f, 10.0f*i, 100.0f, 30.0f), "");
 		std::string name = std::string("txtX") + std::to_string(i);
 		subArea1->AddField<nk::TLabel>(name, name );
 	}
-	nk::NKSpaceChild* subArea2 = panel->AddField<nk::NKSpaceChild>(nk_rect(110, 100, 80, 180), "spcSub2");
+	nk::NKSpaceChild* subArea2 = panel->AddField<nk::NKSpaceChild>(nk_rect(110.0f, 100.0f, 80.0f, 180.0f), "");
 	subArea2->AddField<nk::TLabel>("txtX2", "txtX2");
 
 	nk::TStatusBar* statusBar = mainForm.AddField<nk::TStatusBar>(mainForm.Width, mainForm.Height, "testStatus");

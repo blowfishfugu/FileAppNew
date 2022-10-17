@@ -14,6 +14,7 @@ namespace nk
 
 	void NKRowDynamic::draw(struct nk_context * ctx)
 	{
+		if (!visible) { return; }
 		if (cols <= 0) { return; }
 
 		if (ratios.size() == 0)
@@ -68,6 +69,7 @@ namespace nk
 
 	void NKRowStatic::draw(struct nk_context * ctx)
 	{
+		if (!visible) { return; }
 		nk_layout_row_static(ctx, height, item_width, cols);
 		this->drawChilds(ctx);
 	}

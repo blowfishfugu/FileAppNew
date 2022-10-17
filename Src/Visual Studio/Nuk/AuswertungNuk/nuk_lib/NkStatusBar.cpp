@@ -16,6 +16,7 @@ namespace nk
 
 	void TStatusBar::draw(struct nk_context* ctx)
 	{
+		if (!visible) { return; }
 		if (nk_begin(ctx, name.c_str(),
 			nk_rect(2.0f, window_height - status_height, window_width - 2.0f, status_height),
 			NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))

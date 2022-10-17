@@ -6,7 +6,7 @@ namespace nk
 		:
 		Component(Name, _id)
 	{
-		text.reserve(128);
+		text.reserve(_MAX_PATH);
 		NamedProperties["Text"] = &this->text;
 	}
 
@@ -24,6 +24,7 @@ namespace nk
 
 	void TEdit::draw(struct nk_context* ctx)
 	{
+		if (!visible) { return; }
 		nk_edit_string(ctx, NK_EDIT_SIMPLE, text.data(), &cursorpos, static_cast<int>(text.capacity()), nk_filter_default);
 	}
 

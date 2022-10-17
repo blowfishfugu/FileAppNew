@@ -100,6 +100,16 @@ void createForm(nk::NKForm& mainForm)
 	groupBox->AddField<nk::TCheckbox>("btnTest1", "Action 1");
 	groupBox->AddField<nk::TCheckbox>("btnTest2", "Action 2");
 
+	nk::NKSpace* panel = mainForm.AddField<nk::NKSpace>(nk_layout_format::NK_STATIC, 400.0f, "pnlGroup");
+	for (int i = 0; i < 4; ++i)
+	{
+		nk::NKSpaceChild* subArea1 = panel->AddField<nk::NKSpaceChild>(nk_rect(10, 10*i, 100, 30), "spcSub1");
+		std::string name = std::string("txtX") + std::to_string(i);
+		subArea1->AddField<nk::TLabel>(name, name );
+	}
+	nk::NKSpaceChild* subArea2 = panel->AddField<nk::NKSpaceChild>(nk_rect(110, 100, 80, 180), "spcSub2");
+	subArea2->AddField<nk::TLabel>("txtX2", "txtX2");
+
 	nk::TStatusBar* statusBar = mainForm.AddField<nk::TStatusBar>(mainForm.Width, mainForm.Height, "testStatus");
 	statusBar->text = "statustext";
 }

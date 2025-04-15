@@ -14,13 +14,16 @@ public:
 	protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
 
-
+	CStatusBar m_statusBar;
 // Implementation
 protected:
 	HICON m_hIcon;
-
+	void InitStatusBar();
 	// Generated message map functions
 	virtual BOOL OnInitDialog();
 	afx_msg void OnPaint();
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
+	virtual BOOL OnCommand(WPARAM wParam, LPARAM lParam);
 };

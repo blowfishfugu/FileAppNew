@@ -1,16 +1,10 @@
-
-// AuswertungDlg.h : header file
-//
-
 #pragma once
+#include "afxdialogex.h"
 
-
-// CAuswertungDlg dialog
 class CAuswertungDlg : public CDialogEx
 {
-// Construction
 public:
-	CAuswertungDlg(CWnd* pParent = nullptr);	// standard constructor
+	CAuswertungDlg(CWnd* pParent = nullptr);
 
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
@@ -28,6 +22,5 @@ protected:
 	// Generated message map functions
 	virtual BOOL OnInitDialog();
 	afx_msg void OnPaint();
-	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
 };

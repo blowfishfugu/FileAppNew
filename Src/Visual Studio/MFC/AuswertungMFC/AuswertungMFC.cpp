@@ -2,19 +2,15 @@
 #include "AuswertungMFC.h"
 #include "AuswertungDlg.h"
 
-// CAuswertungApp
 BEGIN_MESSAGE_MAP(CAuswertungApp, CWinApp)
 	ON_COMMAND(ID_HELP, &CWinApp::OnHelp)
 END_MESSAGE_MAP()
 
 
-// CAuswertungApp construction
 CAuswertungApp::CAuswertungApp()
 {
 }
 
-
-CAuswertungApp theApp;
 
 BOOL CAuswertungApp::InitInstance()
 {

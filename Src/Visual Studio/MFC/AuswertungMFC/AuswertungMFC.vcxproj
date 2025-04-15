@@ -113,11 +113,11 @@
     <ClInclude Include="AuswertungMFC.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AuswertungDlg.cpp" />
     <ClCompile Include="AuswertungMFC.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AuswertungMFC.rc" />

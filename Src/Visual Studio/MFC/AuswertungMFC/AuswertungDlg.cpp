@@ -27,8 +27,8 @@ END_MESSAGE_MAP()
 BOOL CAuswertungDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
-	SetIcon(m_hIcon, TRUE);			// Set big icon
-	SetIcon(m_hIcon, FALSE);		// Set small icon
+	SetIcon(m_hIcon, TRUE);
+	SetIcon(m_hIcon, FALSE);
 
 	SetDefID(IDB_ACTION);
 	

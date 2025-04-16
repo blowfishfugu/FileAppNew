@@ -1,4 +1,5 @@
 #pragma once
+#include <adecc_Scholar/MyForm.h>
 #include "afxdialogex.h"
 
 class CAuswertungDlg : public CDialogEx

@@ -39,7 +39,9 @@ BOOL CAuswertungDlg::OnInitDialog()
 
 void CAuswertungDlg::InitStatusBar()
 {
-	m_statusBar.Create(this);
+	m_statusBar.Create(this); 
+	
+	//TODO: herausfinden, wie statusbar in nativem win32 ist, hat der auch diverse sectionen, die innerhalb vom control beschickbar sind?
 
 	static std::array<UINT, 1> indicators{ IDS_STATUSBAR };
 	m_statusBar.SetIndicators(indicators.data(), static_cast<int>(indicators.size()));

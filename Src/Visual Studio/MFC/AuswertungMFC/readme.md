@@ -60,3 +60,7 @@ MyForms.h damit z.B. erreichbar ueber #include <adecc_Scholar/MyForms.h> usw ...
 Je nachdem, wo die Bibliotheken liegen, ist dies darin anpassbar (anstatt relativ zum SolutionDir absolut in ganz anderem Ordner, freie Auswahl ;) )
 
 In CMake-Welt wäre das vergleichbar mit einer "find_adecc()", die einem zusätzliche includepfade setzt, props-file ist hartcodiert
+
+## todo
+
+[ ] _SILENCE_CXX23_UNIX_STREAMS_DEPRECATION_WARNING in preprocessor regeln

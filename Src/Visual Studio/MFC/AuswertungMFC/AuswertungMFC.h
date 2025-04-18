@@ -1,5 +1,5 @@
 #pragma once
-#include "framework.h"
+#include <adecc_Scholar/MFC/framework.h>
 #include "resource.h"		// main symbols
 
 class CAuswertungApp : public CWinApp

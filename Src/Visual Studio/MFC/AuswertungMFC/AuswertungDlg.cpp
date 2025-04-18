@@ -1,4 +1,3 @@
-#include "framework.h"
 #include "AuswertungMFC.h"
 #include "AuswertungDlg.h"
 #include "resource.h"

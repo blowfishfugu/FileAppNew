@@ -16,6 +16,7 @@
 #include <codecvt>
 
 #include "FileAppProcess.h"
+
 #include "MyFileDlg.h"
 
 #include <adecc_Scholar/MyForm.h>
@@ -25,7 +26,6 @@
 #include <adecc_Scholar/MyTupleUtils.h>
 #include <adecc_Scholar/MyLogger.h>
 #include "MyFileException.h"
-#include "MyFileDlg.h"
 #include "FileUtil.h"
 
 #include "pugixml.hpp"

@@ -18,7 +18,6 @@
 #include "FileDlgProcesses.h"
 
 #include <adecc_Scholar/MyForm.h>
-#include <FileUtil.h>
 #include <locale>
 #include <vector>
 #include <thread>

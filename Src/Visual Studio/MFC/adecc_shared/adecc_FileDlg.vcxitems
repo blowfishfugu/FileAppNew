@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{B0BF8C92-4FCF-4A5E-8721-3C9AAEA4D61B}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\adecc_FileDlg\Src\Independed\BuildFileDlg.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\adecc_FileDlg\Src\Independed\FileDlgProcesses.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\adecc_FileDlg\Src\Independed\FileUtil.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\adecc_FileDlg\Src\Independed\MyFileDlg.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\adecc_FileDlg\Src\Independed\MyFileException.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\adecc_FileDlg\Src\Independed\FileDlgProcesses.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\adecc_FileDlg\Src\Independed\FileUtil.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\adecc_FileDlg\Src\Independed\MyFileDlg.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\adecc_FileDlg\Src\Independed\MyFileException.cpp" />
+  </ItemGroup>
+</Project>

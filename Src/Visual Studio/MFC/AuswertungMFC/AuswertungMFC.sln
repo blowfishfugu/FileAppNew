@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "adecc_Scholar", "..\adecc_s
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "adecc_Tools", "..\adecc_shared\adecc_Tools.vcxitems", "{76E500CD-2252-4985-99E4-624EDC8B7CCF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "adecc_FileDlg", "..\adecc_shared\adecc_FileDlg.vcxitems", "{B0BF8C92-4FCF-4A5E-8721-3C9AAEA4D61B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,5 +33,11 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CE95EFCF-4594-44B4-9B7F-C02EC02A656E}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\adecc_shared\adecc_Scholar.vcxitems*{6688e9d2-935b-4a47-afec-72b354faf8b9}*SharedItemsImports = 9
+		..\adecc_shared\adecc_Tools.vcxitems*{76e500cd-2252-4985-99e4-624edc8b7ccf}*SharedItemsImports = 9
+		..\adecc_shared\adecc_FileDlg.vcxitems*{b0bf8c92-4fcf-4a5e-8721-3c9aaea4d61b}*SharedItemsImports = 9
+		..\adecc_shared\adecc_FileDlg.vcxitems*{ddd1a656-a7e2-aeb0-3923-dd8402bbd523}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal

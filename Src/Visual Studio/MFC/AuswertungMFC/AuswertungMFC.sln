@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{02EA681E-C
 		readme.md = readme.md
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "adecc_Scholar", "..\adecc_shared\adecc_Scholar.vcxitems", "{6688E9D2-935B-4A47-AFEC-72B354FAF8B9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "adecc_Tools", "..\adecc_shared\adecc_Tools.vcxitems", "{76E500CD-2252-4985-99E4-624EDC8B7CCF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

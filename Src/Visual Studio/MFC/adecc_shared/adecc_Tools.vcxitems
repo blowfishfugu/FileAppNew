@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{76e500cd-2252-4985-99e4-624edc8b7ccf}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\adecc_Scholar_Tools\adecc_Tools\MyConvert.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\adecc_Scholar_Tools\adecc_Tools\MyError.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\adecc_Scholar_Tools\adecc_Tools\MyExceptions.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\adecc_Scholar_Tools\adecc_Tools\MyFileIterator.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\adecc_Scholar_Tools\adecc_Tools\MyHelper.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\adecc_Scholar_Tools\adecc_Tools\MyTrace.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\adecc_Scholar_Tools\adecc_Tools\MyType_Traits.h" />
+  </ItemGroup>
+</Project>

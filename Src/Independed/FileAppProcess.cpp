@@ -269,6 +269,7 @@ void TProcess::Test2() {
       TMyFileDlg::OpenFileAction("D:\\unknown\\wrong\\file.txt");
       }
    catch(my_file_information const& ex) {
+      #define MY_POSITION() (my_source_position{__FUNCTION__, __FILE__, __LINE__})
       throw my_file_runtime_error(ex, MY_POSITION());
       }
 }

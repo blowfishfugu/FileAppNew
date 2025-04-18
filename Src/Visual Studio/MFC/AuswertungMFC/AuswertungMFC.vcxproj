@@ -111,12 +111,14 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Independed\FileAppProcess.h" />
     <ClInclude Include="AuswertungDlg.h" />
     <ClInclude Include="AuswertungMFC.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Resource.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Independed\FileAppProcess.cpp" />
     <ClCompile Include="AuswertungDlg.cpp" />
     <ClCompile Include="AuswertungMFC.cpp" />
     <ClCompile Include="main.cpp" />

@@ -65,9 +65,9 @@ In CMake-Welt wäre das vergleichbar mit einer "find_adecc()", die einem zusätzli
 
 - [x] ueberblick verschaffen, was wird wo verwendet, Abhaengigkeiten ermitteln
 - [x] Basisprojekt mit Dialogdesign und Zusatzabhaengigkeiten (includes auf scholar,Tools,FileDlg,pugixml) erstellen
+- [x] fw_String = CString (vorraussetzung fuer jegliches Control) : MyFramework_String/MyType_Traits_
 - [ ] define BUILD_WITH_MFC unter jeden BUILD_WITH_*-Block haengen, (= error "unbekanntes Framework" behandeln)
 - [ ] EMyFramework, alle vorkommnisse behandeln (+mfc)
-- [ ] fw_String = CString (vorraussetzung fuer jegliches Control)_
 - [ ] EMyFrameworkType, mfc-pendant je typ zuordnen
 - [ ] TMyWait
 - [ ] TMyForm

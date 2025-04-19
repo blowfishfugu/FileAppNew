@@ -63,4 +63,19 @@ In CMake-Welt wäre das vergleichbar mit einer "find_adecc()", die einem zusätzli
 
 ## todo
 
-[ ] _SILENCE_CXX23_UNIX_STREAMS_DEPRECATION_WARNING in preprocessor regeln
+- [x] ueberblick verschaffen, was wird wo verwendet, Abhaengigkeiten ermitteln
+- [x] Basisprojekt mit Dialogdesign und Zusatzabhaengigkeiten (includes auf scholar,Tools,FileDlg,pugixml) erstellen
+- [ ] define BUILD_WITH_MFC unter jeden BUILD_WITH_*-Block haengen, (= error "unbekanntes Framework" behandeln)
+- [ ] EMyFramework, alle vorkommnisse behandeln (+mfc)
+- [ ] fw_String = CString (vorraussetzung fuer jegliches Control)_
+- [ ] EMyFrameworkType, mfc-pendant je typ zuordnen
+- [ ] TMyWait
+- [ ] TMyForm
+- [ ] adecc_Tools, wo verwendet? my_line_iterator usw_
+- [ ] FileDlg vorerst lokal mitimplementieren, schaut ebenfalls auf obige EMyFrameworkTypes, spaeter als static-lib ins adecc_FileDlg umlagern
+
+## todo, lowprios fuer spaeter
+
+- [ ] _SILENCE_CXX23_UNIX_STREAMS_DEPRECATION_WARNING in preprocessor regeln
+- [ ] Convert_Size_KiloByte, kandidat fuer constexpr oder template
+- [ ] weitere projekttypen lesen: vcxproj, csproj -> sind sehr verwandt zu cbproj

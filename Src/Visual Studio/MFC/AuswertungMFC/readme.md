@@ -68,14 +68,20 @@ In CMake-Welt wäre das vergleichbar mit einer "find_adecc()", die einem zusätzli
 - [x] fw_String = CString (vorraussetzung fuer jegliches Control) : MyFramework_String/MyType_Traits_
 - [ ] define BUILD_WITH_MFC unter jeden BUILD_WITH_*-Block haengen, (= error "unbekanntes Framework" behandeln)
 - [ ] EMyFramework, alle vorkommnisse behandeln (+mfc)
-- [ ] EMyFrameworkType, mfc-pendant je typ zuordnen
-- [ ] TMyWait
+- [x] EMyFrameworkType, mfc-pendant je typ zuordnen
+- [x] TMyWait
+- [ ] Find mapping rc-ID aus string
 - [ ] TMyForm
+- [ ] TMyStream
 - [ ] adecc_Tools, wo verwendet? my_line_iterator usw_
 - [ ] FileDlg vorerst lokal mitimplementieren, schaut ebenfalls auf obige EMyFrameworkTypes, spaeter als static-lib ins adecc_FileDlg umlagern
 
 ## todo, lowprios fuer spaeter
 
 - [ ] _SILENCE_CXX23_UNIX_STREAMS_DEPRECATION_WARNING in preprocessor regeln
-- [ ] Convert_Size_KiloByte, kandidat fuer constexpr oder template
 - [ ] weitere projekttypen lesen: vcxproj, csproj -> sind sehr verwandt zu cbproj
+- [ ] AlignmentStyles MFC-DWord-Defines in struct verpacken (-> Typsicherheit in Aufruf)
+- [ ] GetFramework ueber constexpr is_mfc_/is_qt::value usw?_
+- [ ] Convert_Size_KiloByte, kandidat fuer constexpr oder template
+- [ ] SetListBox: search CaseSensitive, default der CListBox ist insensitive
+- [ ] Test: SetPosition( Memo, SetCaretPos)

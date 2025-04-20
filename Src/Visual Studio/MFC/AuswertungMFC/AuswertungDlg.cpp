@@ -33,6 +33,7 @@ BOOL CAuswertungDlg::OnInitDialog()
 	
 	InitStatusBar();
 	
+	proc.Init({ this,false });
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 

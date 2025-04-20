@@ -1,6 +1,8 @@
 #pragma once
+
 #include <adecc_Scholar/MyForm.h>
 #include "afxdialogex.h"
+#include <FileAppProcess.h> //Independed
 
 class CAuswertungDlg : public CDialogEx
 {
@@ -16,6 +18,8 @@ public:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
 
 	CStatusBar m_statusBar;
+
+	TProcess proc;
 // Implementation
 protected:
 	HICON m_hIcon;

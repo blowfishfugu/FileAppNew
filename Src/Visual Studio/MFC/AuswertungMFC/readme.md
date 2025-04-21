@@ -83,5 +83,6 @@ In CMake-Welt wäre das vergleichbar mit einer "find_adecc()", die einem zusätzli
 - [ ] AlignmentStyles MFC-DWord-Defines in struct verpacken (-> Typsicherheit in Aufruf)
 - [ ] GetFramework ueber constexpr is_mfc_/is_qt::value usw?_
 - [ ] Convert_Size_KiloByte, kandidat fuer constexpr oder template
+- [ ] GetComboBox: wstring-case //^^ no optional, oben im qt-branch ein make_optional?
 - [ ] SetListBox: search CaseSensitive, default der CListBox ist insensitive
 - [ ] Test: SetPosition( Memo, SetCaretPos)

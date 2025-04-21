@@ -1,4 +1,6 @@
 #pragma once
+#if defined BUILD_WITH_QT
+#elif defined BUILD_WITH_MFC
 #include <adecc_Scholar/MFC/framework.h>
 #include "resource.h"		// main symbols
 
@@ -17,3 +19,4 @@ public:
 };
 
 extern CAuswertungApp theApp;
+#endif

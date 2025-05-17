@@ -57,6 +57,7 @@ using tplData = std::tuple<std::string,  //  0 project
 
 enum class EShowVariante : int { empty, Count, Files, Projects };
 
+namespace fs=std::filesystem;
 class TProcess {
    private:
       TMyForm frm;

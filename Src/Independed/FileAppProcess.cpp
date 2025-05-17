@@ -23,6 +23,7 @@
 #include <adecc_Scholar/MyStream.h>
 #include <adecc_Scholar/MyTools.h>
 #include <adecc_Scholar/MyType_Traits.h>
+#include <adecc_Tools/MyType_Traits.h> //is_vector
 #include <adecc_Scholar/MyTupleUtils.h>
 #include <adecc_Scholar/MyLogger.h>
 #include "MyFileException.h"
@@ -269,8 +270,8 @@ void TProcess::Test2() {
       TMyFileDlg::OpenFileAction("D:\\unknown\\wrong\\file.txt");
       }
    catch(my_file_information const& ex) {
-      #define MY_POSITION() (my_source_position{__FUNCTION__, __FILE__, __LINE__})
-      throw my_file_runtime_error(ex, MY_POSITION());
+      #define MY_POSITION (my_source_position{__FUNCTION__, __FILE__, static_cast<size_t>(__LINE__)})
+      throw my_file_runtime_error(ex, MY_POSITION);
       }
 }
 
@@ -572,7 +573,7 @@ void TProcess::SelectedExtentionsChanged(void) {
 
 // C++20 format for date time, C++Builder only C++17
 void TProcess::ShowFiles(std::ostream& out, fs::path const& strBase, std::vector<fs::path> const& files) {
-   #if defined(_MSVC_LANG) // && _MSVC_LANG < 202002L)
+   #if defined _MSVC_LANG //&& (_MSVC_LANG < 202002L)
    // to_time_t C++17
    // inspiration: https://developercommunity.visualstudio.com/t/stdfilesystemfile-time-type-does-not-allow-easy-co/251213
    // returns loctime ready for use in std::put_time
@@ -721,7 +722,7 @@ void TProcess::ParseProject(fs::path const& base, fs::path const& strFile, std::
          }
 
       pugi::xml_node root = doc.document_element();
-      pugi::xpath_node xpathNode = root.select_single_node("ItemGroup");
+      pugi::xpath_node xpathNode = root.select_node("ItemGroup");
       if(!xpathNode) {
          TMyLogger log(__func__, __FILE__, __LINE__);
          log.stream() << "ItemGroup not found in file " << strFile.string();

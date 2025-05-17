@@ -63,26 +63,28 @@ In CMake-Welt wäre das vergleichbar mit einer "find_adecc()", die einem zusätzli
 
 ## todo
 
+- [ ] define BUILD_WITH_MFC unter jeden BUILD_WITH_*-Block haengen, (= error "unbekanntes Framework" behandeln)
+- [ ] FileDlg vorerst lokal mitimplementieren, schaut ebenfalls auf obige EMyFrameworkTypes, spaeter als static-lib ins adecc_FileDlg umlagern
+- [ ] Find mapping Folgeaufgabe, ID vor CreateWindow
 - [x] ueberblick verschaffen, was wird wo verwendet, Abhaengigkeiten ermitteln
 - [x] Basisprojekt mit Dialogdesign und Zusatzabhaengigkeiten (includes auf scholar,Tools,FileDlg,pugixml) erstellen
 - [x] fw_String = CString (vorraussetzung fuer jegliches Control) : MyFramework_String/MyType_Traits_
-- [ ] define BUILD_WITH_MFC unter jeden BUILD_WITH_*-Block haengen, (= error "unbekanntes Framework" behandeln)
-- [ ] EMyFramework, alle vorkommnisse behandeln (+mfc)
+- [x] EMyFramework, alle vorkommnisse behandeln (+mfc)
 - [x] EMyFrameworkType, mfc-pendant je typ zuordnen
 - [x] TMyWait
-- [ ] Find mapping rc-ID aus string
-- [ ] TMyForm
-- [ ] TMyStream
+- [x] Find mapping rc-ID aus string
+- [x] TMyForm
+- [x] TMyStream
 - [ ] adecc_Tools, wo verwendet? my_line_iterator usw_
-- [ ] FileDlg vorerst lokal mitimplementieren, schaut ebenfalls auf obige EMyFrameworkTypes, spaeter als static-lib ins adecc_FileDlg umlagern
 
 ## todo, lowprios fuer spaeter
 
-- [ ] _SILENCE_CXX23_UNIX_STREAMS_DEPRECATION_WARNING in preprocessor regeln
 - [ ] weitere projekttypen lesen: vcxproj, csproj -> sind sehr verwandt zu cbproj
+- [ ] _SILENCE_CXX23_UNIX_STREAMS_DEPRECATION_WARNING in preprocessor regeln
 - [ ] AlignmentStyles MFC-DWord-Defines in struct verpacken (-> Typsicherheit in Aufruf)
 - [ ] GetFramework ueber constexpr is_mfc_/is_qt::value usw?_
 - [ ] Convert_Size_KiloByte, kandidat fuer constexpr oder template
 - [ ] GetComboBox: wstring-case //^^ no optional, oben im qt-branch ein make_optional?
+- [ ] Beispiel fuer ownerdrawn-ListBox und eigenem Textcache dazu bauen
 - [ ] SetListBox: search CaseSensitive, default der CListBox ist insensitive
 - [ ] Test: SetPosition( Memo, SetCaretPos)
